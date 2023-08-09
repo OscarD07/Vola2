@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1364.69 299.09">
+  <defs>
+    <style>
+      .e {
+        fill: url(#d);
+      }
+    </style>
+    <linearGradient id="d" data-name="Gradiente sem nome 12" x1="0" y1="149.55" x2="1364.69" y2="149.55" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#24c426"/>
+      <stop offset=".52" stop-color="#15b727"/>
+      <stop offset="1" stop-color="#03a829"/>
+    </linearGradient>
+  </defs>
+  <g id="c" data-name="Capa 1">
+    <path class="e" d="M1364.69,94.62v204.48H0v-66.03C596.85-321.27,1095.02,317.06,1364.69,94.62Z"/>
+  </g>
+</svg>

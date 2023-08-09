@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1459 383">
+  <defs>
+    <style>
+      .i {
+        fill: #99ea5d;
+        filter: url(#d);
+      }
+
+      .j {
+        fill: url(#f);
+        filter: url(#g);
+      }
+    </style>
+    <filter id="d" data-name="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="-12.33"/>
+      <feGaussianBlur result="e" stdDeviation="15.41"/>
+      <feFlood flood-color="#000" flood-opacity=".1"/>
+      <feComposite in2="e" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="f" data-name="Gradiente sem nome 12" x1="729.24" y1="351.7" x2="729.24" y2="173.16" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#24c426"/>
+      <stop offset=".52" stop-color="#15b727"/>
+      <stop offset="1" stop-color="#03a829"/>
+    </linearGradient>
+    <filter id="g" data-name="drop-shadow-2" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="-12.33"/>
+      <feGaussianBlur result="h" stdDeviation="15.41"/>
+      <feFlood flood-color="#000" flood-opacity=".2"/>
+      <feComposite in2="h" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="c" data-name="Capa 1">
+    <g>
+      <path class="i" d="M46.24,165.84C85.53,84.71,242.53,32.18,461.36,73.93c228.06,43.5,325.46,122.89,432.59,122.89,234.43,0,294.75-134.35,518.29-77.59v177.42H46.24V165.84Z"/>
+      <path class="j" d="M46.24,239.61c48.51-77.82,154.19-126.36,370.42-75.46,216.23,50.9,336.92,89.38,477.3,89.38,234.43,0,367.55-158.56,518.29-118.87v213.57H46.24v-108.62Z"/>
+    </g>
+  </g>
+</svg>
