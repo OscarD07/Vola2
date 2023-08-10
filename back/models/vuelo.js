@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -9,4 +8,4 @@ var VueloSchema = Schema({
     asientos_disponibles: Number
 });
 
-module.exports = mongoose.model('Vuelo', VueloSchema);
+module.exports = mongoose.model('vuelo', VueloSchema);
