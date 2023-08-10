@@ -28,7 +28,7 @@ export class VuelosService {
     origen: string,
     destino: string,
     fechaSalida: string,
-    numPasajeros: number
+    numPasajeros: string
   ): Observable<any> {
     const url = `${this.url}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}/${numPasajeros}`;
     return this._http.get(url);

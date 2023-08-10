@@ -5,7 +5,7 @@ var VueloSchema = Schema({
     origen: String,
     destino: String,
     fechaSalida: Date,
-    num_pasajeros: Number
+    asientosDisponibles: Number
 });
 
 module.exports = mongoose.model('vuelo', VueloSchema);

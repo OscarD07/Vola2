@@ -38,5 +38,6 @@ export class VuelosComponent {
           console.error('Error al buscar vuelos:', error);
         }
       );
+     // this.hola = typeof (new Date(this.datosBusqueda.fechaSalida)) 
   }
 }
