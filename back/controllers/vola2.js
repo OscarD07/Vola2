@@ -49,8 +49,10 @@ getVuelosBuscar: async function(req, res) {
       const vuelos = await Vuelo.find({
         origen: req.params.origen,
         destino: req.params.destino,
+        fechaSalida:  new Date(req.params.fechaSalida) ,
+        asientos_disponibles: { $gte: req.params.asientos_disponibles }
         // Corregido para acceder a la fechaSalida
-      }).sort(); // Ordenar por fecha de salida ascendente
+      }).sort({ fechaSalida: 1 }); // Ordenar por fecha de salida ascendente
       
       if (!vuelos || vuelos.length === 0) {
         return res.status(404).send({ message: 'No hay vuelos' });
