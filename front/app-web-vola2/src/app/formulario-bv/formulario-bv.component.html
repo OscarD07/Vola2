@@ -14,11 +14,42 @@
   <form [formGroup]="flightForm" class="flight-form" *ngIf="selectedForm === 'solo-ida' || !selectedForm">
   <h2>¿Cuál es tu próximo viaje?</h2>
   
-  <label>Origen:</label>
-  <input type="text" name="origen" formControlName="origen"/>
+  <!-- formulario-bv.component.html -->
 
+<div class="input-container">
+  <label>Origen:</label>
+  <div class="input-with-list">
+    <input type="text" name="origen" formControlName="origen" (input)="filterCiudades($event, false)">
+    <div class="ciudades-list" *ngIf="filteredCiudadesOrigen.length > 0">
+      <div *ngFor="let ciudad of filteredCiudadesOrigen" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'origen')">
+        <span [style.color]="ciudad.highlightedNombre ? 'green' : 'inherit'">
+          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+        </span>
+        
+        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="input-container">
   <label>Destino:</label>
-  <input type="text" name="destino" formControlName="destino"/>
+  <div class="input-with-list">
+    <input type="text" name="destino" formControlName="destino" (input)="filterCiudades($event, true)">
+    <div class="ciudades-list" *ngIf="filteredCiudadesDestino.length > 0">
+      <div *ngFor="let ciudad of filteredCiudadesDestino" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'destino')">
+        <span [style.color]="ciudad.highlightedNombre ? 'green' : 'inherit'">
+          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+        </span>
+        
+        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
 
   <label>Fecha de Salida:</label>
   <input type="date" name="fechaSalida" formControlName="fechaSalida"/>
@@ -34,12 +65,41 @@
 
   <form [formGroup]="flightForm" class="flight-form" *ngIf="selectedForm === 'ida-vuelta'">
   <h2>¿Cuál es tu próximo viaje?</h2>
+
+  <!-- formulario-bv.component.html -->
+
+<div class="input-container">
   <label>Origen:</label>
-  <input type="text" name="origen" formControlName="origen"/>
+  <div class="input-with-list">
+    <input type="text" name="origen" formControlName="origen" (input)="filterCiudades($event, false)">
+    <div class="ciudades-list" *ngIf="filteredCiudadesOrigen.length > 0">
+      <div *ngFor="let ciudad of filteredCiudadesOrigen" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'origen')">
+        <span [style.color]="ciudad.highlightedNombre ? 'green' : 'inherit'">
+          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+        </span>        
+        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="input-container">
   <label>Destino:</label>
-  <input type="text" name="destino" formControlName="destino"/>
+  <div class="input-with-list">
+    <input type="text" name="destino" formControlName="destino" (input)="filterCiudades($event, true)">
+    <div class="ciudades-list" *ngIf="filteredCiudadesDestino.length > 0">
+      <div *ngFor="let ciudad of filteredCiudadesDestino" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'destino')">
+        <span [style.color]="ciudad.highlightedNombre ? 'green' : 'inherit'">
+          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+        </span>        
+        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+  
   <label>Fecha de Salida:</label>
   <input type="date" name="fechaSalida" formControlName="fechaSalida"/>
 
