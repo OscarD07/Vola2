@@ -1,19 +1,34 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs"; //para que la información solicitada se pueda mostrar
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
+
+export interface Vuelo {
+  _id: string;
+  origen: string;
+  destino: string;
+  fechaSalida: string;
+}
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VuelosService {
-  public url:string;
-  constructor(
-    public _http:HttpClient //publica porque necesito hacer peticiones
-){
-    this.url="/vola2/get-vuelos-buscar/:origen/:destino/:fecha_salida/:asientos_disponibles";
-}
-buscarVuelos(origen: string, destino: string, fechaSalida: string, asientosDisponibles: number): Observable<any> {
-  const url = `${this._http}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}/${asientosDisponibles}`;
-  return this._http.get(url);
-}
+  private url: string;
+
+  constructor(private _http: HttpClient) {
+    this.url = 'http://127.0.0.1:3600/vola2';
+  }
+
+  buscarVuelos(): Observable<any> {
+    return this._http.get(this.url);
+  }
+
+  buscarVueloDatos(
+    origen: string,
+    destino: string,
+    fechaSalida: string
+  ): Observable<any> {
+    const url = `${this.url}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}`;
+    return this._http.get(url);
+  }
 }

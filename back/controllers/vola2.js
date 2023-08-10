@@ -7,10 +7,13 @@ var Vuelo = require('../models/vuelo');
 
 var controller = {
 home: function(req, res){
+    const jsonResponse = {
+        mensaje: "Hola mundo"
+    };
     return res.status(200).send(
-        "<h1>hola</h1>"
-    );
-},
+        res.json(jsonResponse)
+        )
+    },
 
 getVuelos: async function(req, res){
     try{
@@ -22,15 +25,43 @@ getVuelos: async function(req, res){
     }
 },
 
-getVuelosBuscar: async function(req, res){
-    try{
-        const vuelos = await Vuelo.find({origen: req.params.origen, destino: req.params.destino, fecha_salida: req.fecha_salida, asientos_disponibles: req.asientos_disponibles }).sort();
-        if (!vuelos) return res.status(404).send({message: 'No hay vuelos'});
-        return res.status(200).send({vuelos});
-    }catch(err){
-        return res.status(500).send({message: "Error al devolver los datos"});
-    }
+crearVuelo: async function(req, res){
+    try {
+        // Crea un nuevo vuelo utilizando el modelo Vuelo
+        const nuevoVuelo = new Vuelo({
+          origen: 'Quito',
+          destino: 'Guayaquil',
+          fechaSalida: new Date('2023-08-09T08:00:00Z') // Convierte la cadena de fecha en un objeto de fecha
+        });
+    
+        // Guarda el vuelo en la base de datos
+        await nuevoVuelo.save();
+    
+        res.json({ mensaje: 'Vuelo creado correctamente' });
+      } catch (error) {
+        console.error('Error al crear el vuelo:', error);
+        res.status(500).json({ error: 'Error al crear el vuelo' });
+      }
 },
+
+getVuelosBuscar: async function(req, res) {
+    try {
+      const vuelos = await Vuelo.find({
+        origen: req.params.origen,
+        destino: req.params.destino,
+        // Corregido para acceder a la fechaSalida
+      }).sort(); // Ordenar por fecha de salida ascendente
+      
+      if (!vuelos || vuelos.length === 0) {
+        return res.status(404).send({ message: 'No hay vuelos' });
+      }
+      
+      return res.status(200).send({ vuelos });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send({ message: 'Error al devolver los datos' });
+    }
+  },
 
 saveVuelo: async function(req, res){
     try{

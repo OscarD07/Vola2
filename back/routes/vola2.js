@@ -8,6 +8,6 @@ var multipartMiddleware = multipart({ uploadDir: './uploads' });
 router.get('/vola2', Vola2Controller.home);
 router.get('/vola2/get-vuelos', Vola2Controller.getVuelos);
 router.post('/vola2/guardar-vuelo', Vola2Controller.saveVuelo);
-router.get('/vola2/get-vuelos-buscar/:origen/:destino/:fecha_salida/:asientos_disponibles', Vola2Controller.getVuelosBuscar);
+router.get('/vola2/get-vuelos-buscar/:origen/:destino/:fechaSalida', Vola2Controller.getVuelosBuscar);
 
 module.exports = router;
