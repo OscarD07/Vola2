@@ -26,7 +26,8 @@ export class VuelosComponent {
       .buscarVueloDatos(
         this.datosBusqueda.origen,
         this.datosBusqueda.destino,
-        this.datosBusqueda.fechaSalida
+        this.datosBusqueda.fechaSalida,
+        this.datosBusqueda.numPasajeros
       )
       .subscribe(
         (data) => {

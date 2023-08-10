@@ -32,6 +32,7 @@ export class FormularioBvComponent {
       origen: this.flightForm.value.origen,
       destino: this.flightForm.value.destino,
       fechaSalida: this.flightForm.value.fechaSalida,
+      numPasajeros: this.flightForm.value.numPasajeros
     };
 
     sessionStorage.setItem('datosBusqueda', JSON.stringify(datosBusqueda));

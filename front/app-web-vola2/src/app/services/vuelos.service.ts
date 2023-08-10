@@ -8,6 +8,7 @@ export interface Vuelo {
   origen: string;
   destino: string;
   fechaSalida: string;
+  numPasajeros: number;
 }
 @Injectable({
   providedIn: 'root',
@@ -26,9 +27,10 @@ export class VuelosService {
   buscarVueloDatos(
     origen: string,
     destino: string,
-    fechaSalida: string
+    fechaSalida: string,
+    numPasajeros: number
   ): Observable<any> {
-    const url = `${this.url}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}`;
+    const url = `${this.url}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}/${numPasajeros}`;
     return this._http.get(url);
   }
 }
