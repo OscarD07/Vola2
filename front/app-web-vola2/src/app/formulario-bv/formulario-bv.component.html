@@ -15,11 +15,15 @@
     <h2>¿Cuál es tu próximo viaje?</h2>
     
     <label>Origen:</label>
-    <input type="text" name="origen" formControlName="origen"/>
+    <select name="origen" formControlName="origen">
+      <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
+    </select>
 
     <label>Destino:</label>
-    <input type="text" name="destino" formControlName="destino"/>
-
+    <select name="destino" formControlName="destino">
+      <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
+    </select>
+    
     <label>Fecha de Salida:</label>
     <input type="date" name="fechaSalida" formControlName="fechaSalida"/>
 
@@ -35,11 +39,15 @@
     <form [formGroup]="flightForm" class="flight-form" *ngIf="selectedForm === 'ida-vuelta'">
     <h2>¿Cuál es tu próximo viaje?</h2>
     <label>Origen:</label>
-    <input type="text" name="origen" formControlName="origen"/>
+    <select name="origen" formControlName="origen">
+      <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
+    </select>
 
     <label>Destino:</label>
-    <input type="text" name="destino" formControlName="destino"/>
-
+    <select name="destino" formControlName="destino">
+      <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
+    </select>
+    
     <label>Fecha de Salida:</label>
     <input type="date" name="fechaSalida" formControlName="fechaSalida"/>
 
