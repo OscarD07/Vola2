@@ -1,24 +1,11 @@
-<!--
-{{ hola }}
-<div *ngFor="let vuelo of vuelos">
-    {{ vuelo.origen }}
-    {{ vuelo.destino }}
-    {{ vuelo.fechaSalida }}
-  </div>
-<h1>hola</h1>
+
+
 <div class="vuelos-container">
+  <div class="vuelo-item"*ngFor="let vuelo of vuelos">
     <div class="info">
-      <div class="origen">origen</div>
-      <div class="destino">destino</div>
-      <div class="fecha-hora">fecha</div>
-    </div>
-</div>-->
-<div class="vuelos-container">
-  <div class="vuelo-item" >
-    <div class="info">
-        <div class="origen">origen</div>
-        <div class="destino">destino</div>
-        <div class="fecha-hora">fecha</div>
+        <div class="origen">origen {{ vuelo.origen }}</div>
+        <div class="destino">destino {{ vuelo.destino }}</div>
+        <div class="fecha-hora">fecha {{ vuelo.fechaSalida }}</div>
       </div>  
     
   </div>
