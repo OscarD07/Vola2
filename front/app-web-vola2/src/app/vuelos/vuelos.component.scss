@@ -1,50 +1,62 @@
 .vuelos-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center; /* Centrar horizontalmente */
-    margin-top: 20px;
-  }
-  
-  .vuelo-item {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 6px;
-    background-color: #f5f5f5;
-    width: calc(33.33% - 40px);
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Distribuir espacio uniformemente */
-    align-items: center; /* Centrar verticalmente */
-  }
-  
-  .vuelo-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  .vuelo-link {
-    text-decoration: none;
-    color: inherit;
-    width: 100%; /* Hacer que el enlace ocupe todo el espacio disponible */
-  }
-  
-  .info {
-    text-align: center; /* Centrar el texto horizontalmente */
-  }
-  
-  .origen {
-    color: #19d266;
-  }
-  
-  .destino {
-    color: #e74c3c;
-  }
-  
-  .fecha-hora {
-    color: #555;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centrar los recuadros horizontalmente */
+  margin-top: 20px;
+}
+
+.vuelo-item {
+  width: calc(75% - 20px); /* Ancho del recuadro */
+  margin: 10px; /* Espacio entre recuadros */
+  border: 1px solid #ccc;
+  padding: 20px;
+  display: flex; /* Mostrar los elementos en línea */
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vuelo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.vuelo-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.info {
+  flex: 1; /* Permite que los elementos internos ocupen el espacio disponible */
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px; /* Espacio entre los elementos y el texto */
+}
+
+.origen{
+  //flex: 2; /* Hace que los elementos ocupen el mismo espacio horizontal */
+  //white-space: nowrap; /* Evita saltos de línea en los elementos */
+  overflow: hidden; /* Oculta contenido que exceda el ancho */
+   /* Muestra puntos suspensivos si el contenido es muy largo */
+  margin: 0 15px; /* Espacio entre los elementos */
+}
+.destino{
+  //flex: 2; /* Hace que los elementos ocupen el mismo espacio horizontal */
+  //white-space: nowrap; /* Evita saltos de línea en los elementos */
+  overflow: hidden; /* Oculta contenido que exceda el ancho */
+   /* Muestra puntos suspensivos si el contenido es muy largo */
+  margin: 0 15px; /* Espacio entre los elementos */
+}
+.fecha-hora {
+  color: #19d266;
+  font-family: 'Lilita One', cursiva;
+  font-size: 25px; /* Tamaño del título */
+  //flex: 2; /* Hace que los elementos ocupen el mismo espacio horizontal */
+  white-space: nowrap; /* Evita saltos de línea en los elementos */
+  overflow: hidden; /* Oculta contenido que exceda el ancho */
+   /* Muestra puntos suspensivos si el contenido es muy largo */
+  margin: 0 15px; /* Espacio entre los elementos */
+}
+

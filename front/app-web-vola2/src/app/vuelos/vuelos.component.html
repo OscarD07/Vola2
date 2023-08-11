@@ -1,11 +1,13 @@
-
-
 <div class="vuelos-container">
   <div class="vuelo-item"*ngFor="let vuelo of vuelos">
     <div class="info">
+      
+        <div class="fecha-hora">{{ vuelo.fechaSalida | date: 'hh:mm a' }}</div>
+        
+      
         <div class="origen">origen {{ vuelo.origen }}</div>
         <div class="destino">destino {{ vuelo.destino }}</div>
-        <div class="fecha-hora">fecha {{ vuelo.fechaSalida }}</div>
+        
       </div>  
     
   </div>
