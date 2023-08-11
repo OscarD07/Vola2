@@ -89,7 +89,7 @@
     <input type="text" name="destino" formControlName="destino" (input)="filterCiudades($event, true)">
     <div class="ciudades-list" *ngIf="filteredCiudadesDestino.length > 0">
       <div *ngFor="let ciudad of filteredCiudadesDestino" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'destino')">
-        <span [style.color]="ciudad.highlightedNombre ? 'green' : 'inherit'">
+        <span [style.color]="ciudad.highlightedNombre==true? 'green' : 'inherit'">
           {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
         </span>        
         <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>

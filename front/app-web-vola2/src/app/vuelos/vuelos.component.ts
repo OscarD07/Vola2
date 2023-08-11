@@ -20,6 +20,7 @@ export class VuelosComponent {
     }
   }
 
+  
   buscarVuelos() {
     // Utiliza this.datosBusqueda para realizar la búsqueda de vuelos
     this.backendService

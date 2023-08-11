@@ -1,0 +1,50 @@
+.vuelos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Centrar horizontalmente */
+    margin-top: 20px;
+  }
+  
+  .vuelo-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: #f5f5f5;
+    width: calc(33.33% - 40px);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuir espacio uniformemente */
+    align-items: center; /* Centrar verticalmente */
+  }
+  
+  .vuelo-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .vuelo-link {
+    text-decoration: none;
+    color: inherit;
+    width: 100%; /* Hacer que el enlace ocupe todo el espacio disponible */
+  }
+  
+  .info {
+    text-align: center; /* Centrar el texto horizontalmente */
+  }
+  
+  .origen {
+    color: #19d266;
+  }
+  
+  .destino {
+    color: #e74c3c;
+  }
+  
+  .fecha-hora {
+    color: #555;
+  }
+  
