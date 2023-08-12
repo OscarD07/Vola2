@@ -1,0 +1,22 @@
+<h1>Formulario de Pasajeros</h1>
+<p>Ingrese la cantidad de pasajeros:</p>
+<input type="number" [(ngModel)]="cantidadPasajeros" min="1">
+<button (click)="generarFormularios()">Generar Formularios</button>
+
+<div *ngFor="let pasajero of pasajeros; let i = index">
+  <form>
+    <h2>Pasajero {{ i + 1 }}</h2>
+    <label>Nombre:</label>
+    <input type="text" [(ngModel)]="pasajero.nombre" required><br>
+    <label>Apellido:</label>
+    <input type="text" [(ngModel)]="pasajero.apellido" required><br>
+    <label>Correo:</label>
+    <input type="email" [(ngModel)]="pasajero.correo" required><br>
+    <label>Código de área:</label>
+    <input type="text" [(ngModel)]="pasajero.codigo" required><br>
+    <label>Número de teléfono:</label>
+    <input type="text" [(ngModel)]="pasajero.telefono" required><br><br>
+  </form>
+</div>
+
+<button (click)="guardarYContinuar()">Guardar y Continuar</button>
