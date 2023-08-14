@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { FormularioBvComponent } from './formulario-bv/formulario-bv.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PasajerosComponent } from './pasajeros/pasajeros.component';
+import { CarritoComponent } from './carrito/carrito.component';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { PasajerosComponent } from './pasajeros/pasajeros.component';
     HomeComponent,
     FormularioBvComponent,
     PasajerosComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,42 @@
+.formulario-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.formulario-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.persona-form {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.persona-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+.persona-form input {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.guardar-continuar-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.guardar-continuar-button:hover {
+  background-color: #0056b3;
+}

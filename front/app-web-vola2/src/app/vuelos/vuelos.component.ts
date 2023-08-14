@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VuelosService, Vuelo } from '../services/vuelos.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-vuelos',
@@ -11,7 +13,7 @@ export class VuelosComponent {
   hola = ``;
   vuelos: Vuelo[] = [];
   datosBusqueda: any = {};
-  constructor(private backendService: VuelosService) {
+  constructor(private router: Router,private backendService: VuelosService) {
     // Recuperar los datos de búsqueda de SessionStorage
     const datosGuardados = sessionStorage.getItem('datosBusqueda');
     if (datosGuardados) {
@@ -20,7 +22,11 @@ export class VuelosComponent {
     }
   }
 
-  
+
+  seleccionarHora() {
+    this.router.navigate(['/pasajeros'])
+  }
+
   buscarVuelos() {
     // Utiliza this.datosBusqueda para realizar la búsqueda de vuelos
     this.backendService
@@ -39,6 +45,7 @@ export class VuelosComponent {
           console.error('Error al buscar vuelos:', error);
         }
       );
-     // this.hola = typeof (new Date(this.datosBusqueda.fechaSalida)) 
+     // this.hola = typeof (new Date(this.datosBusqueda.fechaSalida))
   }
+
 }

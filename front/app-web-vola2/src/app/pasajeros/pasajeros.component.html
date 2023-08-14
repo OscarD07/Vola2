@@ -1,22 +1,30 @@
-<h1>Formulario de Pasajeros</h1>
-<p>Ingrese la cantidad de pasajeros:</p>
-<input type="number" [(ngModel)]="cantidadPasajeros" min="1">
-<button (click)="generarFormularios()">Generar Formularios</button>
+<div class="formulario-container">
+  <h1 class="formulario-title">Pasajero</h1>
 
-<div *ngFor="let pasajero of pasajeros; let i = index">
-  <form>
-    <h2>Pasajero {{ i + 1 }}</h2>
-    <label>Nombre:</label>
-    <input type="text" [(ngModel)]="pasajero.nombre" required><br>
-    <label>Apellido:</label>
-    <input type="text" [(ngModel)]="pasajero.apellido" required><br>
-    <label>Correo:</label>
-    <input type="email" [(ngModel)]="pasajero.correo" required><br>
-    <label>Código de área:</label>
-    <input type="text" [(ngModel)]="pasajero.codigo" required><br>
-    <label>Número de teléfono:</label>
-    <input type="text" [(ngModel)]="pasajero.telefono" required><br><br>
+  <h2>Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o documento de identidad de cada pasajero.</h2>
+
+  <form [formGroup]="form">
+
+    <div formArrayName="personasFormArray" *ngFor="let personaForm of personasFormArray.controls; let i = index">
+      <h2>Pasajero {{ i + 1 }}</h2>
+      <div [formGroupName]="i" class="persona-form">
+        <label>Nombre: </label>
+        <input formControlName="nombre" placeholder="">
+        <label>Apellido: </label>
+        <input formControlName="apellido" placeholder="">
+        <label>Correo: </label>
+        <input formControlName="correo" placeholder="">
+        <label>Código de Área: </label>
+  <select formControlName="codigoArea">
+    <option *ngFor="let pais of paises" [value]="pais.codigoPais">{{ pais.nombrePais }} ({{ pais.codigoPais }})</option>
+  </select>
+        <label>Teléfono: </label>
+        <input formControlName="telefono" placeholder="">
+
+      </div>
+    </div>
   </form>
+
+  <button class="guardar-continuar-button" (click)="guardarYContinuar()">Guardar y Continuar</button>
 </div>
 
-<button (click)="guardarYContinuar()">Guardar y Continuar</button>
