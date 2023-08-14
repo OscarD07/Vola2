@@ -8,17 +8,27 @@ import { Component } from '@angular/core';
 export class CarritoComponent {
 
   pasajeros: any[] = [];
+  items: any[] = [];
 
   ngOnInit() {
-    const formData = JSON.parse(localStorage.getItem('formularioData'));
-    if (formData && formData.pasajeros) {
-      this.pasajeros = formData.pasajeros;
+    const formDataString = localStorage.getItem('formularioData');
+    if (formDataString) {
+      const formData = JSON.parse(formDataString);
+      if (formData && formData.pasajeros) {
+        this.pasajeros = formData.pasajeros;
+        this.actualizarCarrito();
+      }
     }
   }
 
-  agregarAlCarrito(boleto: string, cantidad: number, precioUnitario: number) {
-    const total = cantidad * precioUnitario;
-    this.items.push({ boleto, cantidad, total });
+  actualizarCarrito() {
+    this.items = this.pasajeros.map(pasajero => {
+      return {
+        boleto: '$50', // Valor predeterminado del boleto
+        cantidad: 1, // Cantidad fija por ahora
+        total: 50 // Total basado en el valor predeterminado
+      };
+    });
   }
 
   vaciarCarrito() {
