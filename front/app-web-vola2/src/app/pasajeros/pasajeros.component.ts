@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-
-interface Pais {
-  nombrePais: string;
-  codigoPais: string;
-}
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { PAISES_DATA } from '../constants/paises.const';
+import { Pais } from '../models/pais.model';
 
 @Component({
   selector: 'app-pasajeros',
@@ -11,35 +10,60 @@ interface Pais {
   styleUrls: ['./pasajeros.component.scss']
 })
 export class PasajerosComponent {
-  paises: Pais[] = [
-    { nombrePais: "Ecuador", codigoPais: "+593" },
-    { nombrePais: "Estados Unidos", codigoPais: "+1" },
-    { nombrePais: "Canadá", codigoPais: "+1" },
-    { nombrePais: "Reino Unido", codigoPais: "+44" },
-    { nombrePais: "Australia", codigoPais: "+61" },
-    { nombrePais: "India", codigoPais: "+91" },
-    // Agrega más países según sea necesario
-  ];
 
-  cantidadPasajeros: number = 1;
+  datosBusqueda: any = {};
   pasajeros: any[] = [];
+  paises: Pais[] = PAISES_DATA; // Asegúrate de importar la lista de países correctamente
+  cantidadPasajeros: number = 0;
+  form: FormGroup;
 
-  generarFormularios() {
-    this.pasajeros = [];
-    for (let i = 1; i <= this.cantidadPasajeros; i++) {
-      this.pasajeros.push({
-        nombre: '',
-        apellido: '',
-        correo: '',
-        codigo: '',
-        telefono: ''
-      });
+
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.form = this.fb.group({
+      personasFormArray: this.fb.array([
+
+      ])
+    });
+
+
+
+    const datosG = sessionStorage.getItem('datosBusqueda');
+    if (datosG) {
+      this.datosBusqueda = JSON.parse(datosG);
     }
+    this.cantidadPasajeros = this.datosBusqueda.numPasajeros;
+    this.inicializarForms();
+  }
+
+  inicializarForms(){
+    for (let i=1 ;i<=this.cantidadPasajeros;++i){
+      this.addPersonas();
+
+  }
+}
+
+  get personasFormArray(): FormArray{
+    return this.form.get('personasFormArray') as FormArray;
+  }
+
+  addPersonas(){
+    const personaFormGroup = this.fb.group({
+      nombre: [''],
+      apellido: [''],
+      correo: [''],
+      codigoArea:[''],
+      telefono:[""]
+    }) ;
+    this.personasFormArray.push(personaFormGroup);
+    this.pasajeros.push(personaFormGroup.value);
   }
 
   guardarYContinuar() {
-    console.log(this.pasajeros); // Datos de los pasajeros guardados en el array
-
-    // Puedes realizar otras acciones con los datos aquí
+    const formData = {
+      pasajeros: this.pasajeros
+    };
+    localStorage.setItem('formularioData', JSON.stringify(formData));
+    this.router.navigate(['/carrito']);
   }
 }
+
