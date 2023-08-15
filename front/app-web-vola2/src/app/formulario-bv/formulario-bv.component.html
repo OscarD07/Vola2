@@ -7,7 +7,7 @@
   </div>
   <!-- Mostrar mensaje de error si el formulario es inválido -->
   
-  <form [formGroup]="flightForm" class="flight-form" *ngIf="selectedForm === 'solo-ida' || !selectedForm">
+  <form [formGroup]="flightForm" class="flight-form" *ngIf="selectedForm === 'solo-ida' || !selectedForm" autocomplete="off">
   <h2>¿Cuál es tu próximo viaje?</h2>
   
   <!-- formulario-bv.component.html -->
