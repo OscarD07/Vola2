@@ -39,6 +39,8 @@ export class VuelosComponent {
       .subscribe(
         (data) => {
           this.vuelos = data.vuelos;
+          localStorage.setItem('selectedOrigen', this.datosBusqueda.origen);
+          localStorage.setItem('selectedDestino', this.datosBusqueda.destino);
           // Procesar los datos recibidos del backend
         },
         (error) => {

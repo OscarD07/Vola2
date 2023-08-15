@@ -4,19 +4,19 @@
     align-items: center;
     margin-top: 20px;
   }
-  
+
   .form-selector {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
   }
-  
+
   .bullet {
     font-size: 20px;
     cursor: pointer;
     margin: 0 5px;
   }
-  
+
   .flight-form {
     border: 1px solid #ccc;
     padding: 20px 60px;
@@ -26,16 +26,16 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
     border-radius: 6px;
   }
-  
+
   .flight-form h2 {
     margin-bottom: 10px;
   }
-  
+
   .flight-form label {
     display: block;
     margin-bottom: 5px;
   }
-  
+
   .flight-form input {
     width: 100%;
     padding: 8px;
@@ -43,7 +43,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+
   .search-button {
     background-color: #19d266;
     color: #fff;
@@ -53,29 +53,29 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
+
   .search-button:hover {
     background-color: #179c4e; /* Cambio de color al pasar el cursor */
   }
-  
+
   .error-message {
     color: red;
     margin-top: 5px;
   }
   //------
-  
+
   .input-container {
-    width: 100%;  //Ajusta el ancho según tus necesidades 
+    width: 100%;  //Ajusta el ancho según tus necesidades
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
   }
-  
+
   .input-with-list {
     position: relative;
     display: inline-block;
   }
-  
+
   input[type="text"] {
     width: 100%;
     padding: 8px;
@@ -83,7 +83,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+
   .ciudades-list {
     position: absolute;
     top: 100%;
@@ -96,7 +96,7 @@
     width: 100%;
     z-index: 1;
   }
-  
+
   .ciudad-item {
     padding: 8px;
     cursor: pointer;
@@ -104,12 +104,12 @@
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .aeropuerto {
     font-size: 12px;
     color: #999;
   }
-  
+
   .ciudad-item:hover {
     background-color: #f5f5f5;
   }

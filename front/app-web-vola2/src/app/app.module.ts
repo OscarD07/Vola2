@@ -14,6 +14,8 @@ import { FormularioBvComponent } from './formulario-bv/formulario-bv.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PasajerosComponent } from './pasajeros/pasajeros.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { CarritoComponent } from './carrito/carrito.component';
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDialogModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
