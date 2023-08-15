@@ -1,0 +1,43 @@
+<div class="formulario-container">
+  <h1 class="formulario-title">Pasajero</h1>
+
+  <h2>Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o documento de identidad de cada pasajero.</h2>
+
+  <form [formGroup]="form">
+
+    <div formArrayName="personasFormArray" *ngFor="let personaForm of personasFormArray.controls; let i = index">
+      <h2>Pasajero {{ i + 1 }}</h2>
+      <div [formGroupName]="i" class="persona-form">
+        <label>Nombre: </label>
+        <input formControlName="nombre" placeholder="">
+         <div *ngIf="personaForm?.get('nombre')?.invalid && (personaForm?.get('nombre')?.dirty || personaForm?.get('nombre')?.touched)" class="error-message">
+          Nombre es requerido.
+        </div>
+        <label>Apellido: </label>
+        <input formControlName="apellido" placeholder="">
+        <div *ngIf="personaForm?.get('apellido')?.invalid && (personaForm?.get('apellido')?.dirty || personaForm?.get('apellido')?.touched)" class="error-message">
+          Apellido es requerido.
+        </div>
+        <label>Correo: </label>
+        <input formControlName="correo" placeholder="">
+        <div *ngIf="personaForm?.get('correo')?.invalid && (personaForm?.get('correo')?.dirty || personaForm?.get('correo')?.touched)" class="error-message">
+          Correo es requerido y debe ser válido.
+        </div>
+        <label>Código de Área: </label>
+  <select formControlName="codigoArea">
+    <option *ngFor="let pais of paises" [value]="pais.codigoPais">{{ pais.nombrePais }} ({{ pais.codigoPais }})</option>
+  </select>
+        <label>Teléfono: </label>
+        <input formControlName="telefono" placeholder="">
+        <div *ngIf="personaForm?.get('telefono')?.invalid && (personaForm?.get('telefono')?.dirty || personaForm?.get('telefono')?.touched)" class="error-message">
+          Teléfono es requerido.
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <button class="guardar-continuar-button" (click)="guardarYContinuar()">Guardar y Continuar</button>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+

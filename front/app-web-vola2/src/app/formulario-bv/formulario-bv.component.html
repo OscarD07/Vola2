@@ -1,0 +1,117 @@
+<div class="form-container">
+  <div class="form-selection">
+      <label>
+      <input type="radio" name="formType" value="solo-ida" [(ngModel)]="selectedForm" />
+      Solo Ida
+      </label>
+      <label>
+      <input type="radio" name="formType" value="ida-vuelta" [(ngModel)]="selectedForm" />
+      Ida y Vuelta
+      </label>
+  </div>
+  <!-- Mostrar mensaje de error si el formulario es inválido -->
+
+  <form [formGroup]="flightForm" class="flight-form" *ngIf="selectedForm === 'solo-ida' || !selectedForm" autocomplete="off">
+  <h2>¿Cuál es tu próximo viaje?</h2>
+
+  <!-- formulario-bv.component.html -->
+
+<div class="input-container">
+  <label>Origen:</label>
+  <div class="input-with-list">
+    <input type="text" name="origen" formControlName="origen" (input)="filterCiudades($event, false)">
+    <div class="ciudades-list" *ngIf="filteredCiudadesOrigen.length > 0">
+      <div *ngFor="let ciudad of filteredCiudadesOrigen" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'origen')">
+        <span [style.color]="ciudad.highlightedNombre ? 'green' : 'inherit'">
+          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+        </span>
+
+        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="input-container">
+  <label>Destino:</label>
+  <div class="input-with-list">
+    <input type="text" name="destino" formControlName="destino" (input)="filterCiudades($event, true)">
+    <div class="ciudades-list" *ngIf="filteredCiudadesDestino.length > 0">
+      <div *ngFor="let ciudad of filteredCiudadesDestino" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'destino')">
+        <span [style.color]="ciudad.highlightedNombre ? 'green' : 'inherit'">
+          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+        </span>
+
+        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <label>Fecha de Salida:</label>
+  <input type="date" name="fechaSalida" formControlName="fechaSalida"/>
+
+  <label>Número de Pasajeros:</label>
+  <input type="number" name="numPasajeros" formControlName="numPasajeros"/>
+
+  <button class="search-button" [disabled]="flightForm.invalid" (click)="buscarVuelo()">Buscar</button>
+  <div class="error-message" *ngIf="showError && flightForm.invalid">
+      Por favor, completa todos los campos requeridos.
+    </div>
+  </form>
+
+  <form [formGroup]="flightForm" class="flight-form" *ngIf="selectedForm === 'ida-vuelta'">
+  <h2>¿Cuál es tu próximo viaje?</h2>
+
+  <!-- formulario-bv.component.html -->
+
+<div class="input-container">
+  <label>Origen:</label>
+  <div class="input-with-list">
+    <input type="text" name="origen" formControlName="origen" (input)="filterCiudades($event, false)">
+    <div class="ciudades-list" *ngIf="filteredCiudadesOrigen.length > 0">
+      <div *ngFor="let ciudad of filteredCiudadesOrigen" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'origen')">
+        <span [style.color]="ciudad.highlightedNombre ? 'green' : 'inherit'">
+          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+        </span>
+        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="input-container">
+  <label>Destino:</label>
+  <div class="input-with-list">
+    <input type="text" name="destino" formControlName="destino" (input)="filterCiudades($event, true)">
+    <div class="ciudades-list" *ngIf="filteredCiudadesDestino.length > 0">
+      <div *ngFor="let ciudad of filteredCiudadesDestino" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'destino')">
+        <span [style.color]="ciudad.highlightedNombre==true? 'green' : 'inherit'">
+          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+        </span>
+        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <label>Fecha de Salida:</label>
+  <input type="date" name="fechaSalida" formControlName="fechaSalida"/>
+
+  <label>Fecha de Regreso:</label>
+  <input type="date" name="fechaRegreso" formControlName="fechaRegreso"/>
+
+  <label>Número de Pasajeros:</label>
+  <input type="number" name="numPasajeros" formControlName="numPasajeros"/>
+
+  <button class="search-button" [disabled]="flightForm.invalid" (click)="buscarVuelo()">Buscar</button>
+  <div class="error-message" *ngIf="showError && flightForm.invalid">
+      Por favor, completa todos los campos requeridos.
+    </div>
+  </form>
+</div>
