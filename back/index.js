@@ -8,7 +8,7 @@ mongoose.Promise = global.Promise; // para evitar errores de promesas
 mongoose.set('strict', false); 
 //
 //conectar a la BDD
-mongoose.connect('mongodb://127.0.0.1:27017/vola2')
+mongoose.connect('mongodb://172.19.52.81:27017/vola2')
     .then(()=> {
         console.log('Conexion a la BDD establecida con exito...');
         app.listen(port, () => {
