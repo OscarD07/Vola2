@@ -12,7 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FormularioBvComponent } from './formulario-bv/formulario-bv.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
+import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,15 +26,23 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormularioBvComponent,
   ],
   imports: [
+    MatRadioModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule, 
+    //PARA FECHA
+    MatCardModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_RADIO_DEFAULT_OPTIONS,
+      useValue: { color: 'primary'}, // Cambia 'primary' al color que desees
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

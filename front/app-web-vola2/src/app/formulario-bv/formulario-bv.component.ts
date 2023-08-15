@@ -13,6 +13,7 @@ import { Ciudad } from '../models/ciudad.model';
 export class FormularioBvComponent {
 
   flightForm: FormGroup;
+  minDate: string; // Almacena la fecha mínima permitida
   selectedForm: string | null = 'solo-ida';
   showError: boolean = false; // Variable para mostrar el mensaje de error
   ciudades: Ciudad[] = CIUDADES_DATA;
@@ -22,12 +23,14 @@ export class FormularioBvComponent {
   isOrigenInputEmpty: boolean = true;
   isDestinoInputEmpty: boolean = true;
   constructor(private router: Router, private fb: FormBuilder) {
+    this.minDate = this.getCurrentDate(); // Calcula la fecha mínima
     this.flightForm = this.fb.group({
       origen: ['', Validators.required],
       destino: ['', Validators.required],
       fechaSalida: ['', Validators.required],
       fechaRegreso: [''],
-      numPasajeros: [1, [Validators.required, Validators.min(1)]]
+      numPasajeros: [1, [Validators.required, Validators.min(1)]],
+      //duracion:['', Validators.required]
     });
   }
 
@@ -41,10 +44,12 @@ export class FormularioBvComponent {
       origen: this.flightForm.value.origen,
       destino: this.flightForm.value.destino,
       fechaSalida: this.flightForm.value.fechaSalida,
-      numPasajeros: this.flightForm.value.numPasajeros
+      numPasajeros: this.flightForm.value.numPasajeros,
+      //duracion: this.flightForm.value.duracion
     };
 
     sessionStorage.setItem('datosBusqueda', JSON.stringify(datosBusqueda));
+    
     this.router.navigate(['/vuelos']);
   }
 
@@ -87,6 +92,13 @@ export class FormularioBvComponent {
     } else {
       this.filteredCiudadesDestino = [];
     }
+  }
+  getCurrentDate(): string {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 }
 

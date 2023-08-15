@@ -1,0 +1,148 @@
+
+.imagen-section {
+    text-align: center; /* Centrar el contenido horizontalmente */
+    margin-top: 30px; /* Ajusta el margen superior según necesites */
+  }
+  
+  .green-rectangle {
+    background-color: #99ea5d; /* Color verde */
+    
+    padding: 50px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    display: flex; /* Mostrar las imágenes en línea */
+    justify-content: space-around; /* Espacio entre las imágenes */
+    background-size: 1450px;
+    background-repeat: no-repeat;
+    background-image: url('/assets/img/Recurso5.svg');
+    background-position: bottom;
+  }
+  
+  .circle-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Agregar transiciones */
+  }
+  
+  .circle-image img {
+    width: 250px; /* Ajustar el tamaño de la imagen circular */
+    height: 250px; /* Ajustar el tamaño de la imagen circular */
+    border-radius: 50%; /* Forma circular */
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Agregar transiciones */
+  }
+  
+  .circle-image p {
+    color: white; /* Color del texto */
+    font-size: 18px; /* Tamaño del texto */
+    margin: 0; /* Eliminar margen del párrafo */
+    font-weight: bold; /* Peso de la fuente */
+    font-family: 'REM', sans-serif;
+  }
+  
+  .circle-image:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Sombra circular */
+  }
+  
+  .circle-image img:hover {
+    transform: scale(1.05); /* Efecto de aumento de tamaño al pasar el mouse */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Sombra circular */
+  }
+  
+  .Subtitulos{
+    text-align: center;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    font-family: 'Preahvihear', sans-serif;
+    align-content: center;
+    margin-top: 50px; /* Espacio antes del contenedor */
+    margin-bottom: 50px;
+  }
+  .Subtitulos h1{
+    font-weight: bold; /* Peso de la fuente */
+    font-size: 38px; /* Tamaño del texto */
+    margin-bottom: 20px;
+  }
+  .Subtitulos p{
+    font-size: 30px; /* Tamaño del texto */
+  }
+  //carrousel
+  /* estilos para el carrussel */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 300px; // Ajusta la altura según tus necesidades /
+}
+
+.slides {
+  display: flex;
+  width: 400%; // /Ajusta el ancho según el número de imágenes /
+  animation: carousel 12s infinite;
+}
+
+.slide {
+  width: 25%; // Ajusta el ancho según el número de imágenes 
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide img {
+  max-width: 500px;
+  margin: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.navigation {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.navigation label {
+  margin: 0 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #999;
+  cursor: pointer;
+}
+
+.navigation label:hover {
+  background: #666;
+}
+
+input[name="slides"] {
+  display: none;
+}
+
+input#slide1:checked ~ .slides {
+  transform: translateX(0);
+}
+
+input#slide2:checked ~ .slides {
+  transform: translateX(-25%);
+}
+
+input#slide3:checked ~ .slides {
+  transform: translateX(-50%);
+}
+
+input#slide4:checked ~ .slides {
+  transform: translateX(-75%);
+}
+
+@keyframes carousel {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(0); }
+  25% { transform: translateX(-25%); }
+  45% { transform: translateX(-25%); }
+  50% { transform: translateX(-50%); }
+  70% { transform: translateX(-50%); }
+  75% { transform: translateX(-75%); }
+  95% { transform: translateX(-75%); }
+  100% { transform: translateX(0); }
+}

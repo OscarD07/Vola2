@@ -16,9 +16,8 @@
     cursor: pointer;
     margin: 0 5px;
   }
-  
   .flight-form {
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     padding: 20px 60px;
     margin-bottom: 20px;
     width: 300px;
@@ -45,7 +44,7 @@
   }
   
   .search-button {
-    background-color: #19d266;
+    background-color: #22c126;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -55,7 +54,7 @@
   }
   
   .search-button:hover {
-    background-color: #179c4e; /* Cambio de color al pasar el cursor */
+    background-color: #99ea5d; /* Cambio de color al pasar el cursor */
   }
   
   .error-message {
@@ -117,3 +116,18 @@
     color: green;
     font-weight: bold;
   }
+  
+  .mat-mdc-radio-button.mat-primary {
+    --mdc-radio-disabled-selected-icon-color: #000;
+    --mdc-radio-disabled-unselected-icon-color: #000;
+    --mdc-radio-unselected-hover-icon-color: #212121;
+    --mdc-radio-unselected-icon-color: rgba(0, 0, 0, 0.54);
+    --mdc-radio-unselected-pressed-icon-color: rgba(0, 0, 0, 0.54);
+    --mdc-radio-selected-focus-icon-color: #22c126;
+    --mdc-radio-selected-hover-icon-color: #22c126;
+    --mdc-radio-selected-icon-color: #22c126;
+    --mdc-radio-selected-pressed-icon-color: #22c126;
+    --mat-radio-ripple-color: #000;
+    --mat-radio-checked-ripple-color: #22c126;
+    --mat-radio-disabled-label-color: rgba(0, 0, 0, 0.38);
+}
