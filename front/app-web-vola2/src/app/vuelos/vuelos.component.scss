@@ -59,4 +59,10 @@
    /* Muestra puntos suspensivos si el contenido es muy largo */
   margin: 0 15px; /* Espacio entre los elementos */
 }
-
+.no-vuelos-message {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
+  color: #22c126; /* Puedes ajustar el color según tus preferencias */
+  margin-bottom: 40px;
+}

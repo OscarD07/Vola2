@@ -12,12 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FormularioBvComponent } from './formulario-bv/formulario-bv.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PasajerosComponent } from './pasajeros/pasajeros.component';
-import { CarritoComponent } from './carrito/carrito.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
+import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 
-
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +28,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     CarritoComponent,
   ],
   imports: [
+    MatRadioModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -37,10 +36,15 @@ import { MatTabsModule } from '@angular/material/tabs';
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule,
-    MatTabsModule,
+    //PARA FECHA
+    MatCardModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_RADIO_DEFAULT_OPTIONS,
+      useValue: { color: 'primary'}, // Cambia 'primary' al color que desees
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

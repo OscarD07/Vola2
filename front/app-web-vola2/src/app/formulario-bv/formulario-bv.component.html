@@ -1,13 +1,9 @@
 <div class="form-container">
   <div class="form-selection">
-      <label>
-      <input type="radio" name="formType" value="solo-ida" [(ngModel)]="selectedForm" />
-      Solo Ida
-      </label>
-      <label>
-      <input type="radio" name="formType" value="ida-vuelta" [(ngModel)]="selectedForm" />
-      Ida y Vuelta
-      </label>
+    <mat-radio-group [(ngModel)]="selectedForm" name="formType">
+      <mat-radio-button value="solo-ida">Solo Ida</mat-radio-button>
+      <mat-radio-button value="ida-vuelta">Ida y Vuelta</mat-radio-button>
+    </mat-radio-group>
   </div>
   <!-- Mostrar mensaje de error si el formulario es inválido -->
 
@@ -49,11 +45,19 @@
 </div>
 
 
+<label>Fecha de Salida:</label>
+<input type="date" name="fechaSalida" formControlName="fechaSalida" min="{{ minDate }}"/>
+<!--
 
 
-  <label>Fecha de Salida:</label>
-  <input type="date" name="fechaSalida" formControlName="fechaSalida"/>
-
+<label>Fecha de Salida:</label>
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" name="fechaSalida" formControlName="fechaSalida">
+  <mat-hint>DD/MM/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+-->
   <label>Número de Pasajeros:</label>
   <input type="number" name="numPasajeros" formControlName="numPasajeros"/>
 
@@ -98,14 +102,28 @@
   </div>
 </div>
 
-
-
-  <label>Fecha de Salida:</label>
-  <input type="date" name="fechaSalida" formControlName="fechaSalida"/>
+<label>Fecha de Salida:</label>
+  <input type="date" name="fechaSalida" formControlName="fechaSalida" min="{{ minDate }}"/>
 
   <label>Fecha de Regreso:</label>
-  <input type="date" name="fechaRegreso" formControlName="fechaRegreso"/>
+  <input type="date" name="fechaRegreso" formControlName="fechaRegreso" min="{{ minDate }}"/>
+  <!--
 
+
+<mat-form-field>
+  <mat-label>Fecha de Salida:</mat-label>
+  <input matInput [matDatepicker]="picker" name="fechaSalida" formControlName="fechaSalida">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Fecha de Regreso:</mat-label>
+  <input matInput [matDatepicker]="picker2" name="fechaRegreso" formControlName="fechaRegreso">
+  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2></mat-datepicker>
+</mat-form-field>
+-->
   <label>Número de Pasajeros:</label>
   <input type="number" name="numPasajeros" formControlName="numPasajeros"/>
 

@@ -1,0 +1,68 @@
+.imagen-section {
+    text-align: center; /* Centrar el contenido horizontalmente */
+    margin-top: 30px; /* Ajusta el margen superior según necesites */
+  }
+  
+  .green-rectangle {
+    background-color: #99ea5d; /* Color verde */
+    
+    padding: 50px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    display: flex; /* Mostrar las imágenes en línea */
+    justify-content: space-around; /* Espacio entre las imágenes */
+    background-size: 1450px;
+    background-repeat: no-repeat;
+    //background-image: url('/assets/img/Recurso5.svg');
+    //background-position: bottom;
+  }
+  
+  .circle-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Agregar transiciones */
+  }
+  
+  .circle-image img {
+    width: 250px; /* Ajustar el tamaño de la imagen circular */
+    height: 250px; /* Ajustar el tamaño de la imagen circular */
+    border-radius: 50%; /* Forma circular */
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Agregar transiciones */
+  }
+  
+  .circle-image p {
+    color: white; /* Color del texto */
+    font-size: 18px; /* Tamaño del texto */
+    margin: 0; /* Eliminar margen del párrafo */
+    font-weight: bold; /* Peso de la fuente */
+    font-family: 'REM', sans-serif;
+  }
+  
+  .circle-image:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Sombra circular */
+  }
+  
+  .circle-image img:hover {
+    transform: scale(1.05); /* Efecto de aumento de tamaño al pasar el mouse */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Sombra circular */
+  }
+  
+  .Subtitulos{
+    text-align: center;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    font-family: 'Preahvihear', sans-serif;
+    align-content: center;
+    margin-top: 50px; /* Espacio antes del contenedor */
+    margin-bottom: 50px;
+  }
+  .Subtitulos h1{
+    font-weight: bold; /* Peso de la fuente */
+    font-size: 38px; /* Tamaño del texto */
+    margin-bottom: 20px;
+  }
+  .Subtitulos p{
+    font-size: 30px; /* Tamaño del texto */
+  }
