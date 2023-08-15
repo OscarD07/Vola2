@@ -16,6 +16,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 
 import {MatCardModule} from '@angular/material/card';
+import { CarritoComponent } from './carrito/carrito.component';
+import { PasajerosComponent } from './pasajeros/pasajeros.component';
 @NgModule({
   declarations: [
     AppComponent,
