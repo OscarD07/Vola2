@@ -32,7 +32,7 @@ export class CarritoComponent implements OnInit {
     const precioUnitario = 50; // Replace with your actual price calculation
 
     this.items = [{
-      boleto: 'Quito - Manta',
+      boleto: this.origen + ' - ' + this.destino,
       cantidad: cantidadTotal,
       precio: precioUnitario,
       total: precioUnitario * cantidadTotal,
