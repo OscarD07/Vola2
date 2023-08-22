@@ -1,19 +1,59 @@
+<div class="form-container">
+  <div class="form-selection">
+    <mat-radio-group [(ngModel)]="selectedForm" name="formType">
+      <mat-radio-button value="solo-ida">Solo Ida</mat-radio-button>
+      <mat-radio-button value="ida-vuelta">Ida y Vuelta</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <form [formGroup]="form" class="horizontal-form">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Origen</mat-label>
+      <input matInput formControlName="origen" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Destino</mat-label>
+      <input matInput formControlName="destino" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Fecha de Salida</mat-label>
+      <input matInput formControlName="fechaSalida"[matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Pasajeros</mat-label>
+      <input matInput  formControlName="numPasajeros" />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid"
+      (click)="buscarVuelos()"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
 <div class="vuelos-container">
-  <div class="vuelo-item"*ngFor="let vuelo of vuelos">
+  <div class="vuelo-item" *ngFor="let vuelo of vuelos">
     <div class="info">
-      
-        <div class="fecha-hora">{{ vuelo.fechaSalida | date: 'hh:mm a' }}</div>
-        
-      
-        <div class="origen">origen {{ vuelo.origen }}</div>
-        <div class="destino">destino {{ vuelo.destino }}</div>
-        
-      </div>  
-    
+      <div class="fecha-hora">{{ vuelo.fechaSalida | date : "hh:mm a" }}</div>
+
+      <div class="origen">origen {{ vuelo.origen }}</div>
+      <div class="destino">destino {{ vuelo.destino }}</div>
+    </div>
   </div>
   <div class="no-vuelos-message" *ngIf="vuelos.length === 0">
-    <mat-card> 
-      <mat-card-content >No hay vuelos disponibles.</mat-card-content> 
-    </mat-card >
+    <mat-card>
+      <mat-card-content>No hay vuelos disponibles.</mat-card-content>
+    </mat-card>
   </div>
 </div>

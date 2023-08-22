@@ -66,3 +66,14 @@
   color: #22c126; /* Puedes ajustar el color según tus preferencias */
   margin-bottom: 40px;
 }
+
+.horizontal-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-field {
+  width: 200px;
+  margin-right: 5px;
+}

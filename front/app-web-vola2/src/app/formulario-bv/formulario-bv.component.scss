@@ -131,3 +131,16 @@
     --mat-radio-checked-ripple-color: #22c126;
     --mat-radio-disabled-label-color: rgba(0, 0, 0, 0.38);
 }
+
+
+.ciudades-list .ciudad-item.selected {
+  background-color: (0, 0, 0, 0.1);
+}
+
+.ciudades-list .ciudad-item.selected span {
+  color: white;
+}
+
+strong {
+  font-weight: bold;
+}

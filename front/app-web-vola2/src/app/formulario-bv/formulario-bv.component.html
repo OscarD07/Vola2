@@ -1,6 +1,7 @@
 <div class="form-container">
   <div class="form-selection">
-    <mat-radio-group [(ngModel)]="selectedForm" name="formType">
+
+    <mat-radio-group [(ngModel)]="selectedForm" name="formType" color="green ">
       <mat-radio-button value="solo-ida">Solo Ida</mat-radio-button>
       <mat-radio-button value="ida-vuelta">Ida y Vuelta</mat-radio-button>
     </mat-radio-group>
@@ -15,13 +16,12 @@
 <div class="input-container">
   <label>Origen:</label>
   <div class="input-with-list">
-    <input type="text" name="origen" formControlName="origen" (input)="filterCiudades($event, false)">
+    <input type="text" name="origen" formControlName="origen" (input)="filterCiudades($event, false)" (keydown)="selectSuggestionByArrow($event, 'origen')" (keypress)="selectSuggestionByEnter($event, 'origen')">
     <div class="ciudades-list" *ngIf="filteredCiudadesOrigen.length > 0">
-      <div *ngFor="let ciudad of filteredCiudadesOrigen" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'origen')">
-        <span [style.color]="ciudad.highlightedNombre ? 'green' : 'inherit'">
+      <div *ngFor="let ciudad of filteredCiudadesOrigen; let i = index" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'origen')" [class.selected]="i === selectedSuggestionIndex">
+        <span [style.color]="i === selectedSuggestionIndex ? 'green' : 'inherit'">
           {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
         </span>
-        
         <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
       </div>
     </div>
@@ -31,13 +31,12 @@
 <div class="input-container">
   <label>Destino:</label>
   <div class="input-with-list">
-    <input type="text" name="destino" formControlName="destino" (input)="filterCiudades($event, true)">
+    <input type="text" name="destino" formControlName="destino" (input)="filterCiudades($event, true)" (keydown)="selectSuggestionByArrow($event, 'destino')"(keypress)="selectSuggestionByEnter($event, 'destino')">
     <div class="ciudades-list" *ngIf="filteredCiudadesDestino.length > 0">
-      <div *ngFor="let ciudad of filteredCiudadesDestino" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'destino')">
-        <span [style.color]="ciudad.highlightedNombre ? 'green' : 'inherit'">
+      <div *ngFor="let ciudad of filteredCiudadesDestino; let i = index" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'destino')" [class.selected]="i === selectedSuggestionIndex">
+        <span [style.color]="i === selectedSuggestionIndex ? 'green' : 'inherit'" [innerHTML]="highlightText(ciudad.nombreCiudad, this.flightForm.value.destino)">
           {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
         </span>
-        
         <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
       </div>
     </div>
