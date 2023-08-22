@@ -9,19 +9,52 @@
   </div>
 
   <form [formGroup]="form" class="horizontal-form">
-    <mat-form-field appearance="fill" floatLabel="always">
+
+<!-- Edicion de Filtrado Origen -->
+    <mat-form-field appearance="outline" floatLabel="always" class="form-field">
       <input 
         type="text"
         matInput 
         placeholder="Origen"
-        formControlName="origen" >
+        formControlName="origen"
+        [matAutocomplete]="auto"
+        (input)="filterCiudades($event, false)">
     </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let ciudad of filteredCiudades; let i = index"
+                  [value]="ciudad.nombreCiudad"
+                  (click)="filterCiudades(ciudad, false)">
+        <span >
+          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+        </span>
+        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+      </mat-option>
+    </mat-autocomplete>
+  
+<!-- Edicion de Filtrado Destino-->
+  
+<mat-form-field appearance="outline" floatLabel="always" class="form-field">
+  <input 
+    type="text"
+    matInput 
+    placeholder="Destino"
+    formControlName="destino"
+    [matAutocomplete]="auto"
+    (input)="filterCiudades($event, true)">
+</mat-form-field>
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option *ngFor="let ciudad of filteredCiudades; let i = index"
+              [value]="ciudad.nombreCiudad"
+              (click)="filterCiudades(ciudad, true)">
+    <span >
+      {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+    </span>
+    <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+  </mat-option>
+</mat-autocomplete>
   
 
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Destino</mat-label>
-      <input matInput formControlName="destino" />
-    </mat-form-field>
+    
 
     <mat-form-field appearance="outline" class="form-field">
       <mat-label>Fecha de Salida</mat-label>
@@ -41,13 +74,17 @@
       color="primary"
       type="submit"
       [disabled]="form.invalid"
-      (click)="buscarVuelos()"
+      (click)="guardarCambiosYBuscarVuelos()"
     >
       Guardar Cambios
     </button>
   </form>
 </div>
 
+
+
+
+<!-- Mostramos vuelos -->
 <div class="vuelos-container">
   <div class="vuelo-item" *ngFor="let vuelo of vuelos">
     <div class="info">

@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CIUDADES_DATA } from '../constants/ciudades.const';
 import { Ciudad } from '../models/ciudad.model';
-
+import { CiudadesService } from '../services/ciudades.service';
 @Component({
   selector: 'app-vuelos',
   templateUrl: './vuelos.component.html',
@@ -16,7 +16,6 @@ import { Ciudad } from '../models/ciudad.model';
   ]
 })
 export class VuelosComponent {
-  ciudades: any[] = [];
   filteredCiudades: any[] = [];
   form: FormGroup;
   hola = ``;
@@ -24,10 +23,11 @@ export class VuelosComponent {
   destino: string = '';
   fecha: string = '';
   vuelos: Vuelo[] = [];
+  ciudades: Ciudad[] = CIUDADES_DATA;
   
   datosBusqueda: any = {};
   selectedForm: string | null = 'solo-ida';
-  constructor(private backendService: VuelosService, private fb: FormBuilder) {
+  constructor(private backendService: VuelosService, private fb: FormBuilder, private ciudadesService: CiudadesService) {
   
    
     // Recuperar los datos de búsqueda de SessionStorage
@@ -86,6 +86,39 @@ export class VuelosComponent {
 
   handleFilteredCiudades(filtered: any[]): void {
     this.filteredCiudades = filtered;
+  }
+
+  guardarCambiosYBuscarVuelos() {
+    // Actualizar datosBusqueda con los valores del formulario
+    this.datosBusqueda.origen = this.form.value.origen;
+    this.datosBusqueda.destino = this.form.value.destino;
+    this.datosBusqueda.fechaSalida = this.form.value.fechaSalida;
+    this.datosBusqueda.numPasajeros = this.form.value.numPasajeros;
+  
+    // Guardar los nuevos datos de búsqueda en SessionStorage
+    sessionStorage.setItem('datosBusqueda', JSON.stringify(this.datosBusqueda));
+  
+    // Llamar a buscarVuelos() para realizar la búsqueda con los nuevos parámetros
+    this.buscarVuelos();
+  }
+  
+
+  filterCiudades(event: any, isDestino: boolean) {
+    const value = event.target.value;
+    const ciudadesList = isDestino ? this.ciudades : this.ciudades;
+    const filteredCiudades = this.ciudadesService.filterCiudades(value, ciudadesList); // Usa el servicio aquí
+
+    if (isDestino) {
+      this.filteredCiudades = filteredCiudades.map(ciudad => ({
+        ...ciudad,
+        highlightedNombre: false
+      }));
+    } else {
+      this.filteredCiudades = filteredCiudades.map(ciudad => ({
+        ...ciudad,
+        highlightedNombre: false
+      }));
+    }
   }
 
 }

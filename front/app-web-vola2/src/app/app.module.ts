@@ -19,6 +19,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';import {MatCar
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { AutocompleteCityComponent } from './autocomplete-city/autocomplete-city.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -30,6 +33,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     OfertasComponent,
     HomeComponent,
     FormularioBvComponent,
+    AutocompleteCityComponent,
   ],
   imports: [
     MatAutocompleteModule,
@@ -46,7 +50,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   
   providers: [

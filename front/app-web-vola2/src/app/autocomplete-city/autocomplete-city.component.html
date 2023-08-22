@@ -1,0 +1,19 @@
+<mat-form-field appearance="fill" floatLabel="always">
+    <input 
+      type="text"
+      matInput 
+      [placeholder]="placeholder"
+      [formControl]="control"
+      [matAutocomplete]="auto"
+      (input)="filter.emit($event)">
+  </mat-form-field>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let ciudad of ciudades; let i = index"
+                [value]="ciudad.nombreCiudad"
+                (click)="select.emit(ciudad)">
+      <span>
+        {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
+      </span>
+      <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+    </mat-option>
+  </mat-autocomplete>
