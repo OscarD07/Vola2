@@ -18,6 +18,7 @@ import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     FormularioBvComponent,
   ],
   imports: [
+    MatAutocompleteModule,
     MatRadioModule,
     BrowserModule,
     AppRoutingModule,

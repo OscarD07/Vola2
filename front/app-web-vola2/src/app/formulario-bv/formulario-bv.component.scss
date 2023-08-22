@@ -1,140 +1,96 @@
 .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .form-selector {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  
-  .bullet {
-    font-size: 20px;
-    cursor: pointer;
-    margin: 0 5px;
-  }
-  .flight-form {
-    border: 2px solid #ccc;
-    padding: 20px 60px;
-    margin-bottom: 20px;
-    width: 300px;
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    border-radius: 6px;
-  }
-  
-  .flight-form h2 {
-    margin-bottom: 10px;
-  }
-  
-  .flight-form label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .flight-form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .search-button {
-    background-color: #22c126;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .search-button:hover {
-    background-color: #99ea5d; /* Cambio de color al pasar el cursor */
-  }
-  
-  .error-message {
-    color: red;
-    margin-top: 5px;
-  }
-  //------
-  
-  .input-container {
-    width: 100%;  //Ajusta el ancho según tus necesidades 
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-  }
-  
-  .input-with-list {
-    position: relative;
-    display: inline-block;
-  }
-  
-  input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .ciudades-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-top: none;
-    max-height: 150px;
-    overflow-y: auto;
-    width: 100%;
-    z-index: 1;
-  }
-  
-  .ciudad-item {
-    padding: 8px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .aeropuerto {
-    font-size: 12px;
-    color: #999;
-  }
-  
-  .ciudad-item:hover {
-    background-color: #f5f5f5;
-  }
-  .highlighted {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .mat-mdc-radio-button.mat-primary {
-    --mdc-radio-disabled-selected-icon-color: #000;
-    --mdc-radio-disabled-unselected-icon-color: #000;
-    --mdc-radio-unselected-hover-icon-color: #212121;
-    --mdc-radio-unselected-icon-color: rgba(0, 0, 0, 0.54);
-    --mdc-radio-unselected-pressed-icon-color: rgba(0, 0, 0, 0.54);
-    --mdc-radio-selected-focus-icon-color: #22c126;
-    --mdc-radio-selected-hover-icon-color: #22c126;
-    --mdc-radio-selected-icon-color: #22c126;
-    --mdc-radio-selected-pressed-icon-color: #22c126;
-    --mat-radio-ripple-color: #000;
-    --mat-radio-checked-ripple-color: #22c126;
-    --mat-radio-disabled-label-color: rgba(0, 0, 0, 0.38);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
+.form-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.flight-form {
+  border: 2px solid #ccc;
+  padding: 20px 60px;
+  margin-bottom: 20px;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  transition: box-shadow 0.3s ease;
+}
+
+.flight-form:hover {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+}
+
+.flight-form h2 {
+  margin-bottom: 10px;
+}
+
+.search-button {
+  background-color: #22c126;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #99ea5d;
+  transform: scale(1.05);
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para Angular Material */
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field.mat-focused .mat-form-field-outline {
+  color: #22c126;
+}
+
+.mat-raised-button.mat-primary {
+  background-color: #22c126;
+  color: #fff;
+}
+
+.mat-radio-button.mat-primary .mat-radio-outer-circle {
+  border-color: #22c126;
+}
+
+.mat-radio-button.mat-primary.mat-checked .mat-radio-inner-circle {
+  background-color: #22c126;
+}
+
+/* Otros estilos */
+.ciudad-item:hover {
+  background-color: #f5f5f5;
+}
+
+.highlighted {
+  color: green;
+  font-weight: bold;
+}
 
 .ciudades-list .ciudad-item.selected {
-  background-color: (0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .ciudades-list .ciudad-item.selected span {
@@ -143,4 +99,27 @@
 
 strong {
   font-weight: bold;
+}
+
+/* Estilo para botones */
+.mat-raised-button {
+  font-size: 16px;  /* Tamaño de fuente más grande */
+  padding: 10px 30px;  /* Más padding para que sea más grande */
+  border-radius: 25px;  /* Bordes redondeados */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mat-raised-button:hover {
+  transform: translateY(-3px);  /* Efecto de "levantamiento" al pasar el ratón */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+}
+
+.mat-raised-button:active {
+  transform: translateY(-1px);  /* Efecto de "presión" al hacer click */
+}
+
+.mat-raised-button[disabled] {
+  background-color: rgba(0, 0, 0, 0.12);  /* Color gris claro para botones desactivados */
+  color: rgba(0, 0, 0, 0.26);
+  box-shadow: none;
 }

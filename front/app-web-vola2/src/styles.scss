@@ -1,5 +1,108 @@
 //colores verde claro (#99ea5d), verde obscuro (#22c126) de los svg
-  html, 
+/* For use in src/lib/core/theming/_palette.scss */
+$md-test1: (
+    50 : #edf5ea,
+    100 : #d2e5ca,
+    200 : #b5d4a7,
+    300 : #97c284,
+    400 : #80b569,
+    500 : #6aa84f,
+    600 : #62a048,
+    700 : #57973f,
+    800 : #4d8d36,
+    900 : #3c7d26,
+    A100 : #cdffbe,
+    A200 : #a6ff8b,
+    A400 : #7fff58,
+    A700 : #6cff3f,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-test2: (
+    50 : #fdfefe,
+    100 : #fbfdfd,
+    200 : #f9fcfc,
+    300 : #f6fbfa,
+    400 : #f4faf9,
+    500 : #f2f9f8,
+    600 : #f0f8f7,
+    700 : #eef7f6,
+    800 : #ecf6f5,
+    900 : #e8f5f3,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-test3: (
+    50 : #e0e1e1,
+    100 : #b3b5b4,
+    200 : #808383,
+    300 : #4d5151,
+    400 : #262c2b,
+    500 : #000706,
+    600 : #000605,
+    700 : #000504,
+    800 : #000403,
+    900 : #000202,
+    A100 : #a6a6a6,
+    A200 : #8c8c8c,
+    A400 : #737373,
+    A700 : #666666,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+
+
+html, 
+
   body { height: 100%; }
   body { 
     margin: 0; 
@@ -21,6 +124,7 @@
     margin: 8px 0;
   }
   @import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+  
   @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Preahvihear&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Preahvihear&family=REM:wght@100&display=swap');
   p {
@@ -292,3 +396,6 @@
   color: #333; /* Color del texto */
   }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
