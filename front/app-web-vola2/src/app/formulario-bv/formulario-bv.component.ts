@@ -9,7 +9,10 @@ import { Ciudad } from '../models/ciudad.model';
   selector: 'app-formulario-bv',
   templateUrl: './formulario-bv.component.html',
   styleUrls: ['./formulario-bv.component.scss']
+
 })
+
+
 export class FormularioBvComponent {
 
   flightForm: FormGroup;
@@ -19,7 +22,6 @@ export class FormularioBvComponent {
   ciudades: Ciudad[] = CIUDADES_DATA;
   filteredCiudadesDestino: Ciudad[] = [];
   filteredCiudadesOrigen: Ciudad[] = [];
-  selectedSuggestionIndex: number = -1
   isOrigenInputEmpty: boolean = true;
   isDestinoInputEmpty: boolean = true;
   constructor(private router: Router, private fb: FormBuilder) {
@@ -101,26 +103,7 @@ export class FormularioBvComponent {
     return `${year}-${month}-${day}`;
   }
 
-  selectSuggestionByArrow(event: KeyboardEvent, tipo: string) {
-    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      event.preventDefault();
-      const suggestions = tipo === 'origen' ? this.filteredCiudadesOrigen : this.filteredCiudadesDestino;
-      if (suggestions.length > 0) {
-        if (event.key === 'ArrowDown') {
-          this.selectedSuggestionIndex = Math.min(this.selectedSuggestionIndex + 1, suggestions.length - 1);
-        } else if (event.key === 'ArrowUp') {
-          this.selectedSuggestionIndex = Math.max(this.selectedSuggestionIndex - 1, -1);
-        }
-      }
-    }
-  }
 
-  selectSuggestionByEnter(event: KeyboardEvent, tipo: string) {
-    if (event.key === 'Enter' && this.selectedSuggestionIndex >= 0) {
-      const selectedSuggestion = tipo === 'origen' ? this.filteredCiudadesOrigen[this.selectedSuggestionIndex] : this.filteredCiudadesDestino[this.selectedSuggestionIndex];
-      this.seleccionarCiudad(selectedSuggestion, tipo);
-    }
-  }
 
   highlightText(text: string, searchTerm: string): string {
     if (!searchTerm) {

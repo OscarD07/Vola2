@@ -15,40 +15,22 @@
   
   <!-- formulario-bv.component.html -->
 
-<!-- <div class="input-container">
-  <label>Origen:</label>
-  <div class="input-with-list">
-    <input type="text" name="origen" formControlName="origen" (input)="filterCiudades($event, false)" (keydown)="selectSuggestionByArrow($event, 'origen')" (keypress)="selectSuggestionByEnter($event, 'origen')">
-    <div class="ciudades-list" *ngIf="filteredCiudadesOrigen.length > 0">
-      <div *ngFor="let ciudad of filteredCiudadesOrigen; let i = index" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'origen')" [class.selected]="i === selectedSuggestionIndex">
-        <span [style.color]="i === selectedSuggestionIndex ? 'green' : 'inherit'">
-          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
-        </span>
-        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <div class="input-container">
-  <mat-form-field>
+  <mat-form-field appearance="fill" floatLabel="always">
     <input 
       type="text"
       matInput 
       placeholder="Origen"
       formControlName="origen"
       [matAutocomplete]="auto"
-      (input)="filterCiudades($event, false)"
-      (keydown)="selectSuggestionByArrow($event, 'origen')"
-      (keypress)="selectSuggestionByEnter($event, 'origen')">
+      (input)="filterCiudades($event, false)">
   </mat-form-field>
-
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let ciudad of filteredCiudadesOrigen; let i = index"
                 [value]="ciudad.nombreCiudad"
-                (click)="seleccionarCiudad(ciudad, 'origen')"
-                [class.selected]="i === selectedSuggestionIndex">
-      <span [style.color]="i === selectedSuggestionIndex ? 'green' : 'inherit'">
+                (click)="seleccionarCiudad(ciudad, 'origen')">
+      <span >
         {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
       </span>
       <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
@@ -56,21 +38,6 @@
   </mat-autocomplete>
 </div>
 
-
-<!-- <div class="input-container">
-  <label>Destino:</label>
-  <div class="input-with-list">
-    <input type="text" name="destino" formControlName="destino" (input)="filterCiudades($event, true)" (keydown)="selectSuggestionByArrow($event, 'destino')"(keypress)="selectSuggestionByEnter($event, 'destino')">
-    <div class="ciudades-list" *ngIf="filteredCiudadesDestino.length > 0">
-      <div *ngFor="let ciudad of filteredCiudadesDestino; let i = index" class="ciudad-item" (click)="seleccionarCiudad(ciudad, 'destino')" [class.selected]="i === selectedSuggestionIndex">
-        <span [style.color]="i === selectedSuggestionIndex ? 'green' : 'inherit'" [innerHTML]="highlightText(ciudad.nombreCiudad, this.flightForm.value.destino)">
-          {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
-        </span>
-        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <div class="input-container">
   <mat-form-field>
@@ -80,17 +47,14 @@
       placeholder="Destino"
       formControlName="destino"
       [matAutocomplete]="auto"
-      (input)="filterCiudades($event, false)"
-      (keydown)="selectSuggestionByArrow($event, 'destino')"
-      (keypress)="selectSuggestionByEnter($event, 'destino')">
+      (input)="filterCiudades($event, false)">
   </mat-form-field>
 
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let ciudad of filteredCiudadesDestino; let i = index"
                 [value]="ciudad.nombreCiudad"
-                (click)="seleccionarCiudad(ciudad, 'destino')"
-                [class.selected]="i === selectedSuggestionIndex">
-      <span [style.color]="i === selectedSuggestionIndex ? 'green' : 'inherit'">
+                (click)="seleccionarCiudad(ciudad, 'destino')">
+      <span>
         {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
       </span>
       <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
@@ -109,17 +73,8 @@
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
-<!--
-  
 
-<label>Fecha de Salida:</label>
-<mat-form-field>
-  <input matInput [matDatepicker]="picker" name="fechaSalida" formControlName="fechaSalida">
-  <mat-hint>DD/MM/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
--->
+
 <mat-form-field>
   <mat-label>Número de Pasajeros:</mat-label>
   <input matInput 
@@ -177,23 +132,7 @@
 
   <label>Fecha de Regreso:</label>
   <input type="date" name="fechaRegreso" formControlName="fechaRegreso" min="{{ minDate }}"/>
-  <!--
-  
 
-<mat-form-field>
-  <mat-label>Fecha de Salida:</mat-label>
-  <input matInput [matDatepicker]="picker" name="fechaSalida" formControlName="fechaSalida">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-
-<mat-form-field>
-  <mat-label>Fecha de Regreso:</mat-label>
-  <input matInput [matDatepicker]="picker2" name="fechaRegreso" formControlName="fechaRegreso">
-  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-  <mat-datepicker #picker2></mat-datepicker>
-</mat-form-field>
--->
 <mat-form-field>
   <mat-label>Número de Pasajeros:</mat-label>
   <input matInput 

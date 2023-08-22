@@ -1,4 +1,6 @@
 <div class="form-container">
+  <h2>Editar Vuelo</h2>
+
   <div class="form-selection">
     <mat-radio-group [(ngModel)]="selectedForm" name="formType" color="primary">
       <mat-radio-button value="solo-ida">Solo Ida</mat-radio-button>
@@ -7,27 +9,31 @@
   </div>
 
   <form [formGroup]="form" class="horizontal-form">
-    <mat-form-field appearance="fill" class="form-field">
-      <mat-label>Origen</mat-label>
-      <input matInput formControlName="origen" />
+    <mat-form-field appearance="fill" floatLabel="always">
+      <input 
+        type="text"
+        matInput 
+        placeholder="Origen"
+        formControlName="origen" >
     </mat-form-field>
+  
 
-    <mat-form-field appearance="fill" class="form-field">
+    <mat-form-field appearance="outline" class="form-field">
       <mat-label>Destino</mat-label>
       <input matInput formControlName="destino" />
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
       <mat-label>Fecha de Salida</mat-label>
-      <input matInput formControlName="fechaSalida"[matDatepicker]="picker">
+      <input matInput formControlName="fechaSalida" [matDatepicker]="picker">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="form-field">
+    <mat-form-field appearance="outline" class="form-field">
       <mat-label>Pasajeros</mat-label>
-      <input matInput  formControlName="numPasajeros" />
+      <input matInput formControlName="numPasajeros" />
     </mat-form-field>
 
     <button
@@ -37,7 +43,7 @@
       [disabled]="form.invalid"
       (click)="buscarVuelos()"
     >
-      Submit
+      Guardar Cambios
     </button>
   </form>
 </div>

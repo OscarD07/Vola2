@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VuelosService, Vuelo } from '../services/vuelos.service';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MAT_DATE_LOCALE } from '@angular/material/core'
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { CIUDADES_DATA } from '../constants/ciudades.const';
+import { Ciudad } from '../models/ciudad.model';
 
 @Component({
   selector: 'app-vuelos',
@@ -14,12 +16,15 @@ import { MAT_DATE_LOCALE } from '@angular/material/core'
   ]
 })
 export class VuelosComponent {
+  ciudades: any[] = [];
+  filteredCiudades: any[] = [];
   form: FormGroup;
   hola = ``;
   origen: string = '';
   destino: string = '';
   fecha: string = '';
   vuelos: Vuelo[] = [];
+  
   datosBusqueda: any = {};
   selectedForm: string | null = 'solo-ida';
   constructor(private backendService: VuelosService, private fb: FormBuilder) {
@@ -42,6 +47,7 @@ export class VuelosComponent {
       console.log("La fecha por defecto no es válida.");
     }
   
+
     // sumale 1 al mes
 
     console.log(mesIncrementado+"/"+fechaSalidaPorDefecto?.getUTCDate().toString()+"/"+fechaSalidaPorDefecto?.getUTCFullYear().toString());
@@ -78,6 +84,8 @@ export class VuelosComponent {
      // this.hola = typeof (new Date(this.datosBusqueda.fechaSalida)) 
   }
 
+  handleFilteredCiudades(filtered: any[]): void {
+    this.filteredCiudades = filtered;
+  }
 
-  
 }
