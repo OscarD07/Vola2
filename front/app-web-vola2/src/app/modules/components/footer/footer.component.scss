@@ -1,0 +1,79 @@
+//FOOTER
+.footer-container {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //padding: 50px;
+    //position: fixed; //hace que se mantenga aunque desplaces
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  .green-rectangle {
+    background-color: #99ea5d; /* Color verde */
+    position: inherit;
+    padding: 50px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    display: flex; /* Mostrar las imágenes en línea */
+    justify-content: space-around; /* Espacio entre las imágenes */
+    background-size: 1450px;
+    background-repeat: no-repeat;
+    background-image: url('/assets/img/Recurso5.svg');
+    background-position: bottom;
+  }/*
+  .green-rectangle {
+    background-color: #99ea5d; // Color verde 
+    padding: 50px; // Espacio interno 
+    border-radius: 10px; // Bordes rectangulares 
+    display: flex;
+    justify-content: space-around;
+    background-size: 1450px;
+    background-repeat: no-repeat;
+    align-items: center;
+    //flex-wrap: wrap;
+    //max-width:  1450px; // Ajusta el ancho del rectángulo 
+  }*/
+  
+  .left-section {
+    text-align: center;
+    margin-right: 590px; 
+    margin-left: 100px;
+  }
+  
+  .right-section {
+    display: flex;
+    align-items: center; 
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 90px;
+  }
+  
+  .column a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+  
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icons a {
+    margin-right: 10px; /* Espacio entre los iconos */
+  }
+  
+  .column a:hover {
+    text-decoration: underline;
+  }
+
+
+  
+  
+  

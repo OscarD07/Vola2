@@ -6,7 +6,7 @@ import { VuelosComponent } from './modules/user/vuelos/vuelos.component';
 
 
 const routes: Routes = [
-  {path:'home', component:HomeComponent},
+  {path:'home', component: HomeComponent},
   {path:'vuelos', component:VuelosComponent},
   {path:'**', component:HomeComponent}//ruta 404 no se carga el componente
 ];
