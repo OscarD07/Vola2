@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './modules/components/header/header.component';
 import { FooterComponent } from './modules/components/footer/footer.component';
 import { NavComponent } from './modules/components/nav/nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { NavComponent } from './modules/components/nav/nav.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

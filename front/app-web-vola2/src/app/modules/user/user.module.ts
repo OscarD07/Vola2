@@ -7,6 +7,8 @@ import { FormularioBvComponent } from './home/formulario-bv/formulario-bv.compon
 import { CarritoComponent } from './carrito/carrito.component';
 import { PagosComponent } from './pagos/pagos.component';
 import { PersonalizacionComponent } from './personalizacion/personalizacion.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { NavComponent } from '../components/nav/nav.component';
 
 
 
@@ -15,13 +17,14 @@ import { PersonalizacionComponent } from './personalizacion/personalizacion.comp
     HomeComponent,
     VuelosComponent,
     DestinosComponent,
-    FormularioBvComponent,
     CarritoComponent,
     PagosComponent,
-    PersonalizacionComponent
+    PersonalizacionComponent,
+   
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class UserModule { }
