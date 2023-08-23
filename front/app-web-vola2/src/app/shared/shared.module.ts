@@ -12,18 +12,21 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 @NgModule({
-  declarations: [
-    FormularioEvComponent,
-    ResumenVueloComponent,
-    OpcionesFechasComponent,
-    InputFiltradoComponent
-  ],
-  imports: [
-    CommonModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatCardModule,
-    MatDatepickerModule
-  ]
+    declarations: [
+        FormularioEvComponent,
+        ResumenVueloComponent,
+        OpcionesFechasComponent,
+        InputFiltradoComponent
+    ],
+    exports: [
+        FormularioEvComponent
+    ],
+    imports: [
+        CommonModule,
+        MatAutocompleteModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatDatepickerModule
+    ]
 })
 export class SharedModule { }
