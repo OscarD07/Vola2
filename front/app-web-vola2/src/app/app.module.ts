@@ -7,7 +7,10 @@ import { HeaderComponent } from './modules/components/header/header.component';
 import { FooterComponent } from './modules/components/footer/footer.component';
 import { NavComponent } from './modules/components/nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { SharedModule } from './shared/shared.module';
+import { UserModule } from './modules/user/user.module';
+
+
+
 
 @NgModule({
   declarations: [
@@ -21,7 +24,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    SharedModule
+    UserModule
     
   ],
   providers: [],

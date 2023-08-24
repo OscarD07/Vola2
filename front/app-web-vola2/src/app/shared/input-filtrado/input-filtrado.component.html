@@ -1,9 +1,9 @@
-<mat-form-field appearance="outline" floatLabel="always" class="form-field">
+<mat-form-field appearance="outline" class="form-field">
     <input 
       type="text"
       matInput 
-      placeholder="Origen"
-      formControlName="origen"
+      placeholder="Ciudad de Origen"
+    [formControl] = "control"
       [matAutocomplete]="auto"
       (input)="filterCiudades($event, false)">
   </mat-form-field>
@@ -17,3 +17,5 @@
       <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
     </mat-option>
   </mat-autocomplete>
+
+

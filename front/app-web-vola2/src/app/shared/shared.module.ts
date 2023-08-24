@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA,NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormularioEvComponent } from './formulario-ev/formulario-ev.component';
 import { ResumenVueloComponent } from './resumen-vuelo/resumen-vuelo.component';
@@ -9,9 +9,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import {MatInputModule} from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
+    
     declarations: [
         FormularioEvComponent,
         ResumenVueloComponent,
@@ -19,14 +23,28 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
         InputFiltradoComponent
     ],
     exports: [
-        FormularioEvComponent
+        FormularioEvComponent,
+        InputFiltradoComponent,
+        MatAutocompleteModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatInputModule,
+        MatToolbarModule,
+        FormsModule
     ],
     imports: [
         CommonModule,
         MatAutocompleteModule,
         MatFormFieldModule,
         MatCardModule,
-        MatDatepickerModule
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatInputModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
+        FormsModule
     ]
 })
 export class SharedModule { }

@@ -1,1 +1,20 @@
-<app-input-filtrado></app-input-filtrado>
+<app-input-filtrado  [control]="origenControl"></app-input-filtrado>
+<app-input-filtrado  [control]="destinoControl"></app-input-filtrado>
+<app-opciones-fechas></app-opciones-fechas>
+
+
+<mat-form-field appearance="outline" class="form-field">
+    <mat-label>Pasajeros</mat-label>
+    <input matInput formControlName="numPasajeros" />
+  </mat-form-field>
+
+
+<button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      
+      (click)="guardarCambiosYBuscarVuelos()"
+    >
+      Guardar Cambios
+    </button>

@@ -3,7 +3,7 @@
 @include mat.core();
 @include mat.strong-focus-indicators();
 
-$my-primary: mat.define-palette(mat.$light-green-palette, 50);
+$my-primary: mat.define-palette(mat.$green-palette, 500);
 $my-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
 
 $my-theme: mat.define-light-theme((
