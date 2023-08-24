@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
     
@@ -32,7 +34,8 @@ import { FormsModule } from '@angular/forms';
         MatDatepickerModule,
         MatInputModule,
         MatToolbarModule,
-        FormsModule
+        FormsModule,
+        MatButtonModule
     ],
     imports: [
         CommonModule,
@@ -44,7 +47,8 @@ import { FormsModule } from '@angular/forms';
         MatInputModule,
         MatToolbarModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        MatButtonModule
     ]
 })
 export class SharedModule { }

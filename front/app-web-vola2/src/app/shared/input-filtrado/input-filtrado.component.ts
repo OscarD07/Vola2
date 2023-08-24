@@ -14,7 +14,6 @@ export class InputFiltradoComponent {
   ciudades: Ciudad[] = CIUDADES_DATA;
   origen: string = '';
   @Input() control: FormControl; 
-  @Output () valueResponse: EventEmitter<string> = new EventEmitter();
   constructor(private ciudadesService: CiudadesService) {
      this.control = new FormControl();
    
@@ -38,9 +37,6 @@ export class InputFiltradoComponent {
     }
   }
 
-  emitirDato() {
-    this.valueResponse.emit(this.origen);
-  }
 
 
 }

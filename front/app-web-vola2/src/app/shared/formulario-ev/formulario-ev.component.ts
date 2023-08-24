@@ -7,11 +7,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./formulario-ev.component.scss']
 })
 export class FormularioEvComponent {
-    origen: FormControl = new FormControl('Valor inicial', Validators.required);
-    destino: string = '';
-    fechaSalida: string = '';
-    fechaRegreso: string = '';
-    numPasajeros: number = 0;
     datosBusqueda: any = {};
     form: FormGroup;
     constructor(private fb: FormBuilder) {
@@ -26,9 +21,6 @@ export class FormularioEvComponent {
     }
 
     guardarCambiosYBuscarVuelos() {
-      const origen = this.origenControl.value;
-  const destino = this.destinoControl.value;
-  console.log("hola");
       // Actualizar datosBusqueda con los valores del formulario
       this.datosBusqueda.origen = this.form.value.origen;
       this.datosBusqueda.destino = this.form.value.destino;
@@ -41,10 +33,6 @@ export class FormularioEvComponent {
       // Llamar a buscarVuelos() para realizar la búsqueda con los nuevos parámetros
     }
 
-    recibirDato(event: any) {
-      this.origen = event;
-      console.log(this.origen);
-    }
 
     get origenControl(): FormControl {
   const control = this.form.get('origen');
@@ -56,6 +44,22 @@ export class FormularioEvComponent {
 
 get destinoControl(): FormControl {
   const control = this.form.get('destino');
+  if (control === null) {
+    throw new Error('Control no encontrado');
+  }
+  return control as FormControl;
+}
+
+get fechaSalidaControl(): FormControl {
+  const control = this.form.get('fechaSalida');
+  if (control === null) {
+    throw new Error('Control no encontrado');
+  }
+  return control as FormControl;
+}
+
+get numPasajerosControl(): FormControl {
+  const control = this.form.get('numPasajeros');
   if (control === null) {
     throw new Error('Control no encontrado');
   }
