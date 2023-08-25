@@ -1,16 +1,16 @@
-.date-card-container {
+.date-button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 100px;
   }
   
-  .date-card {
+  .date {
     width: 100px;
     text-align: center;
   }
   
-  .selected-date {
+  .selected {
     background-color: #333;
     color: white;
   }

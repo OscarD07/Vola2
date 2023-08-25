@@ -9,7 +9,7 @@
 <mat-form-field appearance="outline" class="form-field">
     <mat-label>Pasajeros</mat-label>
     <input type="number" matInput formControlName="numPasajeros" />
-  </mat-form-field>
+</mat-form-field>
 
 
 <button
@@ -21,3 +21,6 @@
     >
       Guardar Cambios
     </button>
+
+    <app-fechas-cercanas [control]="fechaSalidaControl"></app-fechas-cercanas>
+    

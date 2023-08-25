@@ -1,0 +1,22 @@
+<div class="date-button-container">
+    <!-- Botones para fechas anteriores -->
+    <button mat-button *ngFor="let date of previousDates" 
+            (click)="selectDate(date)" 
+            [ngClass]="{'selected': selectedDate === date}">
+      {{ getFormattedDate(date) }}
+    </button>
+  
+    <!-- Botón para la fecha seleccionada -->
+    <button mat-button 
+            (click)="selectDate(selectedDate)" 
+            class="selected">
+      {{ getFormattedDate(selectedDate) }}
+    </button>
+  
+    <!-- Botones para fechas futuras -->
+    <button mat-button *ngFor="let date of nextDates" 
+            (click)="selectDate(date)" 
+            [ngClass]="{'selected': selectedDate === date}">
+      {{ getFormattedDate(date) }}
+    </button>
+  </div>

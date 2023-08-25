@@ -1,0 +1,15 @@
+<div class="vuelos-container">
+    <div class="vuelo-item" *ngFor="let vuelo of vuelos">
+      <div class="info">
+        <div class="fecha-hora">{{ vuelo.fechaSalida | date : "hh:mm a" }}</div>
+  
+        <div class="origen">origen {{ vuelo.origen }}</div>
+        <div class="destino">destino {{ vuelo.destino }}</div>
+      </div>
+    </div>
+    <div class="no-vuelos-message" *ngIf="vuelos.length === 0">
+      <mat-card>
+        <mat-card-content>No hay vuelos disponibles.</mat-card-content>
+      </mat-card>
+    </div>
+  </div>

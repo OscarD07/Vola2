@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CIUDADES_DATA } from '../../constants/ciudades.const';
 import { Ciudad } from '../../models/ciudad.model';
 import { CiudadesService } from 'src/app/services/ciudad.service';
-import { AbstractControl, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input-filtrado',
