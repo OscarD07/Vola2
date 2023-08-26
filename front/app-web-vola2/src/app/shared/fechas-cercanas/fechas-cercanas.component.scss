@@ -1,0 +1,31 @@
+.date-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+  }
+  
+  .date {
+    width: 100px;
+    text-align: center;
+  }
+  
+  .selected {
+    background-color: #333;
+    color: white;
+  }
+
+  
+  .arrow {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+  }
+  
+  .left-arrow {
+    left: 10%;
+  }
+  
+  .right-arrow {
+    right: 10%;
+  }

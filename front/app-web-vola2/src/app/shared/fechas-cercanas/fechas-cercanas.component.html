@@ -1,0 +1,32 @@
+<div class="date-button-container">
+  <!-- Flecha para navegar a las fechas anteriores -->
+  <button class="arrow left-arrow" mat-button (click)="goToPreviousPage()" [disabled]="disablePrevButton">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <!-- Botones para fechas anteriores -->
+  <button mat-button *ngFor="let date of previousDates" 
+          (click)="selectDate(date)" 
+          [ngClass]="{'selected': selectedDate === date}">
+    {{ getFormattedDate(date) }}
+  </button>
+
+  <!-- Botón para la fecha seleccionada -->
+  <button mat-button 
+          (click)="selectDate(selectedDate)" 
+          class="selected">
+    {{ getFormattedDate(selectedDate) }}
+  </button>
+
+  <!-- Botones para fechas futuras -->
+  <button mat-button *ngFor="let date of nextDates" 
+          (click)="selectDate(date)" 
+          [ngClass]="{'selected': selectedDate === date}">
+    {{ getFormattedDate(date) }}
+  </button>
+
+  <!-- Flecha para navegar a las fechas futuras -->
+  <button class="arrow right-arrow" mat-button (click)="goToNextPage()">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

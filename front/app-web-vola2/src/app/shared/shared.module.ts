@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA,NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormularioEvComponent } from './formulario-ev/formulario-ev.component';
 import { ResumenVueloComponent } from './resumen-vuelo/resumen-vuelo.component';
@@ -13,18 +13,27 @@ import {MatInputModule} from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MostrarVuelosComponent } from './mostrar-vuelos/mostrar-vuelos.component';
+import { FechasCercanasComponent } from './fechas-cercanas/fechas-cercanas.component';
+import  {MatDividerModule} from '@angular/material/divider';
+import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule  }from '@angular/material/icon';
 @NgModule({
     
     declarations: [
         FormularioEvComponent,
         ResumenVueloComponent,
         OpcionesFechasComponent,
-        InputFiltradoComponent
+        InputFiltradoComponent,
+        MostrarVuelosComponent,
+        FechasCercanasComponent
     ],
     exports: [
         FormularioEvComponent,
         InputFiltradoComponent,
+        MostrarVuelosComponent,
+        FechasCercanasComponent,
         MatAutocompleteModule,
         MatFormFieldModule,
         MatCardModule,
@@ -32,7 +41,11 @@ import { FormsModule } from '@angular/forms';
         MatDatepickerModule,
         MatInputModule,
         MatToolbarModule,
-        FormsModule
+        FormsModule,
+        MatButtonModule,
+        MatDividerModule,
+        HttpClientModule,
+       MatIconModule
     ],
     imports: [
         CommonModule,
@@ -44,7 +57,11 @@ import { FormsModule } from '@angular/forms';
         MatInputModule,
         MatToolbarModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        MatButtonModule,
+        MatDividerModule,
+        HttpClientModule,
+        MatIconModule
     ]
 })
 export class SharedModule { }

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CIUDADES_DATA } from '../../constants/ciudades.const';
 import { Ciudad } from '../../models/ciudad.model';
 import { CiudadesService } from 'src/app/services/ciudad.service';
-import { AbstractControl, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input-filtrado',
@@ -14,7 +14,6 @@ export class InputFiltradoComponent {
   ciudades: Ciudad[] = CIUDADES_DATA;
   origen: string = '';
   @Input() control: FormControl; 
-  @Output () valueResponse: EventEmitter<string> = new EventEmitter();
   constructor(private ciudadesService: CiudadesService) {
      this.control = new FormControl();
    
@@ -38,9 +37,6 @@ export class InputFiltradoComponent {
     }
   }
 
-  emitirDato() {
-    this.valueResponse.emit(this.origen);
-  }
 
 
 }
