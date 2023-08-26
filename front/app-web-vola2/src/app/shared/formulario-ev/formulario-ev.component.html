@@ -1,24 +1,34 @@
-<div class="form-container">
-    <h2>Editar Vuelo</h2>
-    <app-input-filtrado [control]="origenControl"></app-input-filtrado>
-    <app-input-filtrado [control]="destinoControl"></app-input-filtrado>
-    <app-opciones-fechas [control]="fechaSalidaControl"></app-opciones-fechas>
 
 
-    <mat-form-field [formGroup]="form" formappearance="outline" class="form-field">
-        <mat-label>Pasajeros</mat-label>
-        <input type="number" matInput formControlName="numPasajeros"/>
-    </mat-form-field>
+<div class="form-container" [ngClass]="{'form-vertical': orientacion === 'vertical', 'form-horizontal': orientacion === 'horizontal'}"  [formGroup]="form">
+  <h2>Editar Vuelo</h2>
+  <mat-radio-group formControlName="soloIda">
+    <mat-radio-button [value]="true">Solo Ida</mat-radio-button>
+    <mat-radio-button [value]="false">Ida y Vuelta</mat-radio-button>
+  </mat-radio-group>
+  <div class="container">
+      <app-input-filtrado [control]="origenControl"></app-input-filtrado>
+      <app-input-filtrado [control]="destinoControl"></app-input-filtrado>
+      <app-opciones-fechas [control]="fechaSalidaControl"></app-opciones-fechas>
+      <app-opciones-fechas *ngIf="form.get('soloIda')?.value === false" [control]="fechaVueltaControl"></app-opciones-fechas>
+      <mat-form-field [formGroup]="form" formappearance="outline" class="form-field">
+          <mat-label>Pasajeros</mat-label>
+          <input type="number" matInput formControlName="numPasajeros"/>
+      </mat-form-field>
 
-    <button
-        mat-raised-button
-        color="primary"
-        type="submit"
+      <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          (click)="guardarCambiosYBuscarVuelos()"
+      >
+          Guardar Cambios
+      </button>
+  </div>
 
-        (click)="guardarCambiosYBuscarVuelos()"
-    >
-        Guardar Cambios
-    </button>
+  <app-fechas-cercanas *ngIf="orientacion === 'horizontal'" [control]="fechaSalidaControl"></app-fechas-cercanas>
+  
 
-    <app-fechas-cercanas [control]="fechaSalidaControl"></app-fechas-cercanas>
+ 
+
 </div>

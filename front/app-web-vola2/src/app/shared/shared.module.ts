@@ -19,6 +19,7 @@ import { FechasCercanasComponent } from './fechas-cercanas/fechas-cercanas.compo
 import  {MatDividerModule} from '@angular/material/divider';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule  }from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
     
     declarations: [
@@ -45,7 +46,8 @@ import { MatIconModule  }from '@angular/material/icon';
         MatButtonModule,
         MatDividerModule,
         HttpClientModule,
-       MatIconModule
+       MatIconModule,
+       MatRadioModule
     ],
     imports: [
         CommonModule,
@@ -61,7 +63,8 @@ import { MatIconModule  }from '@angular/material/icon';
         MatButtonModule,
         MatDividerModule,
         HttpClientModule,
-        MatIconModule
+        MatIconModule,
+        MatRadioModule
     ]
 })
 export class SharedModule { }
