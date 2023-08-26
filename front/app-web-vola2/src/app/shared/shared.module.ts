@@ -18,7 +18,7 @@ import { MostrarVuelosComponent } from './mostrar-vuelos/mostrar-vuelos.componen
 import { FechasCercanasComponent } from './fechas-cercanas/fechas-cercanas.component';
 import  {MatDividerModule} from '@angular/material/divider';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatIconModule  }from '@angular/material/icon';
 @NgModule({
     
     declarations: [
@@ -44,7 +44,8 @@ import { HttpClientModule } from '@angular/common/http';
         FormsModule,
         MatButtonModule,
         MatDividerModule,
-        HttpClientModule
+        HttpClientModule,
+       MatIconModule
     ],
     imports: [
         CommonModule,
@@ -59,7 +60,8 @@ import { HttpClientModule } from '@angular/common/http';
         FormsModule,
         MatButtonModule,
         MatDividerModule,
-        HttpClientModule
+        HttpClientModule,
+        MatIconModule
     ]
 })
 export class SharedModule { }

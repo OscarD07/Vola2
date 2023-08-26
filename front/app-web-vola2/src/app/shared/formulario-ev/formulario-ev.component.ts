@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Vuelo } from 'src/app/models/vuelo.model';
 import { VuelosService } from '../../services/vuelos.service';
@@ -18,31 +18,36 @@ export class FormularioEvComponent {
       this.buscarVuelos(); // Realizar la búsqueda cuando se cargue el componente
     }
     const fechaSalidaPorDefecto = this.datosBusqueda.fechaSalida ? new Date(this.datosBusqueda.fechaSalida) : null;
-
-      
-      // console.log (fechaSalidaPorDefecto);
-      var mesIncrementado;
+    var mesIncrementado;
+    if (fechaSalidaPorDefecto instanceof Date) {
+      // Sumar 1 al mes
+      mesIncrementado = fechaSalidaPorDefecto.getUTCMonth() + 1;
+      mesIncrementado = mesIncrementado.toString().length == 1 ? "0" + mesIncrementado.toString() : mesIncrementado.toString();
+    } else {
+      console.log("La fecha por defecto no es válida.");
+    }
       this.form = this.fb.group({
         origen: [this.datosBusqueda.origen, Validators.required],
         destino: [this.datosBusqueda.destino, Validators.required],
-        fechaSalida: [new Date(mesIncrementado+"/"+fechaSalidaPorDefecto?.getUTCDate().toString()+"/"+fechaSalidaPorDefecto?.getUTCFullYear().toString()), Validators.required],
-        numPasajeros: [this.datosBusqueda.numPasajeros, [Validators.required, Validators.min(1)]],
+        fechaSalida: [new Date(mesIncrementado+"/"+fechaSalidaPorDefecto?.getDate().toString()+"/"+fechaSalidaPorDefecto?.getUTCFullYear().toString()), Validators.required],
+        numPasajeros: [this.datosBusqueda.numPasajeros || 1, [Validators.required, Validators.min(1)]]
       });
     }
 
+    
     guardarCambiosYBuscarVuelos() {
       // Actualizar datosBusqueda con los valores del formulario
       this.datosBusqueda.origen = this.form.value.origen;
-      console.log(this.form.value.origen);
       this.datosBusqueda.destino = this.form.value.destino;
       this.datosBusqueda.fechaSalida = this.form.value.fechaSalida;
       this.datosBusqueda.numPasajeros = this.form.value.numPasajeros;
-    
+   
       // Guardar los nuevos datos de búsqueda en SessionStorage
       sessionStorage.setItem('datosBusqueda', JSON.stringify(this.datosBusqueda));
     
       // Llamar a buscarVuelos() para realizar la búsqueda con los nuevos parámetros
-      this.buscarVuelos()
+      this.buscarVuelos();
+      
 
     }
 
@@ -92,10 +97,13 @@ buscarVuelos() {
     )
     .subscribe(
       (data) => {
-        this.vuelos = data.vuelos;
-        // Procesar los datos recibidos del backend
+        this.backendService.vuelos = data.vuelos;
+        this.backendService.verificarvuelo();
+    // Procesar los datos recibidos del backend
       },
       (error) => {
+        this.backendService.vuelos = [];
+        this.backendService.verificarvuelo();
         console.error('Error al buscar vuelos:', error);
       }
     );

@@ -4,6 +4,8 @@
            placeholder="Fecha de Salida" 
            name="fechaSalida" 
            [formControl] = "control"
+           (dateChange)="onDateChange($event)" 
+           [min]="minDate"
            >
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>

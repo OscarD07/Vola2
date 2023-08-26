@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -11,10 +11,28 @@ export class FechasCercanasComponent {
   selectedDate: Date = new Date(); // Puedes cambiar esto más tarde
   previousDates: Date[] = [];
   nextDates: Date[] = [];
+  currentPage: number = 0;
   @Input() control: FormControl; 
   constructor() {
     this.generateDates();
     this.control = new FormControl();
+  }
+
+  ngOnInit() {
+    // Escuchar los cambios en el control
+    this.control.valueChanges.subscribe(date => {
+      this.selectedDate = new Date(date);
+      this.previousDates = [];
+      this.nextDates = [];
+      this.generateDates();
+      // Aquí también puedes actualizar previousDates y nextDates
+      // basado en el nuevo selectedDate si lo deseas.
+    });
+
+    // Establecer la fecha seleccionada inicial basada en el valor inicial del control
+    if (this.control.value) {
+      this.selectedDate = new Date(this.control.value);
+    }
   }
 
   generateDates() {
@@ -38,11 +56,15 @@ export class FechasCercanasComponent {
   selectDate(date: Date) {
     this.selectedDate = date;
     this.control.setValue(this.selectedDate);
+    console.log(this.control.value);
     this.previousDates = [];
     this.nextDates = [];
     this.generateDates();
   }
 
+
+
+  
 
   getFormattedDate(date: Date): string {
     const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
@@ -54,4 +76,31 @@ export class FechasCercanasComponent {
     const monthNames = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
     return monthNames[month];
   }
+
+
+  goToPreviousPage() {
+    this.currentPage--;
+    this.updateSelectedDate(-1);
+  }
+  
+  goToNextPage() {
+    this.currentPage++;
+    this.updateSelectedDate(1);
+  }
+  
+  updateSelectedDate(direction: number) {
+    // Actualizar selectedDate basado en la dirección
+    const newDate = new Date(this.selectedDate);
+    newDate.setDate(this.selectedDate.getDate() + direction);
+    this.selectedDate = newDate;
+    
+    // Actualizar el FormControl
+    this.control.setValue(this.selectedDate);
+  
+    // Limpiar y regenerar las fechas
+    this.previousDates = [];
+    this.nextDates = [];
+    this.generateDates();
+  }
 }
+  
