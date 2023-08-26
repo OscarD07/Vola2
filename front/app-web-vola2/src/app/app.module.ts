@@ -8,6 +8,7 @@ import { FooterComponent } from './modules/components/footer/footer.component';
 import { NavComponent } from './modules/components/nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { UserModule } from './modules/user/user.module';
+import {NgOptimizedImage} from "@angular/common";
 
 
 
@@ -19,14 +20,15 @@ import { UserModule } from './modules/user/user.module';
     FooterComponent,
     NavComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    UserModule
-    
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        UserModule,
+        NgOptimizedImage
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

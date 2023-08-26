@@ -1,8 +1,22 @@
-
-
-  <mat-toolbar color="primary">
-    <span>User Management</span>
-     <a mat-button routerLink="/home">Home</a>
-     <a mat-button routerLink="/vuelos">Vuelos</a>
-     <a mat-button>Contact</a>
-   </mat-toolbar>
+<div class="toolbar" role="banner">
+    <div class="nav-container">
+        <a class="nav" [routerLink]="'/home'" [routerLinkActive]="'active'">
+            <img src="/assets/logos/logo-vola2sss.svg" alt="logo-vola2sss"/>
+        </a>
+        <a class="nav" [routerLink]="'/vuelos'" [routerLinkActive]="'active'">
+            <span>VUELOS</span>
+        </a>
+        <a class="nav" [routerLink]="'/destinos'" [routerLinkActive]="'active'">
+            <span>DESTINOS</span>
+        </a>
+        <a class="nav" [routerLink]="'/ofertas'" [routerLinkActive]="'active'">
+            <span>OFERTAS</span>
+        </a>
+        <a class="nav" [routerLink]="'/pasajeros'" [routerLinkActive]="'active'">
+            <span>PASAJEROS</span>
+        </a>
+        <a class="nav" [routerLink]="'/carrito'" [routerLinkActive]="'active'">
+            <span>CARRITO</span>
+        </a>
+    </div>
+</div>
