@@ -1,0 +1,42 @@
+.header {
+    position: relative;
+
+    .title {
+        position: absolute;
+        transform: translate(-15%, -20%);
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;
+        width: 100%;
+    }
+
+    .container {
+        position: absolute;
+        transform: translate(0px, -130px);
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 0;
+        grid-template-areas: "planet form";
+        align-content: center;
+        justify-items: center;
+        align-items: center;
+
+        .planet {
+            grid-area: planet;
+        }
+
+        .form {
+            grid-area: form;
+        }
+
+    }
+
+    .waves {
+        width: 100%;
+        height: auto; /* Mantiene la proporción original de la imagen */
+        object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+    }
+}

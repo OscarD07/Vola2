@@ -103,23 +103,23 @@ strong {
 
 /* Estilo para botones */
 .mat-raised-button {
-  font-size: 16px;  /* Tamaño de fuente más grande */
-  padding: 10px 30px;  /* Más padding para que sea más grande */
-  border-radius: 25px;  /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente más grande */
+  padding: 10px 30px; /* Más padding para que sea más grande */
+  border-radius: 25px; /* Bordes redondeados */
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .mat-raised-button:hover {
-  transform: translateY(-3px);  /* Efecto de "levantamiento" al pasar el ratón */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+  transform: translateY(-3px); /* Efecto de "levantamiento" al pasar el ratón */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .mat-raised-button:active {
-  transform: translateY(-1px);  /* Efecto de "presión" al hacer click */
+  transform: translateY(-1px); /* Efecto de "presión" al hacer click */
 }
 
 .mat-raised-button[disabled] {
-  background-color: rgba(0, 0, 0, 0.12);  /* Color gris claro para botones desactivados */
+  background-color: rgba(0, 0, 0, 0.12); /* Color gris claro para botones desactivados */
   color: rgba(0, 0, 0, 0.26);
   box-shadow: none;
 }
