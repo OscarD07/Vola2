@@ -1,6 +1,6 @@
 <div class="date-button-container">
   <!-- Flecha para navegar a las fechas anteriores -->
-  <button class="arrow left-arrow" mat-button (click)="goToPreviousPage()">
+  <button class="arrow left-arrow" mat-button (click)="goToPreviousPage()" [disabled]="disablePrevButton">
     <mat-icon>arrow_back</mat-icon>
   </button>
 

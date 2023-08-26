@@ -12,6 +12,7 @@ export class FechasCercanasComponent {
   previousDates: Date[] = [];
   nextDates: Date[] = [];
   currentPage: number = 0;
+  disablePrevButton: boolean = false;
   @Input() control: FormControl; 
   constructor() {
     this.generateDates();
@@ -33,6 +34,8 @@ export class FechasCercanasComponent {
     if (this.control.value) {
       this.selectedDate = new Date(this.control.value);
     }
+
+    this.checkIfShouldDisablePrevButton();
   }
 
   generateDates() {
@@ -60,6 +63,7 @@ export class FechasCercanasComponent {
     this.previousDates = [];
     this.nextDates = [];
     this.generateDates();
+    this.checkIfShouldDisablePrevButton();
   }
 
 
@@ -81,11 +85,13 @@ export class FechasCercanasComponent {
   goToPreviousPage() {
     this.currentPage--;
     this.updateSelectedDate(-1);
+    this.checkIfShouldDisablePrevButton();
   }
   
   goToNextPage() {
     this.currentPage++;
     this.updateSelectedDate(1);
+    this.checkIfShouldDisablePrevButton();
   }
   
   updateSelectedDate(direction: number) {
@@ -101,6 +107,13 @@ export class FechasCercanasComponent {
     this.previousDates = [];
     this.nextDates = [];
     this.generateDates();
+  }
+
+  checkIfShouldDisablePrevButton() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);  // Reset time part to compare only dates
+    this.disablePrevButton = this.selectedDate.getTime() <=  today.getTime();
+    console.log(this.disablePrevButton);
   }
 }
   
