@@ -26,6 +26,8 @@
 
         .planet {
             grid-area: planet;
+            width: 570px;
+            transform: translate(65px, -5px);
         }
 
         .form {
