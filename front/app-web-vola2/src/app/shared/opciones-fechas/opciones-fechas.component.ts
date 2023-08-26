@@ -12,7 +12,7 @@ export class OpcionesFechasComponent {
   @Input() control: FormControl; 
 
   constructor() { 
-    this.minDate.setDate(this.minDate.getDate() + 1);
+    this.minDate.setDate(this.minDate.getDate());
     this.control = new FormControl();
   }
 
