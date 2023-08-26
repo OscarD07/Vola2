@@ -11,11 +11,10 @@ import {Router} from "@angular/router";
 })
 
 export class FormularioBvComponent {
-
     flightForm: FormGroup;
-    minDate: string; // Almacena la fecha mínima permitida
-    selectedForm: string | null = 'solo-ida';
-    showError: boolean = false; // Variable para mostrar el mensaje de error
+    minDate: string;
+    selectedForm: 'solo-ida' | 'ida-vuelta' = 'solo-ida';
+    showError: boolean = false;
     ciudades: Ciudad[] = CIUDADES_DATA;
     filteredCiudadesDestino: Ciudad[] = [];
     filteredCiudadesOrigen: Ciudad[] = [];
@@ -23,19 +22,18 @@ export class FormularioBvComponent {
     isDestinoInputEmpty: boolean = true;
 
     constructor(private router: Router, private fb: FormBuilder) {
-        this.minDate = this.getCurrentDate(); // Calcula la fecha mínima
+        this.minDate = this.getCurrentDate();
         this.flightForm = this.fb.group({
             origen: ['', Validators.required],
             destino: ['', Validators.required],
             fechaSalida: ['', Validators.required],
             fechaRegreso: [''],
             numPasajeros: [1, [Validators.required, Validators.min(1)]],
-            //duracion:['', Validators.required]
         });
     }
 
     buscarVuelo() {
-        this.showError = true; // Mostrar el mensaje de error
+        this.showError = true;
         if (this.flightForm.invalid) {
             return;
         }
@@ -44,8 +42,8 @@ export class FormularioBvComponent {
             origen: this.flightForm.value.origen,
             destino: this.flightForm.value.destino,
             fechaSalida: this.flightForm.value.fechaSalida,
+            fechaRegreso: this.flightForm.value.fechaRegreso, // Añadido para ida y vuelta
             numPasajeros: this.flightForm.value.numPasajeros,
-            //duracion: this.flightForm.value.duracion
         };
 
         sessionStorage.setItem('datosBusqueda', JSON.stringify(datosBusqueda));
@@ -98,10 +96,9 @@ export class FormularioBvComponent {
         const today = new Date();
         const year = today.getFullYear();
         const month = (today.getMonth() + 1).toString().padStart(2, '0');
-        const day = today.getDate().toString().padStart(2, '0');
+        const day = (today.getDate() + 1).toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
     }
-
 
     highlightText(text: string, searchTerm: string): string {
         if (!searchTerm) {
