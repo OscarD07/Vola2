@@ -1,0 +1,50 @@
+h1 {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 50px;
+}
+
+p {
+    text-align: left;
+    padding: 0 100px;
+    font-size: 1.2em;
+}
+
+.green-rectangle {
+    background-color: #99ea5d;
+    padding: 100px;
+    margin: 70px 0;
+    display: flex;
+    justify-content: space-around;
+    background-repeat: no-repeat;
+    background-image: url(/assets/svgs/wave.svg);
+    background-position: bottom;
+
+    .circle-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+
+        img {
+            border: 30px solid #fff;
+            border-radius: 50%;
+            object-fit: cover; /* Ajusta la propiedad para recortar la imagen */
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+    }
+}
+
+

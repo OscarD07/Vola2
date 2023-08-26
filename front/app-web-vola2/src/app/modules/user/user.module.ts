@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA,NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { VuelosComponent } from './vuelos/vuelos.component';
 import { DestinosComponent } from './destinos/destinos.component';
@@ -31,6 +31,7 @@ import {ReactiveFormsModule} from "@angular/forms";
         CommonModule,
         MatRadioModule,
         ReactiveFormsModule,
+        NgOptimizedImage,
 
     ]
 })
