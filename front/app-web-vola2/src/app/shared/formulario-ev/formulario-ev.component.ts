@@ -30,8 +30,19 @@ export class FormularioEvComponent {
         origen: [this.datosBusqueda.origen, Validators.required],
         destino: [this.datosBusqueda.destino, Validators.required],
         fechaSalida: [new Date(mesIncrementado+"/"+fechaSalidaPorDefecto?.getDate().toString()+"/"+fechaSalidaPorDefecto?.getUTCFullYear().toString()), Validators.required],
-        numPasajeros: [this.datosBusqueda.numPasajeros || 1, [Validators.required, Validators.min(1)]]
+        numPasajeros: [this.datosBusqueda.numPasajeros || 1, [Validators.required, Validators.min(1)]],
+        soloIda: [true, Validators.required],
+
       });
+      console.log(this.form.get('soloIda')?.value);
+      this.form.get('soloIda')?.valueChanges.subscribe(value => {
+        console.log('soloIda ha cambiado:', value);
+      });      
+      
+      
+      
+      
+      
     }
 
     
@@ -54,6 +65,13 @@ export class FormularioEvComponent {
 
     get origenControl(): FormControl {
   const control = this.form.get('origen');
+  if (control === null) {
+    throw new Error('Control no encontrado');
+  }
+  return control as FormControl;
+}
+get soloIdaControl(): FormControl {
+  const control = this.form.get('soloIda');
   if (control === null) {
     throw new Error('Control no encontrado');
   }

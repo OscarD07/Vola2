@@ -1,24 +1,33 @@
 
-<div class="form-container">
-    <h2>Editar Vuelo</h2>
-<app-input-filtrado  [control]="origenControl"></app-input-filtrado>
-<app-input-filtrado  [control]="destinoControl"></app-input-filtrado>
-<app-opciones-fechas [control]="fechaSalidaControl"></app-opciones-fechas>
 
+<div class="form-container" [formGroup]="form">
+  <h2>Editar Vuelo</h2>
+  <mat-radio-group formControlName="soloIda">
+    <mat-radio-button [value]="true">Solo Ida</mat-radio-button>
+    <mat-radio-button [value]="false">Ida y Vuelta</mat-radio-button>
+  </mat-radio-group>
+  <div class="container">
 
- <mat-form-field [formGroup]="form" formappearance="outline" class="form-field">
-  <mat-label>Pasajeros</mat-label>
-  <input type="number" matInput formControlName="numPasajeros" />
-</mat-form-field>
+  
 
-<button
-      mat-raised-button
-      color="primary"
-      type="submit"
-      
-      (click)="guardarCambiosYBuscarVuelos()"
-    >
-      Guardar Cambios
-    </button>
+      <app-input-filtrado [control]="origenControl"></app-input-filtrado>
+      <app-input-filtrado [control]="destinoControl"></app-input-filtrado>
+      <app-opciones-fechas [control]="fechaSalidaControl"></app-opciones-fechas>
+      <app-opciones-fechas *ngIf="form.get('soloIda')?.value === false" [control]="fechaSalidaControl"></app-opciones-fechas>
+      <mat-form-field [formGroup]="form" formappearance="outline" class="form-field">
+          <mat-label>Pasajeros</mat-label>
+          <input type="number" matInput formControlName="numPasajeros"/>
+      </mat-form-field>
 
-    <app-fechas-cercanas [control]="fechaSalidaControl"></app-fechas-cercanas>
+      <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          (click)="guardarCambiosYBuscarVuelos()"
+      >
+          Guardar Cambios
+      </button>
+  </div>
+
+  <app-fechas-cercanas [control]="fechaSalidaControl"></app-fechas-cercanas>
+</div>
