@@ -27,6 +27,29 @@
     </div>
 </section>
 
-            <img src="https://images.unsplash.com/photo-1616036740257-9449ea1f6605?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXRhcmRlY2VyJTIwcGxheWF8ZW58MHx8MHx8fDA%3D&w=1000&q=80" />
-            <img src="https://provinciasecuador.com/wp-content/uploads/2018/09/regi%C3%B3n-sierra-ecuador.jpg" />
-            <img src="https://natureconservancy-h.assetsadobe.com/is/image/content/dam/tnc/nature/en/photos/latin-america/amazonia3.jpg?crop=0%2C87%2C1498%2C823&wid=4000&hei=2200&scl=0.3745" />
+<section class="gallery">
+    <h1>Galería</h1>
+    <p>¡Explora la diversidad de Ecuador a través de nuestras imágenes seleccionadas de las cuatro fascinantes regiones
+        del país. Sumérgete en los paisajes exuberantes, la rica cultura y la naturaleza única que caracteriza a cada
+        región. Desde las playas del Pacífico hasta las alturas de los Andes y la misteriosa Amazonía, esta galería te
+        llevará en un viaje visual a través de la variedad de Ecuador.</p>
+    <c-carousel class="carousel">
+        <c-carousel-indicators></c-carousel-indicators>
+        <c-carousel-inner>
+            <c-carousel-item *ngFor="let slide of slides">
+                <img
+                    alt="{{slide.title}}"
+                    class="d-block w-100"
+                    loading="lazy"
+                    src="{{slide.src}}"
+                />
+                <c-carousel-caption class="d-none d-md-block">
+                    <h3>{{slide.title}}</h3>
+                    <p>{{slide.subtitle}}</p>
+                </c-carousel-caption>
+            </c-carousel-item>
+        </c-carousel-inner>
+        <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+        <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+    </c-carousel>
+</section>

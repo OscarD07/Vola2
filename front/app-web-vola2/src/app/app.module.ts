@@ -24,7 +24,7 @@ import {NgOptimizedImage} from "@angular/common";
         BrowserAnimationsModule,
         MatToolbarModule,
         UserModule,
-        NgOptimizedImage
+        NgOptimizedImage,
 
     ],
   providers: [],

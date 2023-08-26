@@ -47,4 +47,21 @@ p {
     }
 }
 
+.gallery {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+
+    .carousel {
+        width: 70%;
+        margin: 70px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 3.5);
+
+        p {
+            text-align: center;
+            font-size: 1.2em;
+        }
+    }
+}
+
 

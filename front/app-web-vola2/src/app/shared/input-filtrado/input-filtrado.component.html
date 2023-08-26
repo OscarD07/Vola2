@@ -1,21 +1,21 @@
 <mat-form-field appearance="outline" class="form-field">
-    <input 
-      type="text"
-      matInput 
-      placeholder="Ciudad de Origen"
-    [formControl] = "control"
-      [matAutocomplete]="auto"
-      (input)="filterCiudades($event, false)">
-  </mat-form-field>
-  <mat-autocomplete #auto="matAutocomplete">
+    <input
+        type="text"
+        matInput
+        placeholder="Ciudad de Origen"
+        [formControl]="control"
+        [matAutocomplete]="auto"
+        (input)="filterCiudades($event, false)">
+</mat-form-field>
+<mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let ciudad of filteredCiudades; let i = index"
                 [value]="ciudad.nombreCiudad"
                 (click)="filterCiudades(ciudad, false)">
-      <span >
+        <span>
         {{ ciudad.nombreCiudad }} ({{ ciudad.codigoCiudad }})
-      </span>
-      <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
+        </span>
+        <small class="aeropuerto">{{ ciudad.nombreAeropuerto }}</small>
     </mat-option>
-  </mat-autocomplete>
+</mat-autocomplete>
 
 

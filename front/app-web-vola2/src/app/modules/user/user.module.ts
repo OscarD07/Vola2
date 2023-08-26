@@ -10,6 +10,14 @@ import { SharedModule } from '../../shared/shared.module';
 import { HeaderComponent } from './home/header/header.component';
 import {MatRadioModule} from "@angular/material/radio";
 import {ReactiveFormsModule} from "@angular/forms";
+import {
+    CarouselCaptionComponent,
+    CarouselComponent, CarouselControlComponent,
+    CarouselIndicatorsComponent,
+    CarouselInnerComponent,
+    CarouselItemComponent
+} from "@coreui/angular";
+import {RouterLink} from "@angular/router";
 
 
 
@@ -30,7 +38,13 @@ import {ReactiveFormsModule} from "@angular/forms";
         MatRadioModule,
         ReactiveFormsModule,
         NgOptimizedImage,
-
+        CarouselComponent,
+        CarouselIndicatorsComponent,
+        CarouselInnerComponent,
+        CarouselItemComponent,
+        CarouselCaptionComponent,
+        CarouselControlComponent,
+        RouterLink,
     ]
 })
 export class UserModule { }
