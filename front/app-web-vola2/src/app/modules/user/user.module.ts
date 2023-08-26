@@ -8,7 +8,6 @@ import { PagosComponent } from './pagos/pagos.component';
 import { PersonalizacionComponent } from './personalizacion/personalizacion.component';
 import { SharedModule } from '../../shared/shared.module';
 import { HeaderComponent } from './home/header/header.component';
-import { FormularioBvComponent } from './home/header/formulario-bv/formulario-bv.component';
 import {MatRadioModule} from "@angular/material/radio";
 import {ReactiveFormsModule} from "@angular/forms";
 
@@ -23,7 +22,6 @@ import {ReactiveFormsModule} from "@angular/forms";
     PagosComponent,
     PersonalizacionComponent,
     HeaderComponent,
-    FormularioBvComponent,
 
   ],
     imports: [

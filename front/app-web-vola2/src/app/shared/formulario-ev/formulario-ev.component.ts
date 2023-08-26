@@ -1,112 +1,66 @@
-import { Component} from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Vuelo } from 'src/app/models/vuelo.model';
+import { Router } from '@angular/router';
 import { VuelosService } from '../../services/vuelos.service';
+
 @Component({
   selector: 'app-formulario-ev',
   templateUrl: './formulario-ev.component.html',
   styleUrls: ['./formulario-ev.component.scss']
 })
-export class FormularioEvComponent {
-    datosBusqueda: any = {};
-    form: FormGroup;
-  vuelos: Vuelo[] = [];
-    constructor( private backendService: VuelosService, private fb: FormBuilder) {
-      const datosGuardados = sessionStorage.getItem('datosBusqueda');
+export class FormularioEvComponent implements OnInit, OnChanges {
+  @Input() orientacion: 'vertical' | 'horizontal' = 'vertical';
+  form!: FormGroup;
+  datosBusqueda: any = {};
+  showError: boolean = false;
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private backendService: VuelosService
+  ) { }
+
+  ngOnInit(): void {
+    this.cargarDatosDeSesion();
+    this.inicializarFormulario();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('orientacion' in changes) {
+      this.cargarDatosDeSesion();
+    }
+  }
+
+  private cargarDatosDeSesion(): void {
+    const datosGuardados = sessionStorage.getItem('datosBusqueda');
     if (datosGuardados) {
       this.datosBusqueda = JSON.parse(datosGuardados);
-      this.buscarVuelos(); // Realizar la búsqueda cuando se cargue el componente
     }
-    const fechaSalidaPorDefecto = this.datosBusqueda.fechaSalida ? new Date(this.datosBusqueda.fechaSalida) : null;
-    var mesIncrementado;
-    if (fechaSalidaPorDefecto instanceof Date) {
-      // Sumar 1 al mes
-      mesIncrementado = fechaSalidaPorDefecto.getUTCMonth() + 1;
-      mesIncrementado = mesIncrementado.toString().length == 1 ? "0" + mesIncrementado.toString() : mesIncrementado.toString();
-    } else {
-      console.log("La fecha por defecto no es válida.");
+  }
+
+  private inicializarFormulario(): void {
+    this.form = this.fb.group({
+      origen: [this.datosBusqueda.origen, Validators.required],
+      destino: [this.datosBusqueda.destino, Validators.required],
+      fechaSalida: [new Date(this.datosBusqueda.fechaSalida), Validators.required],
+      fechaVuelta: [null],
+      numPasajeros: [this.datosBusqueda.numPasajeros || 1, [Validators.required, Validators.min(1)]],
+      soloIda: [true, Validators.required]
+    });
+  }
+
+  guardarCambiosYBuscarVuelos(): void {
+    this.datosBusqueda = this.form.value;
+    console.log(this.datosBusqueda);
+    sessionStorage.setItem('datosBusqueda', JSON.stringify(this.datosBusqueda));
+    this.buscarVuelos();
+    if (this.orientacion === 'vertical') {
+      this.router.navigate(['/vuelos']);
     }
-      this.form = this.fb.group({
-        origen: [this.datosBusqueda.origen, Validators.required],
-        destino: [this.datosBusqueda.destino, Validators.required],
-        fechaSalida: [new Date(mesIncrementado+"/"+fechaSalidaPorDefecto?.getDate().toString()+"/"+fechaSalidaPorDefecto?.getUTCFullYear().toString()), Validators.required],
-        numPasajeros: [this.datosBusqueda.numPasajeros || 1, [Validators.required, Validators.min(1)]],
-        soloIda: [true, Validators.required],
-
-      });
-      console.log(this.form.get('soloIda')?.value);
-      this.form.get('soloIda')?.valueChanges.subscribe(value => {
-        console.log('soloIda ha cambiado:', value);
-      });      
-      
-      
-      
-      
-      
-    }
-
-    
-    guardarCambiosYBuscarVuelos() {
-      // Actualizar datosBusqueda con los valores del formulario
-      this.datosBusqueda.origen = this.form.value.origen;
-      this.datosBusqueda.destino = this.form.value.destino;
-      this.datosBusqueda.fechaSalida = this.form.value.fechaSalida;
-      this.datosBusqueda.numPasajeros = this.form.value.numPasajeros;
-   
-      // Guardar los nuevos datos de búsqueda en SessionStorage
-      sessionStorage.setItem('datosBusqueda', JSON.stringify(this.datosBusqueda));
-    
-      // Llamar a buscarVuelos() para realizar la búsqueda con los nuevos parámetros
-      this.buscarVuelos();
-      
-
-    }
-
-
-    get origenControl(): FormControl {
-  const control = this.form.get('origen');
-  if (control === null) {
-    throw new Error('Control no encontrado');
   }
-  return control as FormControl;
-}
-get soloIdaControl(): FormControl {
-  const control = this.form.get('soloIda');
-  if (control === null) {
-    throw new Error('Control no encontrado');
-  }
-  return control as FormControl;
-}
 
-get destinoControl(): FormControl {
-  const control = this.form.get('destino');
-  if (control === null) {
-    throw new Error('Control no encontrado');
-  }
-  return control as FormControl;
-}
-
-get fechaSalidaControl(): FormControl {
-  const control = this.form.get('fechaSalida');
-  if (control === null) {
-    throw new Error('Control no encontrado');
-  }
-  return control as FormControl;
-}
-
-get numPasajerosControl(): FormControl {
-  const control = this.form.get('numPasajeros');
-  if (control === null) {
-    throw new Error('Control no encontrado');
-  }
-  return control as FormControl;
-}
-
-
-buscarVuelos() {
-  // Utiliza this.datosBusqueda para realizar la búsqueda de vuelos
-  
-  this.backendService
+  buscarVuelos(): void {
+    this.showError = true;
+    this.backendService
     .buscarVueloDatos(
       this.datosBusqueda.origen,
       this.datosBusqueda.destino,
@@ -125,7 +79,30 @@ buscarVuelos() {
         console.error('Error al buscar vuelos:', error);
       }
     );
-   // this.hola = typeof (new Date(this.datosBusqueda.fechaSalida)) 
-}
+  }
 
+  // Getters para los controles del formulario
+  get origenControl(): FormControl {
+    return this.form.get('origen') as FormControl;
+  }
+
+  get destinoControl(): FormControl {
+    return this.form.get('destino') as FormControl;
+  }
+
+  get fechaSalidaControl(): FormControl {
+    return this.form.get('fechaSalida') as FormControl;
+  }
+
+  get fechaVueltaControl(): FormControl {
+    return this.form.get('fechaVuelta') as FormControl;
+  }
+
+  get numPasajerosControl(): FormControl {
+    return this.form.get('numPasajeros') as FormControl;
+  }
+
+  get soloIdaControl(): FormControl {
+    return this.form.get('soloIda') as FormControl;
+  }
 }

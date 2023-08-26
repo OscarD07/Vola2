@@ -31,6 +31,8 @@
         }
 
         .form {
+            display: flex;
+            flex-direction: column;
             grid-area: form;
         }
 
@@ -41,4 +43,5 @@
         height: auto; /* Mantiene la proporción original de la imagen */
         object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
     }
+    
 }
