@@ -12,7 +12,8 @@ import {Router} from "@angular/router";
 export class MostrarVuelosComponent {
     private vuelosSub: Subscription | undefined;
     vuelos: Vuelo[] = [];
-
+    horaSeleccionada: Date | null = null;
+     vueloSeleccionado: any = null;
 
     constructor(private backendService: VuelosService, private router: Router) {
         this.vuelos = this.backendService.verificarvuelo();
@@ -28,7 +29,16 @@ export class MostrarVuelosComponent {
             });
     }
 
-    personalizarVuelo() {
-        this.router.navigate(['/personalizacion']);
+    personalizarVuelo(vuelo: any) {
+      this.vueloSeleccionado = vuelo;
+
+    // Guardar el vuelo seleccionado en sessionStorage
+    const datosVuelo = {
+      fechaSalida: vuelo.fechaSalida,
+      origen: vuelo.origen,
+      destino: vuelo.destino
+    };
+    sessionStorage.setItem('datosVueloSeleccionado', JSON.stringify(datosVuelo));
+
     }
 }

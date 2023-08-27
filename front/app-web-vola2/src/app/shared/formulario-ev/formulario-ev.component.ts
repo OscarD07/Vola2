@@ -44,7 +44,7 @@ export class FormularioEvComponent implements OnInit, OnChanges {
             origen: [this.datosBusqueda.origen, Validators.required],
             destino: [this.datosBusqueda.destino, Validators.required],
             fechaSalida: [new Date(this.datosBusqueda.fechaSalida), Validators.required],
-            fechaVuelta: [new Date(this.datosBusqueda.fechaVueltaControl), Validators.required],
+            fechaVuelta: [new Date(this.datosBusqueda.fechaVuelta), Validators.required],
             numPasajeros: [this.datosBusqueda.numPasajeros || 1, [Validators.required, Validators.min(1)]],
             soloIda: [this.datosBusqueda.soloIda, Validators.required]
         });
@@ -59,6 +59,8 @@ export class FormularioEvComponent implements OnInit, OnChanges {
             this.router.navigate(['/vuelos']);
         }
     }
+
+  
 
     buscarVuelos(): void {
         this.showError = true;

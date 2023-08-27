@@ -1,5 +1,8 @@
+<div class="resumenVuelo">
+  <app-card-resumen-vuelo *ngIf="vueloSeleccionado"></app-card-resumen-vuelo>
+</div>
 <div class="vuelos-container">
-    <div class="vuelo-item" *ngFor="let vuelo of vuelos" (click)="personalizarVuelo()">
+    <div class="vuelo-item" *ngFor="let vuelo of vuelos" (click)="personalizarVuelo(vuelo)">
       <div class="info">
         <div class="fecha-hora">{{ vuelo.fechaSalida | date : "hh:mm a" }}</div>
         <div class="origen">origen {{ vuelo.origen }}</div>

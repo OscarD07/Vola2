@@ -1,0 +1,10 @@
+<mat-card *ngIf="datosVuelo">
+    <mat-card-header>
+      <mat-card-title>Resumen del Vuelo</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Fecha y Hora de Salida:</strong> {{ datosVuelo.fechaSalida | date : 'fullDate' }} a las {{ datosVuelo.fechaSalida | date : 'shortTime' }}</p>
+      <p><strong>Origen:</strong> {{ datosVuelo.origen }}</p>
+      <p><strong>Destino:</strong> {{ datosVuelo.destino }}</p>
+    </mat-card-content>
+  </mat-card>
