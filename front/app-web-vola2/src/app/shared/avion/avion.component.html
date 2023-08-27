@@ -1,11 +1,10 @@
 <section>
-    <p>Asientos seleccionados: {{ cantidadAsientosSeleccionados }}
     <div class="avion">
         <ng-container *ngFor="let letra of letrasUnicas">
             <div class="columna">
                 <div class="asiento-container" *ngFor="let asiento of obtenerAsientosPorLetra(letra)">
                     <app-asiento [estado]="asiento.estado" [seleccionado]="asiento.seleccionado"
-                                 (seleccionadoChange)="toggleSeleccion(asiento)"></app-asiento>
+                    ></app-asiento>
                     <p class="numero-asiento">{{ asiento.numero }}</p>
                 </div>
             </div>

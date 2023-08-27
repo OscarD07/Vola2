@@ -11,11 +11,8 @@ import { SeleccionAsientoService } from '../../services/seleccion-asiento.servic
 })
 export class AvionComponent implements OnInit {
     EstateEnum = EstateEnum;
-    maxAsientosSeleccionados = 3;
     asientos: AsientoConSeleccion[] = [];
     datosAsientos: Asiento[] = ASIENTOS_DATA;
-    cantidadAsientosSeleccionados: number = 0;
-
 
     constructor(private seleccionAsientoService: SeleccionAsientoService) {}
 
@@ -47,19 +44,6 @@ export class AvionComponent implements OnInit {
                 return asiento.numero.charAt(1) === letra;
             }
         });
-    }
-    toggleSeleccion(asiento: AsientoConSeleccion) {
-        if (!asiento.seleccionado && this.cantidadAsientosSeleccionados >= this.maxAsientosSeleccionados) {
-            return; // No permitir selección si se alcanza el máximo
-        }
-
-        if (asiento.seleccionado) {
-            this.cantidadAsientosSeleccionados--;
-        } else {
-            this.cantidadAsientosSeleccionados++;
-        }
-
-        asiento.seleccionado = !asiento.seleccionado;
     }
 
 }
