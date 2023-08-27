@@ -18,6 +18,7 @@ import {
     CarouselItemComponent
 } from "@coreui/angular";
 import {RouterLink} from "@angular/router";
+import {MatTabsModule} from "@angular/material/tabs";
 
 
 
@@ -45,6 +46,7 @@ import {RouterLink} from "@angular/router";
         CarouselCaptionComponent,
         CarouselControlComponent,
         RouterLink,
+        MatTabsModule,
     ]
 })
 export class UserModule { }
