@@ -1,0 +1,46 @@
+section {
+    width: 500px;
+}
+
+.avion {
+    display: grid;
+    grid-template-columns: repeat(6, 45px);
+    background-image: url(/assets/img/Atrseat.svg);
+    background-size: 100%;
+    background-position: center;
+    justify-items: center;
+    justify-content: center;
+
+    .columna {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .letra {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .asiento-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .numero-asiento {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 12px;
+                font-weight: bold;
+                user-select: none;
+            }
+        }
+
+    }
+
+    & > ng-container {
+        z-index: 1;
+    }
+}

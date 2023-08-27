@@ -1,0 +1,4 @@
+<!-- asiento.component.html -->
+<div
+    [ngClass]="{'asiento': true, 'asiento-ocupado': estado === EstateEnum.OCUPADO, 'asiento-seleccionado': seleccionado}"
+    (click)="toggleSeleccion()"><p class="numero-asiento">{{ numero }}</p></div>

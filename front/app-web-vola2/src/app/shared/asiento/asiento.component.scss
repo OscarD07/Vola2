@@ -1,0 +1,17 @@
+/* asiento.component.css */
+.asiento {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    margin: 20px 0;
+    cursor: pointer;
+    background-color: rgba(255, 135, 0, 0.3);
+}
+
+.asiento-ocupado {
+    background-color: red;
+}
+
+.asiento-seleccionado {
+    background-color: green;
+}

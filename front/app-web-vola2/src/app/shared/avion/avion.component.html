@@ -1,0 +1,13 @@
+<section>
+    <div class="avion">
+        <ng-container *ngFor="let letra of letrasUnicas">
+            <div class="columna">
+                <div class="letra">{{ letra }}</div>
+                <div class="asiento-container" *ngFor="let asiento of obtenerAsientosPorLetra(letra)">
+                    <app-asiento [estado]="asiento.estado"></app-asiento>
+                    <p class="numero-asiento">{{ asiento.numero }}</p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</section>
