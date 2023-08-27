@@ -64,4 +64,16 @@ p {
     }
 }
 
+.map{
+    .map-container{
+        height: 500px;
+        overflow: hidden;
+        display: grid;
+        align-content: center;
+        img {
+            object-fit: cover;
+        }
+    }
+}
+
 
