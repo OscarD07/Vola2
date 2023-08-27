@@ -64,12 +64,14 @@ p {
     }
 }
 
-.map{
-    .map-container{
+.map {
+    .map-container {
+        margin: 80px 0 0 0;
         height: 500px;
         overflow: hidden;
         display: grid;
         align-content: center;
+
         img {
             object-fit: cover;
         }
