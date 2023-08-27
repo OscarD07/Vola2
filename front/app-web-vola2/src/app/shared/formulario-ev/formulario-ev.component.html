@@ -13,7 +13,7 @@
       <app-opciones-fechas *ngIf="form.get('soloIda')?.value === false" [control]="fechaVueltaControl"></app-opciones-fechas>
       <mat-form-field [formGroup]="form" formappearance="outline" class="form-field">
           <mat-label>Pasajeros</mat-label>
-          <input type="number" matInput formControlName="numPasajeros"/>
+          <input type="number" matInput max="9" formControlName="numPasajeros"/>
       </mat-form-field>
 
       <button
