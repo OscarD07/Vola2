@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Vuelo } from '../../models/vuelo.model';
 
 @Component({
   selector: 'app-card-resumen-vuelo',
   templateUrl: './card-resumen-vuelo.component.html',
   styleUrls: ['./card-resumen-vuelo.component.scss']
 })
-export class CardResumenVueloComponent {
-  datosVuelo: any;
+export class CardResumenVueloComponent implements OnInit {
+  @Input() vuelo: Vuelo | null = null;
+
+  constructor() { }
 
   ngOnInit(): void {
-    // Leer datos del vuelo seleccionado desde sessionStorage
-    const datosGuardados = sessionStorage.getItem('datosVueloSeleccionado');
-    if (datosGuardados) {
-      this.datosVuelo = JSON.parse(datosGuardados);
-    }
   }
+
 }
