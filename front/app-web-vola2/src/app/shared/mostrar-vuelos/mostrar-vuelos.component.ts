@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Vuelo } from '../../models/vuelo.model';
 import { VuelosService } from '../../services/vuelos.service';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-mostrar-vuelos',
@@ -10,31 +10,40 @@ import { Subscription, Observable } from 'rxjs';
   styleUrls: ['./mostrar-vuelos.component.scss']
 })
 export class MostrarVuelosComponent implements OnInit, OnDestroy {
-  private vuelosSub: Subscription | undefined;
+  private vuelosSubscription: Subscription | undefined;
   vuelos: Vuelo[] = [];
   vuelosDeRegreso: Vuelo[] = [];
-  vueloSeleccionado: Vuelo | null = null;
+  vueloIdaSeleccionado: Vuelo | null = null;
+  vueloRegresoSeleccionado: Vuelo | null = null;
   datosBusqueda: any = {};
   idaSeleccionada: boolean = false;
-  vueloRegresoSeleccionado: Vuelo | null = null;
-  completo: boolean = false;
+  reservaCompleta: boolean = false;
+  vuelosSeleccionados: Vuelo[] = [];
 
-  constructor(private backendService: VuelosService, private router: Router) {
-    // Carga los vuelos iniciales (si existen)
-    this.vuelos = this.backendService.verificarvuelo();
-    // Carga los datos de búsqueda desde sessionStorage
+  constructor(private vuelosService: VuelosService, private router: Router) {
+    this.inicializarVuelosYBusqueda();
+  }
+
+  ngOnInit() {
+    this.inicializarSuscripcionAVuelos();
+  }
+
+  ngOnDestroy() {
+    this.cancelarSuscripcionAVuelos();
+  }
+
+  inicializarVuelosYBusqueda() {
+    this.vuelos = this.vuelosService.verificarvuelo();
     const datosGuardados = sessionStorage.getItem('datosBusqueda');
     if (datosGuardados) {
       this.datosBusqueda = JSON.parse(datosGuardados);
     }
   }
 
-  ngOnInit() {
-    this.vuelosSub = this.backendService.getVuelosActualizadosListener()
+  inicializarSuscripcionAVuelos() {
+    this.vuelosSubscription = this.vuelosService.getVuelosActualizadosListener()
       .subscribe(
-        (vuelos: Vuelo[]) => {
-          this.vuelos = vuelos;
-        },
+        (vuelos: Vuelo[]) => { this.vuelos = vuelos; },
         (error) => {
           this.vuelos = [];
           console.error('Error al buscar vuelos:', error);
@@ -42,18 +51,18 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
       );
   }
 
-  personalizarVuelo(vuelo: Vuelo) {
-    this.vueloSeleccionado = vuelo;
+  cancelarSuscripcionAVuelos() {
+    if (this.vuelosSubscription) {
+      this.vuelosSubscription.unsubscribe();
+    }
+  }
 
-    const datosVuelo = {
-      fechaSalida: vuelo.fechaSalida,
-      origen: vuelo.origen,
-      destino: vuelo.destino
-    };
-    sessionStorage.setItem('datosVueloSeleccionado', JSON.stringify(datosVuelo));
-
-    // Cargar vuelos de regreso
-    this.backendService.buscarVuelosDeRegreso(
+  seleccionarVueloIda(vuelo: Vuelo) {
+    this.vueloIdaSeleccionado = vuelo;
+    this.vuelosSeleccionados[0] = vuelo;
+    this.actualizarVuelosEnSessionStorage();
+    this.idaSeleccionada = true;
+    this.vuelosService.buscarVuelosDeRegreso(
       vuelo.destino,
       vuelo.origen,
       this.datosBusqueda.fechaVuelta,
@@ -67,38 +76,31 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
         console.error('Error al buscar vuelos de regreso:', error);
       }
     );
-    this.idaSeleccionada = true;
-    this.verificarCompleto(); 
+    this.verificarReservaCompleta();
   }
 
-  personalizarVueloRegreso(vuelo: Vuelo) {
+  seleccionarVueloRegreso(vuelo: Vuelo) {
+    
     this.vueloRegresoSeleccionado = vuelo;
-    this.verificarCompleto();
-    console.log("completo",this.completo);
+    this.vuelosSeleccionados[1] = vuelo;
+    this.actualizarVuelosEnSessionStorage();
+    this.verificarReservaCompleta();
+
+
   }
 
-  
-  ngOnDestroy() {
-    if (this.vuelosSub) {
-      this.vuelosSub.unsubscribe();
+  verificarReservaCompleta() {
+    if (this.vueloIdaSeleccionado && this.vueloRegresoSeleccionado) {
+      this.reservaCompleta = true;
     }
   }
 
+  continuarConPersonalizacion() {
+    this.router.navigate(['/personalizacion']);
+  }
 
-  // Verificar vuelo completo
-
-  verificarCompleto() {
-    if (this.vueloSeleccionado && this.vueloRegresoSeleccionado) {
-      this.completo = true;
-    }
-
-
+  actualizarVuelosEnSessionStorage() {
+    const vuelosSeleccionadosJSON = JSON.stringify(this.vuelosSeleccionados);
+    sessionStorage.setItem('vuelosSeleccionados', vuelosSeleccionadosJSON);
+  }
 }
-
-continuar() {
-  // Aquí puedes agregar el código para navegar a otra página o realizar otras acciones
-  this.router.navigate(['/personalizacion']);
-}
-
-}
-

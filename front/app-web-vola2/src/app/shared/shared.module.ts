@@ -23,6 +23,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { AsientoComponent } from './asiento/asiento.component';
 import { AvionComponent } from './avion/avion.component';
 import { CardResumenVueloComponent } from './card-resumen-vuelo/card-resumen-vuelo.component';
+import { CarrittoBarraComponent } from './carritto-barra/carritto-barra.component';
 @NgModule({
 
     declarations: [
@@ -34,7 +35,8 @@ import { CardResumenVueloComponent } from './card-resumen-vuelo/card-resumen-vue
         FechasCercanasComponent,
         AsientoComponent,
         AvionComponent,
-        CardResumenVueloComponent
+        CardResumenVueloComponent,
+        CarrittoBarraComponent
     ],
     exports: [
         FormularioEvComponent,

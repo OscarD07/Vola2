@@ -1,9 +1,9 @@
-<mat-card *ngIf="vuelo">
-    <mat-card-header>
+<mat-card *ngIf="vuelo" class="avianca-card">
+    <mat-card-header class="avianca-card-header">
       <mat-card-title>{{ vuelo.origen }} a {{ vuelo.destino }}</mat-card-title>
       <mat-card-subtitle>{{ vuelo.fechaSalida | date : "dd/MM/yyyy hh:mm a" }}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="avianca-card-content">
       <!-- Aquí puedes poner más detalles sobre el vuelo -->
     </mat-card-content>
   </mat-card>
