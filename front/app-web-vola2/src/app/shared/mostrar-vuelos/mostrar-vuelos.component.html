@@ -13,9 +13,12 @@
   <app-card-resumen-vuelo [vuelo]="vueloRegresoSeleccionado"></app-card-resumen-vuelo>
 </div>
 
+
+<div *ngIf="!idaSeleccionada" >
+  <h2>Vuelos de Ida</h2>
+</div>
 <!-- Mostrar los vuelos de ida -->
 <div class="vuelos-container" *ngIf="!idaSeleccionada">
-  <h2>Vuelos de Ida</h2>
   <div class="vuelo-item" *ngFor="let vuelo of vuelos" (click)="seleccionarVueloIda(vuelo)">
     <div class="info">
       <div class="fecha-hora">{{ vuelo.fechaSalida | date : "hh:mm a" }}</div>
@@ -30,9 +33,12 @@
   </div>
 </div>
 
+
 <!-- Mostrar los vuelos de regreso (si hay un vuelo de ida seleccionado y la reserva no está completa) -->
-<div *ngIf="vueloIdaSeleccionado && !reservaCompleta" class="vuelos-container">
+<div  *ngIf="vueloIdaSeleccionado && !reservaCompleta">
   <h2>Vuelos de Regreso</h2>
+</div>
+<div *ngIf="vueloIdaSeleccionado && !reservaCompleta" class="vuelos-container">
   <div class="vuelo-item" *ngFor="let vuelo of vuelosDeRegreso" (click)="seleccionarVueloRegreso(vuelo)">
     <div class="info">
       <div class="fecha-hora">{{ vuelo.fechaSalida | date : "hh:mm a" }}</div>
