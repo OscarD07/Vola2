@@ -6,17 +6,21 @@
 
 <section class="container-personalizacion">
     <mat-tab-group>
-        <div class="personalizacion-card">
+        <div class="personalizacion-card" *ngIf="datosBusqueda.soloIda">
             <mat-tab label="Ida">
                 <app-avion></app-avion>
             </mat-tab>
         </div>
-        <div class="personalizacion-card">
+        <div class="personalizacion-card" *ngIf="!datosBusqueda.soloIda">
+            <mat-tab label="Ida">
+                <app-avion></app-avion>
+            </mat-tab>
             <mat-tab label="Vuelta">
                 <app-avion></app-avion>
             </mat-tab>
         </div>
     </mat-tab-group>
 </section>
+
 
 
