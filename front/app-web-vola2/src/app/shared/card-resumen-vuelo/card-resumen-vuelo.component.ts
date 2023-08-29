@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Vuelo } from '../../models/vuelo.model';
+import { Vuelo } from 'src/app/models/vuelo.model';
 
 @Component({
   selector: 'app-card-resumen-vuelo',

@@ -42,7 +42,6 @@ const controller = {
                 origen: req.params.origen,
                 destino: req.params.destino,
                 fechaSalida: { $gte: fechaSalida, $lt: fechaSiguiente },
-                asientosDisponibles: { $gte: parseInt(req.params.num_pasajeros) },
                 // Corregido para acceder a la fechaSalida
             }).sort({ fechaSalida: 1 }); // Ordenar por fecha de salida ascendente
             if (!vuelos || vuelos.length === 0) {
