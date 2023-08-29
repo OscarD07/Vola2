@@ -1,0 +1,91 @@
+
+   <div class="tab-container">
+  
+    <mat-tab-group (selectedTabChange)="changeTab($event)">
+        
+        <mat-tab *ngFor="let adult of adults; let i = index" [label]="adult">
+            <div>
+                <h2>{{ currentName }} - {{ currentTab }}</h2>
+                <p>Autocompletar con Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o documento de identidad de cada pasajero.</p>
+              </div>
+          <form [formGroup]="adultForms[i]" (input)="updateCurrentName(adultForms[i])">
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="firstName">
+            </mat-form-field>
+      
+            <mat-form-field>
+              <mat-label>Apellido</mat-label>
+              <input matInput formControlName="lastName">
+            </mat-form-field>
+          </form>
+        </mat-tab>
+      
+        <mat-tab *ngFor="let senior of seniors; let i = index" [label]="senior">
+              <div>
+        <h2>{{ currentName }} - {{ currentTab }}</h2>
+        <p>Autocompletar con Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o documento de identidad de cada pasajero.</p>
+      </div>
+          <form [formGroup]="seniorForms[i]" (input)="updateCurrentName(seniorForms[i])">
+            <!-- Campos del formulario -->
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="firstName">
+            </mat-form-field>
+      
+            <mat-form-field>
+              <mat-label>Apellido</mat-label>
+              <input matInput formControlName="lastName">
+            </mat-form-field>
+      
+            <mat-form-field>
+              <mat-label>Fecha de Nacimiento</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="birthdate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </form>
+        </mat-tab>
+      
+        <mat-tab *ngFor="let child of children; let i = index" [label]="child">
+    
+            <div>
+                <h2>{{ currentName }} - {{ currentTab }}</h2>
+                <p>Autocompletar con Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o documento de identidad de cada pasajero.</p>
+              </div>
+          <form [formGroup]="childForms[i]" (input)="updateCurrentName(childForms[i])">
+            <!-- Campos del formulario -->
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="firstName">
+            </mat-form-field>
+      
+            <mat-form-field>
+              <mat-label>Apellido</mat-label>
+              <input matInput formControlName="lastName">
+            </mat-form-field>
+      
+            <mat-form-field>
+              <mat-label>Fecha de Nacimiento</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="birthdate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </form>
+        </mat-tab>
+      </mat-tab-group>
+
+      <button 
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="continuarConPersonalizacion()" 
+      style="color: white"
+      class="buton-contenedor"
+    >
+      Continua a la seleccion de asientos
+    </button>
+   </div>
+  
+
+  

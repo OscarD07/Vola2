@@ -13,16 +13,23 @@ export class DropdownContadorPasajerosComponent {
 
   options = ['adulto', 'niños', 'adulto mayor'];
   selectedOption = 'Pasajeros';
-
+  maxPasajeros = 9;
   constructor() {}
 
   increment(option: string): void {
-    const control = this.getControl(option);
-    if (control) {
-      control.setValue(control.value + 1);
+    const totalPasajeros = this.sumaPasajeros();
+    if (totalPasajeros < this.maxPasajeros) {
+      const control = this.getControl(option);
+      if (control) {
+        control.setValue(control.value + 1);
+      }
     }
   }
-
+  sumaPasajeros(): number {
+    return (this.getControl('adulto')?.value || 0) +
+           (this.getControl('niños')?.value || 0) +
+           (this.getControl('adulto mayor')?.value || 0);
+  }
   decrement(option: string): void {
     const control = this.getControl(option);
     if (control && control.value > 0) {
@@ -31,12 +38,9 @@ export class DropdownContadorPasajerosComponent {
   }
 
 
-  sumaPasajeros(): string{
-    var cantidadNumerica = (this.getControl('adulto')?.value || 0) +
-                        (this.getControl('niños')?.value || 0) +
-                        (this.getControl('adulto mayor')?.value || 0);
-
-var cantidad = "Pasajeros: " + cantidadNumerica;
+  placeholderPasajeros(): string{
+   
+var cantidad = "Pasajeros: " + this.sumaPasajeros();
 return (cantidad)
   }
    getControl(option: string): FormControl | null {

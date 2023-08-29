@@ -19,7 +19,7 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
   idaSeleccionada: boolean = false;
   reservaCompleta: boolean = false;
   vuelosSeleccionados: Vuelo[] = [];
-
+  soloIda!: boolean;
   constructor(private vuelosService: VuelosService, private router: Router) {
     this.inicializarVuelosYBusqueda();
   }
@@ -35,9 +35,12 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
   inicializarVuelosYBusqueda() {
     this.vuelos = this.vuelosService.verificarvuelo();
     const datosGuardados = sessionStorage.getItem('datosBusqueda');
+    
     if (datosGuardados) {
       this.datosBusqueda = JSON.parse(datosGuardados);
     }
+    this.soloIda=this.datosBusqueda.soloIda;
+    console.log("soloIda?", this.soloIda)
   }
 
   inicializarSuscripcionAVuelos() {
@@ -90,13 +93,13 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
   }
 
   verificarReservaCompleta() {
-    if (this.vueloIdaSeleccionado && this.vueloRegresoSeleccionado) {
+    if (this.vueloIdaSeleccionado && this.vueloRegresoSeleccionado || this.vueloIdaSeleccionado && this.soloIda) {
       this.reservaCompleta = true;
     }
   }
 
   continuarConPersonalizacion() {
-    this.router.navigate(['/personalizacion']);
+    this.router.navigate(['/pasajeros']);
   }
 
   actualizarVuelosEnSessionStorage() {

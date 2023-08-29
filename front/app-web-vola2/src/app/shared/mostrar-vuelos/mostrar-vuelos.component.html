@@ -35,10 +35,10 @@
 
 
 <!-- Mostrar los vuelos de regreso (si hay un vuelo de ida seleccionado y la reserva no está completa) -->
-<div  *ngIf="vueloIdaSeleccionado && !reservaCompleta">
+<div  *ngIf="vueloIdaSeleccionado && !reservaCompleta && !soloIda">
   <h2>Vuelos de Regreso</h2>
 </div>
-<div *ngIf="vueloIdaSeleccionado && !reservaCompleta" class="vuelos-container">
+<div *ngIf="vueloIdaSeleccionado && !reservaCompleta && !soloIda" class="vuelos-container">
   <div class="vuelo-item" *ngFor="let vuelo of vuelosDeRegreso" (click)="seleccionarVueloRegreso(vuelo)">
     <div class="info">
       <div class="fecha-hora">{{ vuelo.fechaSalida | date : "hh:mm a" }}</div>

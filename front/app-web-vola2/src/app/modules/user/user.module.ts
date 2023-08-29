@@ -19,6 +19,7 @@ import {
 } from "@coreui/angular";
 import {RouterLink} from "@angular/router";
 import {MatTabsModule} from "@angular/material/tabs";
+import { PasajerosComponent } from './pasajeros/pasajeros.component';
 
 
 
@@ -31,6 +32,7 @@ import {MatTabsModule} from "@angular/material/tabs";
     PagosComponent,
     PersonalizacionComponent,
     HeaderComponent,
+    PasajerosComponent,
 
   ],
     imports: [
