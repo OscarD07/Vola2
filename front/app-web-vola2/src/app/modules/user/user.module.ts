@@ -20,7 +20,8 @@ import {
 import {RouterLink} from "@angular/router";
 import {MatTabsModule} from "@angular/material/tabs";
 import { PasajerosComponent } from './pasajeros/pasajeros.component';
-
+import { SeleccionTarifaComponent } from './seleccion-tarifa/seleccion-tarifa.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -33,6 +34,8 @@ import { PasajerosComponent } from './pasajeros/pasajeros.component';
     PersonalizacionComponent,
     HeaderComponent,
     PasajerosComponent,
+    SeleccionTarifaComponent,
+    CarritoComponent,
 
   ],
     imports: [
@@ -49,6 +52,9 @@ import { PasajerosComponent } from './pasajeros/pasajeros.component';
         CarouselControlComponent,
         RouterLink,
         MatTabsModule,
+        CommonModule,
+        MatTableModule,
     ]
 })
 export class UserModule { }
+export class CarritoModule { }
