@@ -8,8 +8,7 @@ import { NavComponent } from './modules/components/nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { UserModule } from './modules/user/user.module';
 import {NgOptimizedImage} from "@angular/common";
-
-
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -20,6 +19,7 @@ import {NgOptimizedImage} from "@angular/common";
   ],
     imports: [
         BrowserModule,
+        MatTableModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MatToolbarModule,

@@ -1,0 +1,7 @@
+<h2>Seleccionar Tarifa de Vuelo</h2>
+<mat-radio-group [(ngModel)]="tarifaSeleccionada">
+  <mat-radio-button *ngFor="let tarifa of tarifas" [value]="tarifa.value">
+    {{ tarifa.label }}
+  </mat-radio-button>
+</mat-radio-group>
+<button mat-raised-button color="primary" (click)="continuar()">Continuar</button>
