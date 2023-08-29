@@ -59,4 +59,13 @@ export class VuelosService {
         const url = `${this.url}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}/${numPasajeros}`;
         return this._http.get(url);
     }
+
+    solicitarLinkPago(
+        orderAmount: number
+    ): Observable<any> {
+        const url = `http://127.0.0.1:3600/create-order/${orderAmount}`;
+        return this._http.get(url);
+    }
+
+
 }

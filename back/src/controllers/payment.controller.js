@@ -9,13 +9,16 @@ import {
 
 const controller = {
     createOrder: async function (req, res) {
+
+        const orderAmount = req.params.orderAmount;
+
         const order = {
             intent: "CAPTURE",
             purchase_units: [
                 {
                     amount: {
                         currency_code: "USD",
-                        value: "100.00",
+                        value: orderAmount,
                     },
                 },
             ],
@@ -43,7 +46,8 @@ const controller = {
                     Authorization: `Bearer ${access_token}`,
                 }
             })
-        return res.json(response.data);
+
+        return res.json(response.data.links[1].href);
     },
     captureOrder: async function (req, res) {
 
@@ -59,10 +63,10 @@ const controller = {
         })
         console.log(response.data);
 
-        return res.redirect(`${HOST_FRONTEND}/approved.html`);
+        return res.redirect(`${HOST_FRONTEND}/approved`);
     },
     cancelOrder: async function (req, res) {
-        return res.redirect(`${HOST_FRONTEND}/home.html`);
+        return res.redirect(`${HOST_FRONTEND}/home`);
     }
 
 

@@ -40,27 +40,27 @@ export class FormularioEvComponent implements OnInit, OnChanges {
     }
 
     private inicializarFormulario(): void {
-      this.form = this.fb.group({
-        origen: [this.datosBusqueda.origen, Validators.required],
-        destino: [this.datosBusqueda.destino, Validators.required],
-        fechaSalida: [new Date(this.datosBusqueda.fechaSalida), Validators.required],
-        fechaVuelta: [new Date(this.datosBusqueda.fechaVuelta), Validators.required],
-        numPasajeros: [this.datosBusqueda.adulto+this.datosBusqueda.ninosControl+this.datosBusqueda.adultoMayor || 1, [Validators.required, Validators.min(1)]],
-        soloIda: [this.datosBusqueda.soloIda, Validators.required],
-        adulto: [this.datosBusqueda.adulto, [Validators.required, Validators.min(0)]], // nuevo
-        niños: [this.datosBusqueda.niños, [Validators.required, Validators.min(0)]], // nuevo
-        adultoMayor: [this.datosBusqueda.adultoMayor, [Validators.required, Validators.min(0)]] // nuevo
-      });
+        this.form = this.fb.group({
+            origen: [this.datosBusqueda.origen, Validators.required],
+            destino: [this.datosBusqueda.destino, Validators.required],
+            fechaSalida: [new Date(this.datosBusqueda.fechaSalida), Validators.required],
+            fechaVuelta: [new Date(this.datosBusqueda.fechaVuelta), Validators.required],
+            numPasajeros: [this.datosBusqueda.adulto + this.datosBusqueda.ninosControl + this.datosBusqueda.adultoMayor || 1, [Validators.required, Validators.min(1)]],
+            soloIda: [this.datosBusqueda.soloIda, Validators.required],
+            adulto: [this.datosBusqueda.adulto, [Validators.required, Validators.min(0)]], // nuevo
+            niños: [this.datosBusqueda.niños, [Validators.required, Validators.min(0)]], // nuevo
+            adultoMayor: [this.datosBusqueda.adultoMayor, [Validators.required, Validators.min(0)]] // nuevo
+        });
     }
 
-    sumarPasajeros(): void{
-       
+    sumarPasajeros(): void {
+
     }
-    
+
 
     guardarCambiosYBuscarVuelos(): void {
         this.datosBusqueda = this.form.value;
-        this.datosBusqueda.numPasajeros=this.datosBusqueda.adulto+this.datosBusqueda.niños+this.datosBusqueda.adultoMayor
+        this.datosBusqueda.numPasajeros = this.datosBusqueda.adulto + this.datosBusqueda.niños + this.datosBusqueda.adultoMayor
         console.log(this.datosBusqueda);
         sessionStorage.setItem('datosBusqueda', JSON.stringify(this.datosBusqueda));
         this.buscarVuelos();
@@ -69,7 +69,6 @@ export class FormularioEvComponent implements OnInit, OnChanges {
         }
     }
 
-  
 
     buscarVuelos(): void {
         this.showError = true;

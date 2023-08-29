@@ -1,38 +1,53 @@
 <h1>Detalles del Carrito</h1>
 
-<ng-container *ngIf="items.length > 0; else emptyCart">
-  <table mat-table [dataSource]="items" class="mat-elevation-z8">
+<section class="carrito-container">
+    <ng-container *ngIf="items.length > 0; else emptyCart">
+        <table mat-table [dataSource]="items" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="boleto">
-      <th mat-header-cell *matHeaderCellDef>Boleto</th>
-      <td mat-cell *matCellDef="let item">{{ item.boleto }}</td>
+            <ng-container matColumnDef="boleto">
+                <th mat-header-cell *matHeaderCellDef>Boleto</th>
+                <td mat-cell *matCellDef="let item">{{ item.boleto }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="cantidad">
+                <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+                <td mat-cell *matCellDef="let item">{{ item.cantidad }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="ida">
+                <th mat-header-cell *matHeaderCellDef>Precio Unitario Ida</th>
+                <td mat-cell *matCellDef="let item">{{ item.ida | currency }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="vuelta">
+                <th mat-header-cell *matHeaderCellDef>Precio Unitario Vuelta</th>
+                <td mat-cell *matCellDef="let item">{{ item.vuelta | currency }}</td>
+            </ng-container>
+            <ng-container matColumnDef="adicionales">
+                <th mat-header-cell *matHeaderCellDef>Precio Adicionales</th>
+                <td mat-cell *matCellDef="let item">{{ item.adicionales | currency }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+                <th mat-header-cell *matHeaderCellDef>Total</th>
+                <td mat-cell *matCellDef="let item">{{ item.total | currency }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['boleto', 'cantidad', 'ida', 'vuelta', 'adicionales', 'total']"></tr>
+            <tr mat-row
+                *matRowDef="let row; columns: ['boleto', 'cantidad', 'ida', 'vuelta', 'adicionales', 'total']"></tr>
+        </table>
+
+        <div class="total">
+            <p>Total General: {{ calcularTotalGeneral() | currency }}</p>
+        </div>
+        <div class="container-buttons">
+            <button mat-raised-button color="primary" (click)="vaciarCarrito()">Vaciar Carrito</button>
+            <button mat-raised-button color="primary" (click)="pagar()">Pagar</button>
+        </div>
     </ng-container>
-
-    <ng-container matColumnDef="cantidad">
-      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
-      <td mat-cell *matCellDef="let item">{{ item.cantidad }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="precio">
-      <th mat-header-cell *matHeaderCellDef>Precio Unitario</th>
-      <td mat-cell *matCellDef="let item">{{ item.precio | currency }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="total">
-      <th mat-header-cell *matHeaderCellDef>Total</th>
-      <td mat-cell *matCellDef="let item">{{ item.total | currency }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="['boleto', 'cantidad', 'precio', 'total']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['boleto', 'cantidad', 'precio', 'total']"></tr>
-  </table>
-
-  <div class="total">
-    <p>Total General: {{ calcularTotalGeneral() | currency }}</p>
-  </div>
-  <button mat-raised-button color="primary" (click)="vaciarCarrito()">Vaciar Carrito</button>
-</ng-container>
+</section>
 
 <ng-template #emptyCart>
-  <p>El carrito está vacío.</p>
+    <p>El carrito está vacío.</p>
 </ng-template>

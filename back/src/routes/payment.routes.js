@@ -22,7 +22,7 @@ const router = express.Router();
  *       '500':
  *         description: Error del servidor
  */
-router.get('/create-order', paymentController.createOrder);
+router.get('/create-order/:orderAmount', paymentController.createOrder);
 
 /**
  * @swagger

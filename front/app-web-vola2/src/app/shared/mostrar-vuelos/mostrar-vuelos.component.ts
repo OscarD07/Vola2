@@ -76,14 +76,14 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
         ).subscribe(
             (data) => {
                 this.vuelos = data.vuelos;
-                console.log(this.vuelos);
+                sessionStorage.setItem('vueloIda', JSON.stringify(data.vuelos));
             },
             (error) => {
                 this.vuelosDeRegreso = [];
                 console.error('Error al buscar vuelos de regreso:', error);
             }
         );
-    
+
         this.vuelosService.buscarVuelosDeRegreso(
             vuelo.destino,
             vuelo.origen,
@@ -92,6 +92,7 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
         ).subscribe(
             (data) => {
                 this.vuelosDeRegreso = data.vuelos;
+                sessionStorage.setItem('vueloRegreso', JSON.stringify(data.vuelos));
             },
             (error) => {
                 this.vuelosDeRegreso = [];

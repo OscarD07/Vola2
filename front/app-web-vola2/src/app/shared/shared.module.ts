@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormularioEvComponent } from './formulario-ev/formulario-ev.component';
-import { ResumenVueloComponent } from './resumen-vuelo/resumen-vuelo.component';
 import { OpcionesFechasComponent } from './opciones-fechas/opciones-fechas.component';
 import { InputFiltradoComponent } from './input-filtrado/input-filtrado.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,7 +32,6 @@ import { MatMenuModule } from '@angular/material/menu';
 
     declarations: [
         FormularioEvComponent,
-        ResumenVueloComponent,
         OpcionesFechasComponent,
         InputFiltradoComponent,
         MostrarVuelosComponent,
@@ -68,7 +66,6 @@ import { MatMenuModule } from '@angular/material/menu';
         MatSelectModule,
         MatButtonToggleModule,
         MatMenuModule,
-        ResumenVueloComponent
     ],
     imports: [
         CommonModule,
