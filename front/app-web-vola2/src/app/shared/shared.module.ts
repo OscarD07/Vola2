@@ -54,7 +54,8 @@ import { CardResumenVueloComponent } from './card-resumen-vuelo/card-resumen-vue
         HttpClientModule,
         MatIconModule,
         MatRadioModule,
-        AvionComponent
+        AvionComponent,
+        CardResumenVueloComponent
     ],
     imports: [
         CommonModule,

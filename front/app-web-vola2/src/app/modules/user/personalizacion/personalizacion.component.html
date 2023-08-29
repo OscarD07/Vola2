@@ -7,16 +7,22 @@
 <section class="container-personalizacion">
     <mat-tab-group>
         <div class="personalizacion-card" *ngIf="datosBusqueda.soloIda">
-            <mat-tab label="Ida">
-                <app-avion></app-avion>
+            <mat-tab label="Ida" class="tab-vuelo">
+                <div class="tab-vuelo">
+                    <app-avion></app-avion>
+                    <app-card-resumen-vuelo></app-card-resumen-vuelo>
+                </div>
             </mat-tab>
         </div>
         <div class="personalizacion-card" *ngIf="!datosBusqueda.soloIda">
             <mat-tab label="Ida">
                 <app-avion></app-avion>
             </mat-tab>
-            <mat-tab label="Vuelta">
-                <app-avion></app-avion>
+            <mat-tab label="Vuelta" class="tab-vuelo">
+                <div class="tab-vuelo">
+                    <app-avion></app-avion>
+                    <app-card-resumen-vuelo></app-card-resumen-vuelo>
+                </div>
             </mat-tab>
         </div>
     </mat-tab-group>
