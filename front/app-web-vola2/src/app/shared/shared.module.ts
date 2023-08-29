@@ -24,6 +24,11 @@ import { AsientoComponent } from './asiento/asiento.component';
 import { AvionComponent } from './avion/avion.component';
 import { CardResumenVueloComponent } from './card-resumen-vuelo/card-resumen-vuelo.component';
 import { CarrittoBarraComponent } from './carritto-barra/carritto-barra.component';
+import { DropdownContadorPasajerosComponent } from './dropdown-contador-pasajeros/dropdown-contador-pasajeros.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatMenuModule } from '@angular/material/menu';
+
 @NgModule({
 
     declarations: [
@@ -36,7 +41,9 @@ import { CarrittoBarraComponent } from './carritto-barra/carritto-barra.componen
         AsientoComponent,
         AvionComponent,
         CardResumenVueloComponent,
-        CarrittoBarraComponent
+        CarrittoBarraComponent,
+        DropdownContadorPasajerosComponent,
+        
     ],
     exports: [
         FormularioEvComponent,
@@ -56,7 +63,10 @@ import { CarrittoBarraComponent } from './carritto-barra/carritto-barra.componen
         HttpClientModule,
         MatIconModule,
         MatRadioModule,
-        AvionComponent
+        AvionComponent,
+        MatSelectModule,
+        MatButtonToggleModule,
+        MatMenuModule
     ],
     imports: [
         CommonModule,
@@ -73,7 +83,10 @@ import { CarrittoBarraComponent } from './carritto-barra/carritto-barra.componen
         MatDividerModule,
         HttpClientModule,
         MatIconModule,
-        MatRadioModule
+        MatRadioModule,
+        MatSelectModule,
+        MatButtonToggleModule,
+        MatMenuModule
     ]
 })
 export class SharedModule { }
