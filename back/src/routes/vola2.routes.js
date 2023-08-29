@@ -1,23 +1,15 @@
-'use strict'
-var express = require('express');
-const Vola2Controller = require('../controllers/vola2');
-var router = express.Router();
-var multipart = require('connect-multiparty'); //permite subir archivos
-var multipartMiddleware = multipart({ uploadDir: './uploads' });
+import express from 'express';
+import Vola2Controller from '../controllers/vola2.controller.js';
 
+const router = express.Router();
 
 /**
  * @swagger
- * /vola2:
- *   get:
- *     summary: Página principal de Vola2
- *     tags: [Vola2]
- *     responses:
- *       200:
- *         description: Página principal cargada exitosamente
+ * tags:
+ *   name: Vola2
+ *   description: Endpoints relacionados con Vola2
  */
 
-router.get('/vola2', Vola2Controller.home);
 /**
  * @swagger
  * /vola2/get-vuelos:
@@ -25,7 +17,7 @@ router.get('/vola2', Vola2Controller.home);
  *     summary: Obtiene la lista de vuelos
  *     tags: [Vola2]
  *     responses:
- *       200:
+ *       '200':
  *         description: Lista de vuelos
  *         content:
  *           application/json:
@@ -38,9 +30,9 @@ router.get('/vola2', Vola2Controller.home);
  *                     type: integer
  *                   nombre:
  *                     type: string
- *                   
  */
 router.get('/vola2/get-vuelos', Vola2Controller.getVuelos);
+
 /**
  * @swagger
  * /vola2/guardar-vuelo:
@@ -57,10 +49,11 @@ router.get('/vola2/get-vuelos', Vola2Controller.getVuelos);
  *               nombre:
  *                 type: string
  *     responses:
- *       200:
+ *       '200':
  *         description: Vuelo guardado exitosamente
  */
 router.post('/vola2/guardar-vuelo', Vola2Controller.saveVuelo);
+
 /**
  * @swagger
  * /vola2/get-vuelos-buscar/{origen}/{destino}/{fechaSalida}/{num_pasajeros}:
@@ -90,7 +83,7 @@ router.post('/vola2/guardar-vuelo', Vola2Controller.saveVuelo);
  *         schema:
  *           type: integer
  *     responses:
- *       200:
+ *       '200':
  *         description: Lista de vuelos que coinciden con la búsqueda
  *         content:
  *           application/json:
@@ -106,4 +99,4 @@ router.post('/vola2/guardar-vuelo', Vola2Controller.saveVuelo);
  */
 router.get('/vola2/get-vuelos-buscar/:origen/:destino/:fechaSalida/:num_pasajeros', Vola2Controller.getVuelosBuscar);
 
-module.exports = router;
+export default router;
