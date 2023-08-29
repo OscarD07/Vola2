@@ -21,22 +21,42 @@ export class VuelosService {
         });
     }
 
+    buscarVueloDatos(
+        origen: string,
+        destino: string,
+        fechaSalida: string,
+        numPasajeros: string
+    ): Observable<any> {
+        const url = `${this.url}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}/${numPasajeros}`;
+        return this._http.get(url);
+
+    }
+
+    verificarvuelo(): Vuelo[] {
+        this.vuelosActualizados.next([...this.vuelos]);
+        return this.vuelos;
+    }
+
+    getVuelosActualizadosListener(): Observable<Vuelo[]> {
+        return this.vuelosActualizados.asObservable();
+    }
+
     buscarVuelos(): Observable<any> {
         return this._http.get(this.url, {headers: this.getHeaders()});
     }
 
-  getVuelos(): Vuelo[] {
-    return [...this.vuelos];
-  }
+    getVuelos(): Vuelo[] {
+        return [...this.vuelos];
+    }
 
-  // Añadir este método en tu VuelosService
-buscarVuelosDeRegreso(
-  origen: string,
-  destino: string,
-  fechaSalida: string,
-  numPasajeros: string
-): Observable<any> {
-  const url = `${this.url}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}/${numPasajeros}`;
-  return this._http.get(url);
-}
+    // Añadir este método en tu VuelosService
+    buscarVuelosDeRegreso(
+        origen: string,
+        destino: string,
+        fechaSalida: string,
+        numPasajeros: string
+    ): Observable<any> {
+        const url = `${this.url}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}/${numPasajeros}`;
+        return this._http.get(url);
+    }
 }
