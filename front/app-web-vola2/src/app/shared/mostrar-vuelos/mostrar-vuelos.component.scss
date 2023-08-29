@@ -77,3 +77,23 @@
     width: 200px;
     margin-right: 5px;
   }
+
+  .vuelo-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .boton-contenedor {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;  /* Ajusta según tu necesidad para asegurarte de que el botón aparezca encima de otros elementos */
+  }
+  

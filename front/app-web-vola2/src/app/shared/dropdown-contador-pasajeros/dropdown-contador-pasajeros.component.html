@@ -1,0 +1,21 @@
+<mat-form-field appearance="outline">
+  <mat-label>Selecciona una categoría</mat-label>
+  <input matInput [matMenuTriggerFor]="menu" readonly [value]=sumaPasajeros() placeholder="holi">
+</mat-form-field>
+
+<mat-menu #menu="matMenu">
+  <div *ngFor="let option of options">
+    <button mat-menu-item>
+      {{ option | titlecase }}
+    </button>
+    <div class="counter-container">
+      <button mat-icon-button (click)="decrement(option); $event.stopPropagation()">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <span>{{ getControl(option)?.value }}</span>
+      <button mat-icon-button (click)="increment(option); $event.stopPropagation()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-menu>

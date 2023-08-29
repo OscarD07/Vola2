@@ -40,18 +40,27 @@ export class FormularioEvComponent implements OnInit, OnChanges {
     }
 
     private inicializarFormulario(): void {
-        this.form = this.fb.group({
-            origen: [this.datosBusqueda.origen, Validators.required],
-            destino: [this.datosBusqueda.destino, Validators.required],
-            fechaSalida: [new Date(this.datosBusqueda.fechaSalida), Validators.required],
-            fechaVuelta: [new Date(this.datosBusqueda.fechaVuelta), Validators.required],
-            numPasajeros: [this.datosBusqueda.numPasajeros || 1, [Validators.required, Validators.min(1)]],
-            soloIda: [this.datosBusqueda.soloIda, Validators.required]
-        });
+      this.form = this.fb.group({
+        origen: [this.datosBusqueda.origen, Validators.required],
+        destino: [this.datosBusqueda.destino, Validators.required],
+        fechaSalida: [new Date(this.datosBusqueda.fechaSalida), Validators.required],
+        fechaVuelta: [new Date(this.datosBusqueda.fechaVuelta), Validators.required],
+        numPasajeros: [this.datosBusqueda.adulto+this.datosBusqueda.ninosControl+this.datosBusqueda.adultoMayor || 1, [Validators.required, Validators.min(1)]],
+        soloIda: [this.datosBusqueda.soloIda, Validators.required],
+        adulto: [this.datosBusqueda.adulto, [Validators.required, Validators.min(0)]], // nuevo
+        niños: [this.datosBusqueda.niños, [Validators.required, Validators.min(0)]], // nuevo
+        adultoMayor: [this.datosBusqueda.adultoMayor, [Validators.required, Validators.min(0)]] // nuevo
+      });
     }
+
+    sumarPasajeros(): void{
+       
+    }
+    
 
     guardarCambiosYBuscarVuelos(): void {
         this.datosBusqueda = this.form.value;
+        this.datosBusqueda.numPasajeros=this.datosBusqueda.adulto+this.datosBusqueda.niños+this.datosBusqueda.adultoMayor
         console.log(this.datosBusqueda);
         sessionStorage.setItem('datosBusqueda', JSON.stringify(this.datosBusqueda));
         this.buscarVuelos();
@@ -108,5 +117,17 @@ export class FormularioEvComponent implements OnInit, OnChanges {
 
     get soloIdaControl(): FormControl {
         return this.form.get('soloIda') as FormControl;
+    }
+
+    get adultoControl(): FormControl {
+        return this.form.get('adulto') as FormControl;
+    }
+
+    get ninosControl(): FormControl {
+        return this.form.get('niños') as FormControl;
+    }
+
+    get adultoMayorControl(): FormControl {
+        return this.form.get('adultoMayor') as FormControl;
     }
 }

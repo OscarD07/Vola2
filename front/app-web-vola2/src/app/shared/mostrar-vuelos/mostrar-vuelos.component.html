@@ -1,17 +1,68 @@
-<div class="resumenVuelo">
-  <app-card-resumen-vuelo *ngIf="vueloSeleccionado"></app-card-resumen-vuelo>
+<!-- Mostrar el título de Resumen de Vuelo si la reserva está completa -->
+<div *ngIf="reservaCompleta">
+  <h2>Resumen de Vuelo</h2>
 </div>
-<div class="vuelos-container">
-    <div class="vuelo-item" *ngFor="let vuelo of vuelos" (click)="personalizarVuelo(vuelo)">
-      <div class="info">
-        <div class="fecha-hora">{{ vuelo.fechaSalida | date : "hh:mm a" }}</div>
-        <div class="origen">origen {{ vuelo.origen }}</div>
-        <div class="destino">destino {{ vuelo.destino }}</div>
-      </div>
-    </div>
-    <div class="no-vuelos-message" *ngIf="vuelos.length === 0">
-      <mat-card>
-        <mat-card-content>No hay vuelos disponibles.</mat-card-content>
-      </mat-card>
+
+<!-- Mostrar el vuelo de ida seleccionado en una tarjeta -->
+<div class="resumenVuelo" *ngIf="vueloIdaSeleccionado">
+  <app-card-resumen-vuelo [vuelo]="vueloIdaSeleccionado"></app-card-resumen-vuelo>
+</div>
+
+<!-- Mostrar el vuelo de regreso seleccionado en una tarjeta -->
+<div class="resumenVuelo" *ngIf="vueloRegresoSeleccionado">
+  <app-card-resumen-vuelo [vuelo]="vueloRegresoSeleccionado"></app-card-resumen-vuelo>
+</div>
+
+
+<div *ngIf="!idaSeleccionada" >
+  <h2>Vuelos de Ida</h2>
+</div>
+<!-- Mostrar los vuelos de ida -->
+<div class="vuelos-container" *ngIf="!idaSeleccionada">
+  <div class="vuelo-item" *ngFor="let vuelo of vuelos" (click)="seleccionarVueloIda(vuelo)">
+    <div class="info">
+      <div class="fecha-hora">{{ vuelo.fechaSalida | date : "hh:mm a" }}</div>
+      <div class="origen">origen {{ vuelo.origen }}</div>
+      <div class="destino">destino {{ vuelo.destino }}</div>
     </div>
   </div>
+  <div class="no-vuelos-message" *ngIf="vuelos.length === 0">
+    <mat-card>
+      <mat-card-content>No hay vuelos disponibles.</mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+<!-- Mostrar los vuelos de regreso (si hay un vuelo de ida seleccionado y la reserva no está completa) -->
+<div  *ngIf="vueloIdaSeleccionado && !reservaCompleta && !soloIda">
+  <h2>Vuelos de Regreso</h2>
+</div>
+<div *ngIf="vueloIdaSeleccionado && !reservaCompleta && !soloIda" class="vuelos-container">
+  <div class="vuelo-item" *ngFor="let vuelo of vuelosDeRegreso" (click)="seleccionarVueloRegreso(vuelo)">
+    <div class="info">
+      <div class="fecha-hora">{{ vuelo.fechaSalida | date : "hh:mm a" }}</div>
+      <div class="origen">origen {{ vuelo.origen }}</div>
+      <div class="destino">destino {{ vuelo.destino }}</div>
+    </div>
+  </div>
+  <div class="no-vuelos-message" *ngIf="vuelosDeRegreso.length === 0">
+    <mat-card>
+      <mat-card-content>No hay vuelos de regreso disponibles.</mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!-- Botón para continuar con la personalización -->
+<div *ngIf="reservaCompleta">
+  <button 
+    mat-raised-button
+    color="primary"
+    type="submit"
+    (click)="continuarConPersonalizacion()" 
+    style="color: white"
+    class="buton-contenedor"
+  >
+    Continuar personalizando tu viaje
+  </button>
+</div>

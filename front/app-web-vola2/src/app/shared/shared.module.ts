@@ -23,6 +23,12 @@ import { MatRadioModule } from '@angular/material/radio';
 import { AsientoComponent } from './asiento/asiento.component';
 import { AvionComponent } from './avion/avion.component';
 import { CardResumenVueloComponent } from './card-resumen-vuelo/card-resumen-vuelo.component';
+import { CarrittoBarraComponent } from './carritto-barra/carritto-barra.component';
+import { DropdownContadorPasajerosComponent } from './dropdown-contador-pasajeros/dropdown-contador-pasajeros.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatMenuModule } from '@angular/material/menu';
+
 @NgModule({
 
     declarations: [
@@ -34,7 +40,10 @@ import { CardResumenVueloComponent } from './card-resumen-vuelo/card-resumen-vue
         FechasCercanasComponent,
         AsientoComponent,
         AvionComponent,
-        CardResumenVueloComponent
+        CardResumenVueloComponent,
+        CarrittoBarraComponent,
+        DropdownContadorPasajerosComponent,
+
     ],
     exports: [
         FormularioEvComponent,
@@ -55,7 +64,10 @@ import { CardResumenVueloComponent } from './card-resumen-vuelo/card-resumen-vue
         MatIconModule,
         MatRadioModule,
         AvionComponent,
-        CardResumenVueloComponent
+        CardResumenVueloComponent,
+        MatSelectModule,
+        MatButtonToggleModule,
+        MatMenuModule
     ],
     imports: [
         CommonModule,
@@ -72,7 +84,10 @@ import { CardResumenVueloComponent } from './card-resumen-vuelo/card-resumen-vue
         MatDividerModule,
         HttpClientModule,
         MatIconModule,
-        MatRadioModule
+        MatRadioModule,
+        MatSelectModule,
+        MatButtonToggleModule,
+        MatMenuModule
     ]
 })
 export class SharedModule { }
