@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
-    HOST,
+    HOST_BACKEND,
+    HOST_FRONTEND,
     PAYPAL_API_URL,
     PAYPAL_API_CLIENT,
     PAYPAL_API_SECRET
@@ -22,8 +23,8 @@ const controller = {
                 brand_name: "Vola2",
                 landing_page: "NO_PREFERENCE",
                 user_action: "PAY_NOW",
-                return_url: `${HOST}/capture-order`,
-                cancel_url: `${HOST}/cancel-order`,
+                return_url: `${HOST_BACKEND}/capture-order`,
+                cancel_url: `${HOST_BACKEND}/cancel-order`,
             }
         }
         const params = new URLSearchParams();
@@ -58,11 +59,10 @@ const controller = {
         })
         console.log(response.data);
 
-        // return res.redirect(`${HOST}/success.html`);
-        return res.json(`payed`);
+        return res.redirect(`${HOST_FRONTEND}/approved.html`);
     },
     cancelOrder: async function (req, res) {
-        return res.redirect(`${HOST}/home.html`);
+        return res.redirect(`${HOST_FRONTEND}/home.html`);
     }
 
 

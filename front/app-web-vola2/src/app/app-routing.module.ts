@@ -4,6 +4,7 @@ import { HomeComponent } from './modules/user/home/home.component';
 import { VuelosComponent } from './modules/user/vuelos/vuelos.component';
 import {PersonalizacionComponent} from "./modules/user/personalizacion/personalizacion.component";
 import { PasajerosComponent } from './modules/user/pasajeros/pasajeros.component';
+import {ApprovedComponent} from "./modules/user/approved/approved.component";
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path:'vuelos', component:VuelosComponent},
   {path:'personalizacion', component:PersonalizacionComponent},
   {path:'pasajeros', component:PasajerosComponent},
+  {path:'approved', component:ApprovedComponent},
   {path:'**', component:HomeComponent}//ruta 404 no se carga el componente
 
 ];

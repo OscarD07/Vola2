@@ -20,6 +20,7 @@ import {
 import {RouterLink} from "@angular/router";
 import {MatTabsModule} from "@angular/material/tabs";
 import { PasajerosComponent } from './pasajeros/pasajeros.component';
+import { ApprovedComponent } from './approved/approved.component';
 
 
 
@@ -33,6 +34,7 @@ import { PasajerosComponent } from './pasajeros/pasajeros.component';
     PersonalizacionComponent,
     HeaderComponent,
     PasajerosComponent,
+    ApprovedComponent,
 
   ],
     imports: [

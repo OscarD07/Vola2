@@ -67,7 +67,8 @@ import { MatMenuModule } from '@angular/material/menu';
         CardResumenVueloComponent,
         MatSelectModule,
         MatButtonToggleModule,
-        MatMenuModule
+        MatMenuModule,
+        ResumenVueloComponent
     ],
     imports: [
         CommonModule,
