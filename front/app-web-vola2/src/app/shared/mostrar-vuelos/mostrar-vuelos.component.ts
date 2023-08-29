@@ -68,6 +68,22 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
         this.vuelosSeleccionados[0] = vuelo;
         this.actualizarVuelosEnSessionStorage();
         this.idaSeleccionada = true;
+        this.vuelosService.buscarVueloDatos(
+            vuelo.origen,
+            vuelo.destino,
+            this.datosBusqueda.fechaSalida,
+            this.datosBusqueda.numPasajeros
+        ).subscribe(
+            (data) => {
+                this.vuelos = data.vuelos;
+                console.log(this.vuelos);
+            },
+            (error) => {
+                this.vuelosDeRegreso = [];
+                console.error('Error al buscar vuelos de regreso:', error);
+            }
+        );
+    
         this.vuelosService.buscarVuelosDeRegreso(
             vuelo.destino,
             vuelo.origen,
