@@ -10,7 +10,7 @@ export class SeleccionTarifaComponent {
   tarifas = [
     { label: 'Tarifa Básica', value: '1 artículo personal (morral) (debe caber bajo el asiento)', precio: 20 },
     { label: 'Tarifa Premium', value: '1 equipaje de mano (10 kg) + bolso', precio: 50},
-    { label: 'Tarifa VIP', value: '1 equipaje de mano (10 kg) + bolso'+'\n1 equipaje de bodega (23 kg)', precio: 100 }
+    { label: 'Tarifa VIP', value: '1 equipaje de mano (10 kg) + bolso'+'\n1 equipaje de bodega (23 kg)', precio: 70 }
   ];
   tarifaSeleccionada: string ='';
 
