@@ -2,7 +2,7 @@ import {Component, Input, OnInit, SimpleChanges, OnChanges} from '@angular/core'
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {VuelosService} from '../../services/vuelos.service';
-
+import { validarFechas } from '../../validators/app-validators'
 @Component({
     selector: 'app-formulario-ev',
     templateUrl: './formulario-ev.component.html',
@@ -50,12 +50,14 @@ export class FormularioEvComponent implements OnInit, OnChanges {
             adulto: [this.datosBusqueda.adulto, [Validators.required, Validators.min(0)]], // nuevo
             niños: [this.datosBusqueda.niños, [Validators.required, Validators.min(0)]], // nuevo
             adultoMayor: [this.datosBusqueda.adultoMayor, [Validators.required, Validators.min(0)]] // nuevo
-        });
+        }, { validators: validarFechas });
     }
 
     sumarPasajeros(): void {
 
     }
+
+    
 
 
     guardarCambiosYBuscarVuelos(): void {
