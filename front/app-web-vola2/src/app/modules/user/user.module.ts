@@ -22,6 +22,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import { PasajerosComponent } from './pasajeros/pasajeros.component';
 import { SeleccionTarifaComponent } from './seleccion-tarifa/seleccion-tarifa.component';
 import { MatTableModule } from '@angular/material/table';
+import {MatStepperModule} from "@angular/material/stepper";
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { MatTableModule } from '@angular/material/table';
         MatTabsModule,
         CommonModule,
         MatTableModule,
+        MatStepperModule,
     ]
 })
 export class UserModule { }

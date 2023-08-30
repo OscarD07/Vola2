@@ -4,28 +4,68 @@
     entre una variedad de opciones, como ventanas panorámicas para disfrutar de las vistas, pasillos para una mayor
     comodidad o asientos cerca de salidas de emergencia para un acceso rápido.</p>
 
+
 <section class="container-personalizacion">
-    <mat-tab-group>
-        <div class="personalizacion-card" *ngIf="datosBusqueda.soloIda">
-            <mat-tab label="Ida" class="tab-vuelo">
-                <div class="tab-vuelo">
-                    <app-avion></app-avion>
-                    <app-card-resumen-vuelo></app-card-resumen-vuelo>
-                    <app-seleccion-tarifa></app-seleccion-tarifa>
+    <mat-stepper orientation="vertical">
+        <mat-step>
+            <ng-template matStepLabel>Selección de Tarifa</ng-template>
+
+            <ng-template matStepContent>
+                <h2>Seleccionar Tarifa de Vuelo</h2>
+                <mat-radio-group [(ngModel)]="tarifaSeleccionada">
+                    <mat-radio-button *ngFor="let tarifa of tarifas" [value]="tarifa.value">
+                        {{ tarifa.label }} - {{ tarifa.value }}
+                        <p style="color: #2ac529">Precio: ${{tarifa.precio}}</p>
+                    </mat-radio-button>
+                </mat-radio-group>
+                <div class="button-container">
+                    <button mat-raised-button color="primary" matStepperNext (click)="establecerTarifa()"
+                            style="color: white">
+                        Siguiente
+                    </button>
                 </div>
-            </mat-tab>
-        </div>
-        <div class="personalizacion-card" *ngIf="!datosBusqueda.soloIda">
-            <mat-tab label="Ida">
-                <app-avion></app-avion>
-            </mat-tab>
-            <mat-tab label="Vuelta" class="tab-vuelo">
-                <div class="tab-vuelo">
-                    <app-avion></app-avion>
-                    <app-card-resumen-vuelo></app-card-resumen-vuelo>
-                    <app-seleccion-tarifa></app-seleccion-tarifa>
+            </ng-template>
+
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Selección de Asientos</ng-template>
+            <ng-template matStepContent>
+                <mat-tab-group>
+                    <div class="avion-card" *ngIf="datosBusqueda.soloIda">
+                        <mat-tab label="Ida" class="tab-vuelo">
+                            <div class="tab-vuelo">
+                                <app-avion></app-avion>
+                                <div class="leyenda">
+                                    <img ngSrc="assets/svgs/leyenda.svg" alt="" height="250" width="250">
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </div>
+                    <div class="avion-card" *ngIf="!datosBusqueda.soloIda">
+                        <mat-tab label="Ida">
+                            <app-avion></app-avion>
+                        </mat-tab>
+                        <mat-tab label="Vuelta" class="tab-vuelo">
+                            <div class="tab-vuelo">
+                                <app-avion></app-avion>
+                                <div class="leyenda">
+                                    <img ngSrc="assets/svgs/leyenda.svg" alt="" height="250" width="250">
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </div>
+                </mat-tab-group>
+
+                <div class="button-container">
+                    <button mat-raised-button color="primary" matStepperPrevious style="color: white">Atrás</button>
                 </div>
-            </mat-tab>
-        </div>
-    </mat-tab-group>
+            </ng-template>
+        </mat-step>
+    </mat-stepper>
+
+    <div class="button-container_left">
+        <button mat-raised-button color="primary" style="color: white" (click)="nextPage()">Continuar con la Compra
+        </button>
+    </div>
 </section>
+
