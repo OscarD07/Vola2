@@ -10,7 +10,8 @@ export class VuelosService {
     private url: string;
     vuelos: Vuelo[] = [];
     private vuelosActualizados = new Subject<Vuelo[]>();
-
+     vuelosRegreso: Vuelo[] = [];
+     vuelosActualizadosRegreso = new Subject<Vuelo[]>();
     constructor(private _http: HttpClient) {
         this.url = 'http://127.0.0.1:3600/vola2';
     }
@@ -35,6 +36,18 @@ export class VuelosService {
     verificarvuelo(): Vuelo[] {
         this.vuelosActualizados.next([...this.vuelos]);
         return this.vuelos;
+    }
+
+    verificarvueloRegreso(): Vuelo[] {
+        this.vuelosActualizadosRegreso.next([...this.vuelosRegreso]);
+        return this.vuelosRegreso;
+    }
+    getVuelosRegresoActualizadosListener(): Observable<Vuelo[]> {
+        return this.vuelosActualizadosRegreso.asObservable();
+    }
+
+    getVuelosRegreso(): Vuelo[] {
+        return [...this.vuelosRegreso];
     }
 
     getVuelosActualizadosListener(): Observable<Vuelo[]> {

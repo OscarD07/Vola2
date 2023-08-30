@@ -106,6 +106,24 @@ export class FormularioEvComponent implements OnInit, OnChanges {
                     console.error('Error al buscar vuelos:', error);
                 }
             );
+       this.backendService.buscarVueloDatos(
+              this.datosBusqueda.destino,
+              this.datosBusqueda.origen,
+              this.datosBusqueda.fechaVuelta,
+              this.datosBusqueda.numPasajeros
+         ).subscribe(
+                (data) => {
+                    this.backendService.vuelosRegreso = data.vuelos;
+                    this.backendService.verificarvueloRegreso();
+                    // Procesar los datos recibidos del backend
+                },
+                (error) => {
+                    this.backendService.vuelosRegreso = [];
+                    this.backendService.verificarvueloRegreso();
+                    console.error('Error al buscar vuelos:', error);
+                }
+            );
+            
     }
 
     controlFechasCercanas(): void {

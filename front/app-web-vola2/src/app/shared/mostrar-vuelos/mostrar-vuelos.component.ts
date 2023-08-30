@@ -11,6 +11,7 @@ import {Subscription} from 'rxjs';
 })
 export class MostrarVuelosComponent implements OnInit, OnDestroy {
     private vuelosSubscription: Subscription | undefined;
+    private vuelosDeRegresoSubscription: Subscription | undefined;
     vuelos: Vuelo[] = [];
     vuelosDeRegreso: Vuelo[] = [];
     vueloIdaSeleccionado: Vuelo | null = null;
@@ -36,6 +37,7 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
 
     inicializarVuelosYBusqueda() {
         this.vuelos = this.vuelosService.verificarvuelo();
+        this.vuelosDeRegreso = this.vuelosService.verificarvueloRegreso();
         const datosGuardados = sessionStorage.getItem('datosBusqueda');
 
         if (datosGuardados) {
@@ -53,6 +55,17 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
                 },
                 (error: any) => {
                     this.vuelos = [];
+                    console.error('Error al buscar vuelos:', error);
+                }
+            );
+
+            this.vuelosDeRegresoSubscription = this.vuelosService.getVuelosRegresoActualizadosListener()
+            .subscribe(
+                (vuelos: Vuelo[]) => {
+                    this.vuelosDeRegreso = vuelos;
+                },
+                (error: any) => {
+                    this.vuelosDeRegreso = [];
                     console.error('Error al buscar vuelos:', error);
                 }
             );
