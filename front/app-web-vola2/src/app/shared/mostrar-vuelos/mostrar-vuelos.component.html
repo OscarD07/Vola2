@@ -1,6 +1,6 @@
 <!-- Mostrar el título de Resumen de Vuelo si la reserva está completa -->
 <div *ngIf="reservaCompleta">
-    <h2>Resumen de Vuelo</h2>
+    <h1>Resumen de Vuelo</h1>
 </div>
 
 <!-- Mostrar el vuelo de ida seleccionado en una tarjeta -->
@@ -15,16 +15,16 @@
 
 
 <div *ngIf="!idaSeleccionada">
-    <h2>Vuelos de Ida</h2>
+    <h1>Vuelos de Ida</h1>
 </div>
 <!-- Mostrar los vuelos de ida -->
 <div class="vuelos-container" *ngIf="!idaSeleccionada">
     <div class="vuelo-item" *ngFor="let vuelo of vuelos" (click)="seleccionarVueloIda(vuelo)">
         <div class="info">
             <div class="fecha-hora">{{ vuelo.fechaSalida | date : "hh:mm a" }}</div>
-            <div class="origen">origen {{ vuelo.origen }}</div>
-            <div class="destino">destino {{ vuelo.destino }}</div>
-            <div class="precio">${{ vuelo.precio }}</div>
+            <div class="origen">Origen: {{ vuelo.origen }}</div>
+            <div class="destino">Destino: {{ vuelo.destino }}</div>
+            <div class="precio">${{ vuelo.precio * datosBusqueda.numPasajeros }}</div>
         </div>
     </div>
     <div class="no-vuelos-message" *ngIf="vuelos.length === 0">
@@ -37,7 +37,7 @@
 
 <!-- Mostrar los vuelos de regreso (si hay un vuelo de ida seleccionado y la reserva no está completa) -->
 <div *ngIf="vueloIdaSeleccionado && !reservaCompleta && !soloIda">
-    <h2>Vuelos de Regreso</h2>
+    <h1>Vuelos de Regreso</h1>
 </div>
 <div *ngIf="vueloIdaSeleccionado && !reservaCompleta && !soloIda" class="vuelos-container">
     <div class="vuelo-item" *ngFor="let vuelo of vuelosDeRegreso" (click)="seleccionarVueloRegreso(vuelo)">
@@ -55,16 +55,14 @@
     </div>
 </div>
 
-<!-- Botón para continuar con la personalización -->
-<div *ngIf="reservaCompleta">
+<div *ngIf="reservaCompleta" class="buttons-contenedor">
     <button
         mat-raised-button
         color="primary"
         type="submit"
-        (click)="continuarConPersonalizacion()"
+        (click)="continuarConDatosPasajeros()"
         style="color: white"
-        class="buton-contenedor"
     >
-        Continuar personalizando tu viaje
+        Continuar con el proceso de compra
     </button>
 </div>

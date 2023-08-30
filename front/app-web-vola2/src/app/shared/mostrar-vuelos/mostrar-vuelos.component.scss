@@ -1,84 +1,87 @@
+h1 {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 50px;
+}
+
 .vuelos-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Centrar los recuadros horizontalmente */
-    margin-top: 20px;
-  }
-  
-  .vuelo-item {
-    width: calc(75% - 20px); /* Ancho del recuadro */
-    margin: 10px; /* Espacio entre recuadros */
-    border: 1px solid #ccc;
-    padding: 20px;
-    display: flex; /* Mostrar los elementos en línea */
-    border-radius: 6px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .vuelo-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  .vuelo-link {
+    margin: 10px 0 100px 0;
+
+    .vuelo-item {
+        width: calc(75% - 20px); /* Ancho del recuadro */
+        margin: 10px; /* Espacio entre recuadros */
+        border: 1px solid #ccc;
+        padding: 20px;
+        display: flex; /* Mostrar los elementos en línea */
+        border-radius: 6px;
+        background-color: #ffffff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+    }
+}
+
+
+.vuelo-link {
     text-decoration: none;
     color: inherit;
-  }
-  
-  .info {
+}
+
+.info {
     flex: 1; /* Permite que los elementos internos ocupen el espacio disponible */
     display: flex;
     justify-content: space-between;
-    margin-left: 10px; /* Espacio entre los elementos y el texto */
-  }
-  
-  .origen{
-    //flex: 2; /* Hace que los elementos ocupen el mismo espacio horizontal */
-    //white-space: nowrap; /* Evita saltos de línea en los elementos */
+    align-items: center;
     overflow: hidden; /* Oculta contenido que exceda el ancho */
-     /* Muestra puntos suspensivos si el contenido es muy largo */
-    margin: 0 15px; /* Espacio entre los elementos */
-  }
-  .destino{
-    //flex: 2; /* Hace que los elementos ocupen el mismo espacio horizontal */
-    //white-space: nowrap; /* Evita saltos de línea en los elementos */
-    overflow: hidden; /* Oculta contenido que exceda el ancho */
-     /* Muestra puntos suspensivos si el contenido es muy largo */
-    margin: 0 15px; /* Espacio entre los elementos */
-  }
-  .fecha-hora {
-    color: #19d266;
-    font-family: 'Lilita One', cursiva;
-    font-size: 25px; /* Tamaño del título */
-    //flex: 2; /* Hace que los elementos ocupen el mismo espacio horizontal */
+    margin: 0 20px; /* Espacio entre los elementos */
+    color: black;
     white-space: nowrap; /* Evita saltos de línea en los elementos */
-    overflow: hidden; /* Oculta contenido que exceda el ancho */
-     /* Muestra puntos suspensivos si el contenido es muy largo */
-    margin: 0 15px; /* Espacio entre los elementos */
-  }
-  .no-vuelos-message {
+    font-weight: bold;
+    font-size: 20px;
+
+
+    .fecha-hora {
+        color: #19d266;
+        font-size: 25px; /* Tamaño del título */
+        font-weight: bold;
+    }
+
+    .precio {
+        color: #19d266;
+        font-size: 25px; /* Tamaño del título */
+        font-weight: bold;
+    }
+}
+
+
+.no-vuelos-message {
     text-align: center;
     font-size: 30px;
     margin-top: 20px;
     color: #22c126; /* Puedes ajustar el color según tus preferencias */
     margin-bottom: 40px;
-  }
-  
-  .horizontal-form {
+}
+
+.horizontal-form {
     display: flex;
     justify-content: c;
     align-items: center;
-  }
-  
-  .form-field {
+}
+
+.form-field {
     width: 200px;
     margin-right: 5px;
-  }
+}
 
-  .vuelo-title {
+.vuelo-title {
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
@@ -88,12 +91,12 @@
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-  }
+}
 
-  .boton-contenedor {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 1000;  /* Ajusta según tu necesidad para asegurarte de que el botón aparezca encima de otros elementos */
-  }
-  
+.buttons-contenedor {
+    display: grid;
+    justify-content: center;
+    margin: 50px;
+}
+
+

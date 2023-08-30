@@ -1,8 +1,48 @@
+h1 {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 50px;
+}
+
+p {
+    text-align: left;
+    padding: 0 100px;
+    font-size: 1.2em;
+}
+
 .tab-container {
-     // Color de fondo gris
-    max-width: 800px; // Ancho máximo del contenedor
+    max-width: 1000px; // Ancho máximo del contenedor
     margin: 0 auto; // Centrar el contenedor
     padding: 20px; // Espaciado interno
     border-radius: 8px; // Esquinas redondeadas
-  }
-  
+
+    .titulos {
+        font-size: 20px;
+        margin-bottom: 50px;
+
+        > h2 {
+            font-weight: 600;
+            margin: 40px 0 20px 0;
+        }
+    }
+
+    .input-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        .input-form {
+            //width: 30%;
+            width: 50%;
+            box-sizing: border-box;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .button-container{
+        display: flex;
+        justify-content: space-around;
+
+    }
+}

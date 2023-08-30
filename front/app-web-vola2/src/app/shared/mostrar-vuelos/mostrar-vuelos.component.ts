@@ -118,7 +118,7 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
         }
     }
 
-    continuarConPersonalizacion() {
+    continuarConDatosPasajeros() {
         this.router.navigate(['/pasajeros']);
     }
 

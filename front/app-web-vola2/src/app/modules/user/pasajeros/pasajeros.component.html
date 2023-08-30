@@ -1,91 +1,126 @@
-
-   <div class="tab-container">
-  
+<h1>"¡Completa tu Viaje! Ingresa los Detalles de los Pasajeros</h1>
+<p>En nuestro sitio web de vuelos, hacer que tu aventura despegue es más fácil que nunca. En esta página, te invitamos a
+    brindarnos los detalles necesarios para garantizar un viaje perfecto.</p>
+<div class="tab-container">
     <mat-tab-group (selectedTabChange)="changeTab($event)">
-        
+
         <mat-tab *ngFor="let adult of adults; let i = index" [label]="adult">
-            <div>
+            <div class="titulos">
                 <h2>{{ currentName }} - {{ currentTab }}</h2>
-                <p>Autocompletar con Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o documento de identidad de cada pasajero.</p>
-              </div>
-          <form [formGroup]="adultForms[i]" (input)="updateCurrentName(adultForms[i])">
-            <mat-form-field>
-              <mat-label>Nombre</mat-label>
-              <input matInput formControlName="firstName">
-            </mat-form-field>
-      
-            <mat-form-field>
-              <mat-label>Apellido</mat-label>
-              <input matInput formControlName="lastName">
-            </mat-form-field>
-          </form>
+                <p>Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o
+                    documento de identidad de cada pasajero.</p>
+            </div>
+            <form [formGroup]="adultForms[i]" (input)="updateCurrentName(adultForms[i])" class="input-container">
+                <mat-form-field class="input-form">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="firstName">
+                </mat-form-field>
+
+                <mat-form-field class="input-form">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput formControlName="lastName">
+                </mat-form-field>
+
+                <mat-form-field class="input-form">
+                    <mat-label>Cédula o Pasaporte</mat-label>
+                    <input matInput formControlName="nui">
+                </mat-form-field>
+
+                <mat-form-field class="input-form">
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="birthdate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </form>
         </mat-tab>
-      
+
         <mat-tab *ngFor="let senior of seniors; let i = index" [label]="senior">
-              <div>
-        <h2>{{ currentName }} - {{ currentTab }}</h2>
-        <p>Autocompletar con Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o documento de identidad de cada pasajero.</p>
-      </div>
-          <form [formGroup]="seniorForms[i]" (input)="updateCurrentName(seniorForms[i])">
-            <!-- Campos del formulario -->
-            <mat-form-field>
-              <mat-label>Nombre</mat-label>
-              <input matInput formControlName="firstName">
-            </mat-form-field>
-      
-            <mat-form-field>
-              <mat-label>Apellido</mat-label>
-              <input matInput formControlName="lastName">
-            </mat-form-field>
-      
-            <mat-form-field>
-              <mat-label>Fecha de Nacimiento</mat-label>
-              <input matInput [matDatepicker]="picker" formControlName="birthdate">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </form>
-        </mat-tab>
-      
-        <mat-tab *ngFor="let child of children; let i = index" [label]="child">
-    
-            <div>
+            <div class="titulos">
                 <h2>{{ currentName }} - {{ currentTab }}</h2>
-                <p>Autocompletar con Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o documento de identidad de cada pasajero.</p>
-              </div>
-          <form [formGroup]="childForms[i]" (input)="updateCurrentName(childForms[i])">
-            <!-- Campos del formulario -->
-            <mat-form-field>
-              <mat-label>Nombre</mat-label>
-              <input matInput formControlName="firstName">
-            </mat-form-field>
-      
-            <mat-form-field>
-              <mat-label>Apellido</mat-label>
-              <input matInput formControlName="lastName">
-            </mat-form-field>
-      
-            <mat-form-field>
-              <mat-label>Fecha de Nacimiento</mat-label>
-              <input matInput [matDatepicker]="picker" formControlName="birthdate">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </form>
+                <p>Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o
+                    documento de identidad de cada pasajero.</p>
+            </div>
+            <form [formGroup]="seniorForms[i]" (input)="updateCurrentName(seniorForms[i])" class="input-container">
+                <mat-form-field class="input-form">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="firstName">
+                </mat-form-field>
+
+                <mat-form-field class="input-form">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput formControlName="lastName">
+                </mat-form-field>
+
+                <mat-form-field class="input-form">
+                    <mat-label>Cédula o Pasaporte</mat-label>
+                    <input matInput formControlName="nui">
+                </mat-form-field>
+
+                <mat-form-field class="input-form">
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="birthdate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </form>
         </mat-tab>
-      </mat-tab-group>
 
-      <button 
-      mat-raised-button
-      color="primary"
-      type="submit"
-      (click)="continuarConPersonalizacion()" 
-      style="color: white"
-      class="buton-contenedor"
-    >
-      Continua a la seleccion de asientos
-    </button>
-   </div>
-  
+        <mat-tab *ngFor="let child of children; let i = index" [label]="child">
 
-  
+            <div class="titulos">
+                <h2>{{ currentName }} - {{ currentTab }}</h2>
+                <p>Ingresa el primer nombre y el primer apellido como aparecen en el pasaporte o
+                    documento de identidad de cada pasajero.</p>
+            </div>
+            <form [formGroup]="childForms[i]" (input)="updateCurrentName(childForms[i])" class="input-container">
+
+                <mat-form-field class="input-form">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="firstName">
+                </mat-form-field>
+
+                <mat-form-field class="input-form">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput formControlName="lastName">
+                </mat-form-field>
+
+                <mat-form-field class="input-form">
+                    <mat-label>Cédula o Pasaporte</mat-label>
+                    <input matInput formControlName="nui">
+                </mat-form-field>
+
+                <mat-form-field class="input-form">
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="birthdate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+            </form>
+        </mat-tab>
+    </mat-tab-group>
+
+    <div class="button-container">
+        <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            (click)="continuarConPersonalizacion()"
+            style="color: white"
+        >
+            Personaliza tu vuelo a tu estilo!
+        </button>
+        <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            (click)="continuarSinLaPersonalizacion()"
+            style="color: white"
+        >
+            Continua sin personalización
+        </button>
+    </div>
+</div>
+
+
