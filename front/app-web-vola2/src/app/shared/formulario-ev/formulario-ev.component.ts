@@ -24,6 +24,18 @@ export class FormularioEvComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         this.cargarDatosDeSesion();
         this.inicializarFormulario();
+        this.soloIdaControl.valueChanges.subscribe(value => {
+            if (value === true) { // Si es 'Solo Ida'
+                this.fechaVueltaControl.clearValidators(); // Quita los validadores
+                this.fechaVueltaControl.setErrors(null);  // Limpia los errores
+                this.fechaVueltaControl.updateValueAndValidity(); // Actualiza el estado del control
+                this.form.updateValueAndValidity(); // Actualiza el estado del formulario completo
+            } else { // Si es 'Ida y Vuelta'
+                this.fechaVueltaControl.setValidators(Validators.required); // Añade el validador
+                this.fechaVueltaControl.updateValueAndValidity(); // Actualiza el estado del control
+                this.form.updateValueAndValidity(); // Actualiza el estado del formulario completo
+            }
+        });
     }
 
     ngOnChanges(changes: SimpleChanges): void {
