@@ -32,7 +32,10 @@ export class DropdownContadorPasajerosComponent {
   }
   decrement(option: string): void {
     const control = this.getControl(option);
-    if (control && control.value > 0) {
+    
+    if (option != "adulto" && control && control.value > 0) {
+      control.setValue(control.value - 1);
+    }else if (option=="adulto" && control && control.value > 1) {
       control.setValue(control.value - 1);
     }
   }
