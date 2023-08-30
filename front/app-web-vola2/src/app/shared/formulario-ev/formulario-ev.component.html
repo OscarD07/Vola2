@@ -23,11 +23,15 @@
           color="primary"
           type="submit"
           (click)="guardarCambiosYBuscarVuelos()" style="color: white"
+          [disabled]="form.hasError('fechaInvalida')" 
       >
           Buscar
       </button>
   </div>
 
+  <div *ngIf="form.hasError('fechaInvalida')" style="color: red;">
+    La fecha de vuelta no puede ser anterior a la fecha de salida.
+  </div>
   <app-fechas-cercanas *ngIf="orientacion === 'horizontal'" [control]="fechaSalidaControl"></app-fechas-cercanas>
 
 
