@@ -13,6 +13,7 @@ export class FormularioEvComponent implements OnInit, OnChanges {
     form!: FormGroup;
     datosBusqueda: any = {};
     showError: boolean = false;
+    controlCercano: any;
 
     constructor(
         private fb: FormBuilder,
@@ -105,6 +106,19 @@ export class FormularioEvComponent implements OnInit, OnChanges {
                     console.error('Error al buscar vuelos:', error);
                 }
             );
+    }
+
+    controlFechasCercanas(): void {
+        const vueloAlmacenado = sessionStorage.getItem('vueloIda');
+        if (vueloAlmacenado) {
+            // Actualizar la variable controlCercano con los datos que necesites
+            this.controlCercano = this.fechaSalidaControl;  // Suponiendo que el objeto vuelo tiene una propiedad fecha
+            // O cualquier otro código que necesites ejecutar
+          } else {
+            // Código a ejecutar si no hay un vuelo de regreso almacenado
+            this.controlCercano = this.fechaVueltaControl;
+          }
+
     }
 
     // Getters para los controles del formulario

@@ -32,7 +32,7 @@
   <div *ngIf="form.hasError('fechaInvalida')" style="color: red;">
     La fecha de vuelta no puede ser anterior a la fecha de salida.
   </div>
-  <app-fechas-cercanas *ngIf="orientacion === 'horizontal'" [control]="fechaSalidaControl"></app-fechas-cercanas>
+  <app-fechas-cercanas *ngIf="orientacion === 'horizontal'" [control]="controlCercano"></app-fechas-cercanas>
 
 
 

@@ -27,6 +27,7 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.inicializarSuscripcionAVuelos();
+        
     }
 
     ngOnDestroy() {
@@ -67,6 +68,7 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
         this.vueloIdaSeleccionado = vuelo;
         this.vuelosSeleccionados[0] = vuelo;
         this.actualizarVuelosEnSessionStorage();
+        console.log('Vuelos de regreso:', this.datosBusqueda.fechaVuelta);
         this.idaSeleccionada = true;
         this.vuelosService.buscarVueloDatos(
             vuelo.origen,
@@ -79,11 +81,11 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
                 sessionStorage.setItem('vueloIda', JSON.stringify(data.vuelos));
             },
             (error) => {
-                this.vuelosDeRegreso = [];
+                this.vuelos = [];
                 console.error('Error al buscar vuelos de regreso:', error);
             }
         );
-
+        
         this.vuelosService.buscarVuelosDeRegreso(
             vuelo.destino,
             vuelo.origen,
@@ -91,8 +93,10 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
             this.datosBusqueda.numPasajeros
         ).subscribe(
             (data) => {
+                
                 this.vuelosDeRegreso = data.vuelos;
                 sessionStorage.setItem('vueloRegreso', JSON.stringify(data.vuelos));
+                
             },
             (error) => {
                 this.vuelosDeRegreso = [];
@@ -103,13 +107,10 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
     }
 
     seleccionarVueloRegreso(vuelo: Vuelo) {
-
         this.vueloRegresoSeleccionado = vuelo;
         this.vuelosSeleccionados[1] = vuelo;
-        this.actualizarVuelosEnSessionStorage();
+        this.actualizarVuelosEnSessionStorage();    
         this.verificarReservaCompleta();
-
-
     }
 
     verificarReservaCompleta() {
@@ -125,5 +126,7 @@ export class MostrarVuelosComponent implements OnInit, OnDestroy {
     actualizarVuelosEnSessionStorage() {
         const vuelosSeleccionadosJSON = JSON.stringify(this.vuelosSeleccionados);
         sessionStorage.setItem('vuelosSeleccionados', vuelosSeleccionadosJSON);
+
+        console.log('Vuelos seleccionados:', this.vuelosSeleccionados);
     }
 }
