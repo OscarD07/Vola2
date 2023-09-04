@@ -29,7 +29,7 @@ export class VuelosService {
         numPasajeros: string
     ): Observable<any> {
         const url = `${this.url}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}/${numPasajeros}`;
-        return this._http.get(url);
+        return this._http.get(url, {headers:this.getHeaders()});
 
     }
 
@@ -70,14 +70,14 @@ export class VuelosService {
         numPasajeros: string
     ): Observable<any> {
         const url = `${this.url}/get-vuelos-buscar/${origen}/${destino}/${fechaSalida}/${numPasajeros}`;
-        return this._http.get(url);
+        return this._http.get(url, {headers:this.getHeaders()});
     }
 
     solicitarLinkPago(
         orderAmount: number
     ): Observable<any> {
         const url = `http://127.0.0.1:3600/create-order/${orderAmount}`;
-        return this._http.get(url);
+        return this._http.get(url, {headers:this.getHeaders()});
     }
 
 
